@@ -10,7 +10,14 @@
     "typecheck": "turbo run typecheck",
     "lint": "turbo run lint",
     "format": "prettier --write .",
-    "data:build": "pnpm --filter @germanio/data build:dictionary"
+    "data:build": "pnpm --filter @germanio/data build:dictionary",
+    "start": "turbo run dev --filter=@germanio/brain --filter=@germanio/lab --filter=@germanio/web"
   },
-  "engines": { "node": ">=22" }
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "turbo": "^2.11.7"
+  },
+  "packageManager": "pnpm@12.11.2"
 }

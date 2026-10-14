@@ -4,8 +4,9 @@
   "private": true,
   "description": "Local speech service (Piper TTS; Whisper and pronunciation scoring in phase 4)",
   "scripts": {
-    "setup": "python -m venv .venv && .venv/Scripts/python -m pip install -r requirements.txt",
-    "dev": ".venv/Scripts/python -m uvicorn lab.main:app --host 127.0.0.1 --port 4318",
-    "start": ".venv/Scripts/python -m uvicorn lab.main:app --host 127.0.0.1 --port 4318"
+    "setup": "python -m venv .venv && .venv\\Scripts\\python.exe -m pip install -r requirements.txt",
+    "dev": ".venv\\Scripts\\python.exe -m uvicorn lab.main:app --host 127.0.0.1 --port 4318",
+    "start": ".venv\\Scripts\\python.exe -m uvicorn lab.main:app --host 127.0.0.1 --port 4318",
+    "check": ".venv\\Scripts\\python.exe --version"
   }
 }
