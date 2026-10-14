@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.next/
+.turbo/
+.output/
+.wxt/
+*.log
+.env
+.env.*
+!.env.example
+# local data (never commit personal learner data or large downloads)
+data/raw/
+data/*.sqlite
+data/*.sqlite-*
+services/lab/.venv/
+__pycache__/
+target/
