@@ -13,6 +13,8 @@ import { openLearnerDb } from './db/learner';
 import { Learner } from './domain/learner';
 import { Lesesaal } from './domain/lesesaal';
 import { Studio } from './domain/studio';
+import { Tagesfunk } from './domain/tagesfunk';
+import type { LabClient } from './lab';
 import { Nachtschicht } from './jobs/nachtschicht';
 import { fixtureGrammar, makeFixtureDictionary } from './test/fixtures';
 
@@ -36,6 +38,15 @@ function setup() {
           exampleDe: 'Beispiel.',
           exampleFa: 'مثال.',
         })),
+    }),
+    tagesfunk: () => ({
+      title: 'Tagesfunk am Mittwoch',
+      summaryFa: 'خلاصه',
+      segments: [
+        { speaker: 'Lena', text: 'Hallo und willkommen!' },
+        { speaker: 'Jonas', text: 'Heute geht es um das Haus.' },
+      ],
+      vocabulary: [{ de: 'Haus', fa: 'خانه' }],
     }),
     story: () => ({ title: 'Das neue Haus', body: 'Das Haus ist schön. Ich gehe in das Haus.', glossary: [{ de: 'Haus', fa: 'خانه' }] }),
     simplify: () => ({ title: 'Einfach', body: 'Das Haus ist schön.', glossary: [] }),
@@ -65,12 +76,25 @@ function setup() {
   const ai = new CachedProvider(recorded, db);
   const learner = new Learner(db, dict, fixtureGrammar);
   const nachtschicht = new Nachtschicht(db, dict, ai, { intervalMs: 1e9, batchSize: 10 });
+  const lab: LabClient & { rendered: string[] } = {
+    rendered: [],
+    available: async () => true,
+    tts: async () => new ArrayBuffer(8),
+    podcast: async (id, segments) => {
+      lab.rendered.push(id);
+      return { file: `${id}.wav`, duration: 3, timings: segments.map((_, i) => ({ index: i, start: i, end: i + 1 })) };
+    },
+  };
+  const tagesfunk = new Tagesfunk(db, learner, ai, lab, async () => [{ title: 'Neue Regeln für Mieter', description: 'Mieten steigen.' }]);
   const app = createApp({
     config: { port: 4317, allowedOrigins: (o) => o === 'http://localhost:3000' },
     dict,
     learner,
     lesesaal: new Lesesaal(db, dict, learner, ai),
     studio: new Studio(db, learner, ai, fixtureGrammar),
+    tagesfunk,
+    lab,
+    dataDir: '.',
     ai,
     nachtschicht,
     grammar: fixtureGrammar,
@@ -82,7 +106,7 @@ function setup() {
       headers: { host: '127.0.0.1:4317', 'content-type': 'application/json', ...(init.headers ?? {}) },
       ...(init.json !== undefined ? { body: JSON.stringify(init.json) } : {}),
     });
-  return { req, learner, recorded, nachtschicht, close: () => (dict.close(), close()) };
+  return { req, learner, recorded, nachtschicht, lab, close: () => (dict.close(), close()) };
 }
 
 let t: ReturnType<typeof setup>;
@@ -236,5 +260,23 @@ describe('schreiben & grammatik', () => {
     expect(ok.correct).toBe(true);
     const bad = (await (await t.req('/grammar/answer', { method: 'POST', json: { setId: d.id, index: 0, given: 'der' } })).json()) as Json;
     expect(bad.correct).toBe(false);
+  });
+});
+
+describe('tagesfunk', () => {
+  it('produces one scripted + voiced episode per day and is idempotent', async () => {
+    const r = (await (await t.req('/tagesfunk', { method: 'POST' })).json()) as Json;
+    await t.req('/tagesfunk', { method: 'POST' });
+    expect(t.recorded.calls.filter((c) => c.task === 'tagesfunk')).toHaveLength(1);
+    expect(t.lab.rendered).toEqual([`tagesfunk-${r.id}`]);
+    const ep = (await (await t.req(`/tagesfunk/${r.id}`)).json()) as Json;
+    expect(ep.script.segments).toHaveLength(2);
+    expect(ep.timings).toHaveLength(2);
+  });
+
+  it('counts listening as passive time', async () => {
+    const r = (await (await t.req('/tagesfunk', { method: 'POST' })).json()) as Json;
+    await t.req(`/tagesfunk/${r.id}/listened`, { method: 'POST', json: { seconds: 600 } });
+    expect(t.learner.dailyHours(1)[0]!.hours).toBeCloseTo((600 / 3600) * 0.35, 3);
   });
 });

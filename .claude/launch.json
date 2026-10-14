@@ -4,15 +4,40 @@
     {
       "name": "brain",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "@germanio/brain", "start"],
+      "runtimeArgs": [
+        "--filter",
+        "@germanio/brain",
+        "start"
+      ],
       "port": 4317,
       "url": "http://127.0.0.1:4317"
     },
     {
       "name": "web",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "@germanio/web", "dev"],
+      "runtimeArgs": [
+        "--filter",
+        "@germanio/web",
+        "dev"
+      ],
       "port": 3000
+    },
+    {
+      "name": "lab",
+      "runtimeExecutable": "services/lab/.venv/Scripts/python.exe",
+      "runtimeArgs": [
+        "-m",
+        "uvicorn",
+        "lab.main:app",
+        "--app-dir",
+        "services/lab",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "4318"
+      ],
+      "port": 4318,
+      "url": "http://127.0.0.1:4318"
     }
   ]
 }

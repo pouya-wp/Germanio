@@ -158,3 +158,16 @@ export const drillSets = sqliteTable(
   },
   (t) => [index('drill_sets_concept').on(t.conceptId)],
 );
+
+/** Tagesfunk: one personal two-voice episode per learner day. */
+export const episodes = sqliteTable('episodes', {
+  id: text('id').primaryKey(), // learner day, e.g. 2026-10-14
+  title: text('title').notNull(),
+  script: text('script', { mode: 'json' }).notNull(),
+  audioFile: text('audio_file'),
+  duration: real('duration'),
+  timings: text('timings', { mode: 'json' }).$type<{ index: number; start: number; end: number }[]>(),
+  level: text('level').notNull(),
+  createdAt: text('created_at').notNull().default(now),
+  listenedAt: text('listened_at'),
+});

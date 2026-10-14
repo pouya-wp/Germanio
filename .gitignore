@@ -15,3 +15,7 @@ data/*.sqlite-*
 services/lab/.venv/
 __pycache__/
 target/
+data/voices/
+data/tts-cache/
+data/podcasts/
+apps/cli/dist/

@@ -8,6 +8,7 @@ export const strings = defineStrings({
   'nav.heute': { de: 'Heute', en: 'Today', fa: 'امروز', lemmas: ['heute'] },
   'nav.wortschatz': { de: 'Wortschatz', en: 'Vocabulary', fa: 'واژگان', lemmas: ['Wortschatz'] },
   'nav.lesesaal': { de: 'Lesesaal', en: 'Reading room', fa: 'قرائت‌خانه', lemmas: ['Lesesaal'] },
+  'nav.tagesfunk': { de: 'Tagesfunk', en: 'Daily radio', fa: 'رادیوی روزانه', lemmas: ['Tag', 'Funk'] },
   'nav.schreiben': { de: 'Schreiben', en: 'Writing', fa: 'نوشتن', lemmas: ['schreiben'] },
   'nav.grammatik': { de: 'Grammatik', en: 'Grammar', fa: 'دستور زبان', lemmas: ['Grammatik'] },
   'nav.sprachgrenze': { de: 'Sprachgrenze', en: 'Language frontier', fa: 'مرز زبان', lemmas: ['Sprache', 'Grenze'] },
