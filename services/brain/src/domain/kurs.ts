@@ -92,6 +92,11 @@ export class Kurs {
       const cards = this.learner.addKursWord(w, id);
       cardIds.push(...cards.map((c) => c.id));
     }
+    // Satzbausteine are reviewed as whole sentences too: chunks, not word lists, make speech fluent.
+    for (const p of content.phrases) {
+      const cards = this.learner.addKursWord({ de: p.de, fa: p.fa, en: '', example: { de: p.de, fa: p.note ?? p.fa } }, id);
+      cardIds.push(...cards.map((c) => c.id));
+    }
     return { cardIds };
   }
 

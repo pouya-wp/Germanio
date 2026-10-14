@@ -43,10 +43,24 @@ export const ExerciseSchema = z.discriminatedUnion('type', [
 ]);
 export type Exercise = z.infer<typeof ExerciseSchema>;
 
+/**
+ * Satzbausteine — key sentences taught as whole chunks. Every production
+ * exercise must be built on one of these (enforced by a content test), and the
+ * note explains where German differs from Persian ("Ich bin 20 Jahre alt" —
+ * German says *am* 20 years *old*, not *have* 20 years).
+ */
+export const PhraseSchema = z.object({
+  de: z.string(),
+  fa: z.string(),
+  note: z.string().optional(),
+});
+export type Phrase = z.infer<typeof PhraseSchema>;
+
 export const UnitContentSchema = z.object({
   id: z.string(),
   intro: Bilingual,
   words: z.array(UnitWordSchema).min(4),
+  phrases: z.array(PhraseSchema).min(2),
   grammar: z.object({
     title: z.string(),
     fa: z.string(),
@@ -81,6 +95,23 @@ export function unitStatuses(units: { id: string }[], completed: ReadonlySet<str
     } else out[u.id] = 'locked';
   }
   return out;
+}
+
+/**
+ * The taught phrase a production answer is built on: the phrase whose tokens
+ * differ least from the answer (a name or number may change), or null when the
+ * answer needs more than `maxDiff` untaught tokens.
+ */
+export function phraseFor(answer: string, phrases: Phrase[], maxDiff = 2): Phrase | null {
+  const tokens = (s: string) => sentenceKey(s.replace(/…/g, ' ')).split(' ').filter(Boolean);
+  const a = tokens(answer);
+  let best: { p: Phrase; diff: number } | null = null;
+  for (const p of phrases) {
+    const t = new Set(tokens(p.de));
+    const diff = a.filter((x) => !t.has(x)).length;
+    if (!best || diff < best.diff) best = { p, diff };
+  }
+  return best && best.diff <= maxDiff ? best.p : null;
 }
 
 /** Normalise a sentence for order/translate checks: case, punctuation and spacing don't count. */

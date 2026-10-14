@@ -5,59 +5,322 @@
     "de": "Am Ende kannst du sagen: Ich möchte einen Kaffee, bitte. Was kostet das?"
   },
   "words": [
-    { "de": "möchten", "fa": "مایل بودن، خواستن (مؤدبانه)", "en": "would like", "example": { "de": "Ich möchte einen Tee.", "fa": "یک چای می‌خواهم." } },
-    { "de": "bitte", "fa": "لطفاً؛ خواهش می‌کنم", "en": "please", "example": { "de": "Einen Kaffee, bitte.", "fa": "یک قهوه، لطفاً." } },
-    { "de": "danke", "fa": "ممنون", "en": "thanks", "example": { "de": "Danke schön!", "fa": "خیلی ممنون!" } },
-    { "de": "Kaffee", "article": "der", "plural": "Kaffees", "fa": "قهوه", "en": "coffee", "example": { "de": "Der Kaffee ist heiß.", "fa": "قهوه داغ است." } },
-    { "de": "Tee", "article": "der", "plural": "Tees", "fa": "چای", "en": "tea", "example": { "de": "Ich trinke gern Tee.", "fa": "دوست دارم چای بنوشم." } },
-    { "de": "Wasser", "article": "das", "plural": "Wasser", "fa": "آب", "en": "water", "example": { "de": "Ein Wasser, bitte.", "fa": "یک آب، لطفاً." } },
-    { "de": "Kuchen", "article": "der", "plural": "Kuchen", "fa": "کیک", "en": "cake", "example": { "de": "Der Kuchen ist lecker.", "fa": "کیک خوشمزه است." } },
-    { "de": "Brötchen", "article": "das", "plural": "Brötchen", "fa": "نان گرد کوچک", "en": "bread roll", "example": { "de": "Zwei Brötchen, bitte.", "fa": "دو تا نان، لطفاً." } },
-    { "de": "trinken", "fa": "نوشیدن", "en": "to drink", "example": { "de": "Was trinkst du?", "fa": "چه می‌نوشی؟" } },
-    { "de": "essen", "fa": "خوردن", "en": "to eat", "example": { "de": "Ich esse einen Kuchen.", "fa": "یک کیک می‌خورم." } },
-    { "de": "kosten", "fa": "قیمت داشتن", "en": "to cost", "example": { "de": "Was kostet der Tee?", "fa": "چای چند است؟" } },
-    { "de": "Euro", "article": "der", "plural": "Euro", "fa": "یورو", "en": "euro", "example": { "de": "Das kostet drei Euro.", "fa": "قیمتش سه یورو است." } },
-    { "de": "bezahlen", "fa": "پرداخت کردن", "en": "to pay", "example": { "de": "Ich möchte bezahlen, bitte.", "fa": "می‌خواهم حساب کنم، لطفاً." } },
-    { "de": "mit Karte", "fa": "با کارت", "en": "by card", "example": { "de": "Kann ich mit Karte bezahlen?", "fa": "می‌توانم با کارت پرداخت کنم؟" } }
+    {
+      "de": "möchten",
+      "fa": "مایل بودن، خواستن (مؤدبانه)",
+      "en": "would like",
+      "example": {
+        "de": "Ich möchte einen Tee.",
+        "fa": "یک چای می‌خواهم."
+      }
+    },
+    {
+      "de": "bitte",
+      "fa": "لطفاً؛ خواهش می‌کنم",
+      "en": "please",
+      "example": {
+        "de": "Einen Kaffee, bitte.",
+        "fa": "یک قهوه، لطفاً."
+      }
+    },
+    {
+      "de": "danke",
+      "fa": "ممنون",
+      "en": "thanks",
+      "example": {
+        "de": "Danke schön!",
+        "fa": "خیلی ممنون!"
+      }
+    },
+    {
+      "de": "Kaffee",
+      "article": "der",
+      "plural": "Kaffees",
+      "fa": "قهوه",
+      "en": "coffee",
+      "example": {
+        "de": "Der Kaffee ist heiß.",
+        "fa": "قهوه داغ است."
+      }
+    },
+    {
+      "de": "Tee",
+      "article": "der",
+      "plural": "Tees",
+      "fa": "چای",
+      "en": "tea",
+      "example": {
+        "de": "Ich trinke gern Tee.",
+        "fa": "دوست دارم چای بنوشم."
+      }
+    },
+    {
+      "de": "Wasser",
+      "article": "das",
+      "plural": "Wasser",
+      "fa": "آب",
+      "en": "water",
+      "example": {
+        "de": "Ein Wasser, bitte.",
+        "fa": "یک آب، لطفاً."
+      }
+    },
+    {
+      "de": "Kuchen",
+      "article": "der",
+      "plural": "Kuchen",
+      "fa": "کیک",
+      "en": "cake",
+      "example": {
+        "de": "Der Kuchen ist lecker.",
+        "fa": "کیک خوشمزه است."
+      }
+    },
+    {
+      "de": "Brötchen",
+      "article": "das",
+      "plural": "Brötchen",
+      "fa": "نان گرد کوچک",
+      "en": "bread roll",
+      "example": {
+        "de": "Zwei Brötchen, bitte.",
+        "fa": "دو تا نان، لطفاً."
+      }
+    },
+    {
+      "de": "trinken",
+      "fa": "نوشیدن",
+      "en": "to drink",
+      "example": {
+        "de": "Was trinkst du?",
+        "fa": "چه می‌نوشی؟"
+      }
+    },
+    {
+      "de": "essen",
+      "fa": "خوردن",
+      "en": "to eat",
+      "example": {
+        "de": "Ich esse einen Kuchen.",
+        "fa": "یک کیک می‌خورم."
+      }
+    },
+    {
+      "de": "kosten",
+      "fa": "قیمت داشتن",
+      "en": "to cost",
+      "example": {
+        "de": "Was kostet der Tee?",
+        "fa": "چای چند است؟"
+      }
+    },
+    {
+      "de": "Euro",
+      "article": "der",
+      "plural": "Euro",
+      "fa": "یورو",
+      "en": "euro",
+      "example": {
+        "de": "Das kostet drei Euro.",
+        "fa": "قیمتش سه یورو است."
+      }
+    },
+    {
+      "de": "bezahlen",
+      "fa": "پرداخت کردن",
+      "en": "to pay",
+      "example": {
+        "de": "Ich möchte bezahlen, bitte.",
+        "fa": "می‌خواهم حساب کنم، لطفاً."
+      }
+    },
+    {
+      "de": "mit Karte",
+      "fa": "با کارت",
+      "en": "by card",
+      "example": {
+        "de": "Kann ich mit Karte bezahlen?",
+        "fa": "می‌توانم با کارت پرداخت کنم؟"
+      }
+    }
+  ],
+  "phrases": [
+    {
+      "de": "Ich möchte …, bitte.",
+      "fa": "… می‌خواهم، لطفاً.",
+      "note": "مؤدبانه‌ترین راه سفارش. برای اسم مذکر یادت باشد: einen Kaffee، einen Tee."
+    },
+    {
+      "de": "Einen Kaffee, bitte.",
+      "fa": "یک قهوه، لطفاً.",
+      "note": "حتی وقتی فعل را نمی‌گویی، einen می‌ماند — چون در ذهن جمله «Ich möchte einen Kaffee» است."
+    },
+    {
+      "de": "Was kostet das?",
+      "fa": "چقدر می‌شود؟ / قیمتش چند است؟",
+      "note": "کلمه‌به‌کلمه: «این چه هزینه دارد؟»"
+    },
+    {
+      "de": "Ich möchte bezahlen, bitte.",
+      "fa": "می‌خواهم حساب کنم، لطفاً."
+    },
+    {
+      "de": "Kann ich mit Karte bezahlen?",
+      "fa": "می‌توانم با کارت پرداخت کنم؟"
+    }
   ],
   "grammar": {
     "title": "Akkusativ: einen Kaffee",
-    "fa": "وقتی چیزی را «می‌خواهی، می‌خوری، داری»، آن چیز مفعول است (Akkusativ). خبر خوب: فقط اسم‌های مذکر (der) عوض می‌شوند: ein → einen، der → den. مؤنث و خنثی تغییری نمی‌کنند. پس: Ich möchte einen Kaffee، اما eine Cola و ein Wasser.",
+    "fa": "وقتی چیزی را «می‌خواهی، می‌خوری، داری»، آن چیز مفعول است (Akkusativ). خبر خوب: فقط اسم‌های مذکر (der) عوض می‌شوند: ein ← einen، der ← den. مؤنث و خنثی تغییری نمی‌کنند. پس: Ich möchte einen Kaffee، اما eine Cola و ein Wasser.",
     "table": [
-      ["der", "ein Kaffee", "einen Kaffee"],
-      ["die", "eine Cola", "eine Cola"],
-      ["das", "ein Wasser", "ein Wasser"]
+      [
+        "der",
+        "ein Kaffee",
+        "einen Kaffee"
+      ],
+      [
+        "die",
+        "eine Cola",
+        "eine Cola"
+      ],
+      [
+        "das",
+        "ein Wasser",
+        "ein Wasser"
+      ]
     ],
-    "tableHead": ["Genus", "Nominativ", "Akkusativ"],
+    "tableHead": [
+      "Genus",
+      "Nominativ",
+      "Akkusativ"
+    ],
     "examples": [
-      { "de": "Ich möchte einen Tee und ein Brötchen.", "fa": "یک چای و یک نان می‌خواهم." },
-      { "de": "Der Kuchen ist lecker. Ich esse den Kuchen.", "fa": "کیک خوشمزه است. کیک را می‌خورم." }
+      {
+        "de": "Ich möchte einen Tee und ein Brötchen.",
+        "fa": "یک چای و یک نان می‌خواهم."
+      },
+      {
+        "de": "Der Kuchen ist lecker. Ich esse den Kuchen.",
+        "fa": "کیک خوشمزه است. کیک را می‌خورم."
+      }
     ]
   },
   "dialogue": {
     "title": "Im Café am Bahnhof",
     "fa": "در کافهٔ ایستگاه قطار",
     "lines": [
-      { "speaker": "Kellnerin", "de": "Hallo! Was möchten Sie?", "fa": "سلام! چه میل دارید؟" },
-      { "speaker": "Pouya", "de": "Ich möchte einen Kaffee, bitte.", "fa": "یک قهوه می‌خواهم، لطفاً." },
-      { "speaker": "Kellnerin", "de": "Gern. Mit Milch?", "fa": "حتماً. با شیر؟" },
-      { "speaker": "Pouya", "de": "Ja, bitte. Und ein Brötchen.", "fa": "بله، لطفاً. و یک نان." },
-      { "speaker": "Kellnerin", "de": "Noch etwas?", "fa": "چیز دیگری؟" },
-      { "speaker": "Pouya", "de": "Nein, danke. Was kostet das?", "fa": "نه، ممنون. چقدر می‌شود؟" },
-      { "speaker": "Kellnerin", "de": "Das macht vier Euro fünfzig.", "fa": "می‌شود چهار یورو و پنجاه سنت." },
-      { "speaker": "Pouya", "de": "Kann ich mit Karte bezahlen?", "fa": "می‌توانم با کارت پرداخت کنم؟" },
-      { "speaker": "Kellnerin", "de": "Ja, klar. Danke schön!", "fa": "بله، حتماً. خیلی ممنون!" }
+      {
+        "speaker": "Kellnerin",
+        "de": "Hallo! Was möchten Sie?",
+        "fa": "سلام! چه میل دارید؟"
+      },
+      {
+        "speaker": "Pouya",
+        "de": "Ich möchte einen Kaffee, bitte.",
+        "fa": "یک قهوه می‌خواهم، لطفاً."
+      },
+      {
+        "speaker": "Kellnerin",
+        "de": "Gern. Mit Milch?",
+        "fa": "حتماً. با شیر؟"
+      },
+      {
+        "speaker": "Pouya",
+        "de": "Ja, bitte. Und ein Brötchen.",
+        "fa": "بله، لطفاً. و یک نان."
+      },
+      {
+        "speaker": "Kellnerin",
+        "de": "Noch etwas?",
+        "fa": "چیز دیگری؟"
+      },
+      {
+        "speaker": "Pouya",
+        "de": "Nein, danke. Was kostet das?",
+        "fa": "نه، ممنون. چقدر می‌شود؟"
+      },
+      {
+        "speaker": "Kellnerin",
+        "de": "Das macht vier Euro fünfzig.",
+        "fa": "می‌شود چهار یورو و پنجاه سنت."
+      },
+      {
+        "speaker": "Pouya",
+        "de": "Kann ich mit Karte bezahlen?",
+        "fa": "می‌توانم با کارت پرداخت کنم؟"
+      },
+      {
+        "speaker": "Kellnerin",
+        "de": "Ja, klar. Danke schön!",
+        "fa": "بله، حتماً. خیلی ممنون!"
+      }
     ]
   },
   "exercises": [
-    { "type": "gap", "de": "Ich möchte ___ Kaffee.", "answer": "einen", "fa": "یک قهوه می‌خواهم." },
-    { "type": "gap", "de": "Ich möchte ___ Wasser.", "answer": "ein", "fa": "یک آب می‌خواهم." },
-    { "type": "gap", "de": "Was ___ der Tee?", "answer": "kostet", "fa": "چای چند است؟" },
-    { "type": "gap", "de": "Ich möchte ___, bitte.", "answer": "bezahlen", "fa": "می‌خواهم حساب کنم، لطفاً." },
-    { "type": "order", "words": ["einen", "möchte", "Ich", "Tee"], "answer": "Ich möchte einen Tee", "fa": "یک چای می‌خواهم." },
-    { "type": "order", "words": ["mit", "Kann", "bezahlen", "ich", "Karte"], "answer": "Kann ich mit Karte bezahlen", "fa": "می‌توانم با کارت پرداخت کنم؟" },
-    { "type": "translate", "fa": "یک قهوه، لطفاً.", "answer": "Einen Kaffee, bitte.", "accept": ["Ich möchte einen Kaffee, bitte.", "Einen Kaffee bitte."] },
-    { "type": "translate", "fa": "چقدر می‌شود؟", "answer": "Was kostet das?", "accept": ["Wie viel kostet das?"] }
+    {
+      "type": "gap",
+      "de": "Ich möchte ___ Kaffee.",
+      "answer": "einen",
+      "fa": "یک قهوه می‌خواهم."
+    },
+    {
+      "type": "gap",
+      "de": "Ich möchte ___ Wasser.",
+      "answer": "ein",
+      "fa": "یک آب می‌خواهم."
+    },
+    {
+      "type": "gap",
+      "de": "Was ___ der Tee?",
+      "answer": "kostet",
+      "fa": "چای چند است؟"
+    },
+    {
+      "type": "gap",
+      "de": "Ich möchte ___, bitte.",
+      "answer": "bezahlen",
+      "fa": "می‌خواهم حساب کنم، لطفاً."
+    },
+    {
+      "type": "order",
+      "words": [
+        "einen",
+        "möchte",
+        "Ich",
+        "Tee"
+      ],
+      "answer": "Ich möchte einen Tee",
+      "fa": "یک چای می‌خواهم."
+    },
+    {
+      "type": "order",
+      "words": [
+        "mit",
+        "Kann",
+        "bezahlen",
+        "ich",
+        "Karte"
+      ],
+      "answer": "Kann ich mit Karte bezahlen",
+      "fa": "می‌توانم با کارت پرداخت کنم؟"
+    },
+    {
+      "type": "translate",
+      "fa": "یک قهوه، لطفاً.",
+      "answer": "Einen Kaffee, bitte.",
+      "accept": [
+        "Ich möchte einen Kaffee, bitte.",
+        "Einen Kaffee bitte."
+      ]
+    },
+    {
+      "type": "translate",
+      "fa": "چقدر می‌شود؟",
+      "answer": "Was kostet das?",
+      "accept": [
+        "Wie viel kostet das?"
+      ]
+    }
   ],
   "speaking": {
     "fa": "نقش بازی کن: یک نوشیدنی و یک خوراکی سفارش بده و بپرس چقدر می‌شود.",

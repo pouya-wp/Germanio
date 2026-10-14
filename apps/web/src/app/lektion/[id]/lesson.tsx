@@ -5,9 +5,10 @@ import { useParams, useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'motion/react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { UnitSummary } from '@germanio/client';
-import type { UnitContent, UnitMeta, UnitWord } from '@germanio/core';
+import type { Phrase, UnitContent, UnitMeta, UnitWord } from '@germanio/core';
 import { brain } from '@/lib/brain';
 import { say, voiceFor } from '@/lib/speak';
+import { FaText } from '@/components/fa-text';
 import { GENUS_TEXT } from '@/components/genus';
 import { buildPractice, itemKey, PracticeView, type PracticeItem, type Verdict } from '@/components/lesson/practice';
 import { useLearner } from '@/components/providers';
@@ -17,10 +18,11 @@ import { useLearner } from '@/components/providers';
  * Ziel → Wörter → Grammatik → Dialog → Üben → Sprechen → Geschafft.
  * Persian explains, German is what you practise.
  */
-type Phase = 'ziel' | 'woerter' | 'grammatik' | 'dialog' | 'ueben' | 'sprechen' | 'fertig';
+type Phase = 'ziel' | 'woerter' | 'saetze' | 'grammatik' | 'dialog' | 'ueben' | 'sprechen' | 'fertig';
 const PHASES: { id: Phase; de: string }[] = [
   { id: 'ziel', de: 'Ziel' },
   { id: 'woerter', de: 'Wörter' },
+  { id: 'saetze', de: 'Sätze' },
   { id: 'grammatik', de: 'Grammatik' },
   { id: 'dialog', de: 'Dialog' },
   { id: 'ueben', de: 'Üben' },
@@ -68,7 +70,8 @@ export function Lesson() {
       <AnimatePresence mode="wait">
         <motion.div key={phase} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}>
           {phase === 'ziel' && <Ziel meta={meta} content={content} onNext={() => go('woerter')} />}
-          {phase === 'woerter' && <Woerter words={content.words} results={wordResults.current} onNext={() => go('grammatik')} />}
+          {phase === 'woerter' && <Woerter words={content.words} results={wordResults.current} onNext={() => go('saetze')} />}
+          {phase === 'saetze' && <Saetze phrases={content.phrases} onNext={() => go('grammatik')} />}
           {phase === 'grammatik' && <Grammatik g={content.grammar} onNext={() => go('dialog')} />}
           {phase === 'dialog' && <Dialog d={content.dialogue} onNext={() => go('ueben')} />}
           {phase === 'ueben' && <Ueben content={content} meta={meta} wordResults={wordResults.current} startedAt={startedAt.current} onDone={() => go('sprechen')} />}
@@ -131,9 +134,10 @@ function Ziel({ meta, content, onNext }: { meta: UnitMeta; content: UnitContent;
       <p className="label">Nach dieser Lektion</p>
       <h1 className="mt-3 font-display text-[clamp(2.75rem,7vw,6rem)] leading-[0.92] font-semibold tracking-[-0.045em]">{meta.canDo.de}</h1>
       <p lang="fa" className="mt-4 text-left text-2xl font-medium">{meta.canDo.fa}</p>
-      <p lang="fa" className="mt-8 max-w-3xl text-xl leading-relaxed text-ink-2">{content.intro.fa}</p>
-      <div className="mt-10 grid max-w-2xl grid-cols-3 border-y border-line py-4">
+      <p lang="fa" className="mt-8 max-w-3xl text-xl leading-relaxed text-ink-2"><FaText>{content.intro.fa}</FaText></p>
+      <div className="mt-10 grid max-w-3xl grid-cols-2 gap-y-4 border-y border-line py-4 sm:grid-cols-4">
         <Fact n={content.words.length} de="Wörter" />
+        <Fact n={content.phrases.length} de="Satzbausteine" />
         <Fact n={content.dialogue.lines.length} de="Sätze im Dialog" />
         <Fact n={content.exercises.length + content.words.length} de="Übungen" />
       </div>
@@ -201,8 +205,42 @@ function Woerter({ words, results, onNext }: { words: UnitWord[]; results: Recor
         >
           از قبل بلدم
         </button>
-        <Next onClick={next}>{i + 1 < words.length ? 'Nächstes Wort' : 'Zur Grammatik'}</Next>
+        <Next onClick={next}>{i + 1 < words.length ? 'Nächstes Wort' : 'Zu den Sätzen'}</Next>
       </div>
+    </div>
+  );
+}
+
+// ── 2b · Sätze (Satzbausteine) ───────────────────────────────────────────────
+// Whole sentences learned as chunks, each with a note on where German differs from
+// Persian. Every translation task later in the lesson is built on one of these.
+
+function Saetze({ phrases, onNext }: { phrases: Phrase[]; onNext: () => void }) {
+  const [i, setI] = useState(0);
+  const p = phrases[i]!;
+  const speakable = p.de.split(' · ')[0]!.replace(/…/g, '').replace(/\s+([.,?!])/g, '$1').trim();
+  useEffect(() => {
+    if (!p.de.includes('…')) void say(speakable);
+  }, [p, speakable]);
+  const next = useCallback(() => (i + 1 < phrases.length ? setI(i + 1) : onNext()), [i, phrases.length, onNext]);
+  return (
+    <div>
+      <p className="label tabular-nums">Satzbaustein {i + 1} / {phrases.length} · ganze Sätze, nicht Wort für Wort</p>
+      <AnimatePresence mode="wait">
+        <motion.div key={p.de} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
+          <button onClick={() => void say(speakable)} className="mt-6 block text-left font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] font-semibold tracking-[-0.04em]">
+            {p.de}
+          </button>
+          <p lang="fa" className="mt-6 text-left text-3xl font-medium">{p.fa}</p>
+          {p.note && (
+            <div className="mt-10 max-w-3xl border-l-2 border-ink bg-ink/[0.04] p-5">
+              <p className="label">Anders als im Persischen</p>
+              <p lang="fa" className="mt-2 text-xl leading-relaxed"><FaText>{p.note}</FaText></p>
+            </div>
+          )}
+        </motion.div>
+      </AnimatePresence>
+      <Next onClick={next}>{i + 1 < phrases.length ? 'Nächster Satz' : 'Zur Grammatik'}</Next>
     </div>
   );
 }
@@ -218,7 +256,7 @@ function Grammatik({ g, onNext }: { g: UnitContent['grammar']; onNext: () => voi
     <div>
       <p className="label">Grammatik</p>
       <h2 className="mt-3 text-[clamp(2rem,5vw,3.75rem)] leading-none font-semibold tracking-[-0.04em]">{g.title}</h2>
-      <p lang="fa" className="mt-8 max-w-3xl text-xl leading-relaxed">{g.fa}</p>
+      <p lang="fa" className="mt-8 max-w-3xl text-xl leading-relaxed"><FaText>{g.fa}</FaText></p>
       <div className="mt-10 overflow-x-auto">
         <table className="w-full max-w-3xl border-collapse text-left">
           <thead>
@@ -384,7 +422,7 @@ function Ueben({
       </div>
       <AnimatePresence mode="wait">
         <motion.div key={`${pos}-${itemKey(item)}`} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}>
-          <PracticeView item={item} onAnswer={answer} locked={verdict !== null} />
+          <PracticeView item={item} phrases={content.phrases} onAnswer={answer} locked={verdict !== null} />
         </motion.div>
       </AnimatePresence>
       <AnimatePresence>
@@ -400,7 +438,7 @@ function Ueben({
               {!verdict.correct && (
                 <>
                   <p className="mt-1 text-xl">{verdict.answer}</p>
-                  {verdict.fa && <p lang="fa" className="text-ink-2">{verdict.fa}</p>}
+                  {verdict.fa && <p lang="fa" className="max-w-2xl text-ink-2"><FaText>{verdict.fa}</FaText></p>}
                   <p lang="fa" className="mt-1 text-sm text-muted">این یکی آخر دوباره می‌آید.</p>
                 </>
               )}

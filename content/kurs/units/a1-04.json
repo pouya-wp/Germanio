@@ -5,58 +5,324 @@
     "de": "Am Ende kannst du sagen: Das ist ein Computer. Das ist keine Maus."
   },
   "words": [
-    { "de": "Computer", "article": "der", "plural": "Computer", "fa": "کامپیوتر", "en": "computer", "example": { "de": "Der Computer ist neu.", "fa": "کامپیوتر نو است." } },
-    { "de": "Bildschirm", "article": "der", "plural": "Bildschirme", "fa": "صفحه‌نمایش، مانیتور", "en": "screen", "example": { "de": "Der Bildschirm ist groß.", "fa": "مانیتور بزرگ است." } },
-    { "de": "Tisch", "article": "der", "plural": "Tische", "fa": "میز", "en": "table, desk", "example": { "de": "Der Laptop liegt auf dem Tisch.", "fa": "لپ‌تاپ روی میز است." } },
-    { "de": "Stuhl", "article": "der", "plural": "Stühle", "fa": "صندلی", "en": "chair", "example": { "de": "Der Stuhl ist bequem.", "fa": "صندلی راحت است." } },
-    { "de": "Maus", "article": "die", "plural": "Mäuse", "fa": "ماوس", "en": "mouse", "example": { "de": "Die Maus ist kaputt.", "fa": "ماوس خراب است." } },
-    { "de": "Tastatur", "article": "die", "plural": "Tastaturen", "fa": "صفحه‌کلید", "en": "keyboard", "example": { "de": "Die Tastatur ist deutsch: QWERTZ!", "fa": "صفحه‌کلید آلمانی است: QWERTZ!" } },
-    { "de": "Lampe", "article": "die", "plural": "Lampen", "fa": "چراغ", "en": "lamp", "example": { "de": "Die Lampe ist an.", "fa": "چراغ روشن است." } },
-    { "de": "Tasse", "article": "die", "plural": "Tassen", "fa": "فنجان", "en": "cup", "example": { "de": "Die Tasse ist leer.", "fa": "فنجان خالی است." } },
-    { "de": "Handy", "article": "das", "plural": "Handys", "fa": "تلفن همراه", "en": "mobile phone", "example": { "de": "Das Handy ist teuer.", "fa": "گوشی گران است." } },
-    { "de": "Buch", "article": "das", "plural": "Bücher", "fa": "کتاب", "en": "book", "example": { "de": "Das Buch ist interessant.", "fa": "کتاب جالب است." } },
-    { "de": "Büro", "article": "das", "plural": "Büros", "fa": "دفتر کار", "en": "office", "example": { "de": "Das Büro ist hell.", "fa": "دفتر روشن است." } },
-    { "de": "Kabel", "article": "das", "plural": "Kabel", "fa": "کابل", "en": "cable", "example": { "de": "Das Kabel ist zu kurz.", "fa": "کابل خیلی کوتاه است." } },
-    { "de": "neu", "fa": "نو، جدید", "en": "new", "example": { "de": "Das Handy ist neu.", "fa": "گوشی نو است." } },
-    { "de": "kaputt", "fa": "خراب", "en": "broken", "example": { "de": "Die Maus ist kaputt.", "fa": "ماوس خراب است." } }
+    {
+      "de": "Computer",
+      "article": "der",
+      "plural": "Computer",
+      "fa": "کامپیوتر",
+      "en": "computer",
+      "example": {
+        "de": "Der Computer ist neu.",
+        "fa": "کامپیوتر نو است."
+      }
+    },
+    {
+      "de": "Bildschirm",
+      "article": "der",
+      "plural": "Bildschirme",
+      "fa": "صفحه‌نمایش، مانیتور",
+      "en": "screen",
+      "example": {
+        "de": "Der Bildschirm ist groß.",
+        "fa": "مانیتور بزرگ است."
+      }
+    },
+    {
+      "de": "Tisch",
+      "article": "der",
+      "plural": "Tische",
+      "fa": "میز",
+      "en": "table, desk",
+      "example": {
+        "de": "Der Laptop liegt auf dem Tisch.",
+        "fa": "لپ‌تاپ روی میز است."
+      }
+    },
+    {
+      "de": "Stuhl",
+      "article": "der",
+      "plural": "Stühle",
+      "fa": "صندلی",
+      "en": "chair",
+      "example": {
+        "de": "Der Stuhl ist bequem.",
+        "fa": "صندلی راحت است."
+      }
+    },
+    {
+      "de": "Maus",
+      "article": "die",
+      "plural": "Mäuse",
+      "fa": "ماوس",
+      "en": "mouse",
+      "example": {
+        "de": "Die Maus ist kaputt.",
+        "fa": "ماوس خراب است."
+      }
+    },
+    {
+      "de": "Tastatur",
+      "article": "die",
+      "plural": "Tastaturen",
+      "fa": "صفحه‌کلید",
+      "en": "keyboard",
+      "example": {
+        "de": "Die Tastatur ist deutsch: QWERTZ!",
+        "fa": "صفحه‌کلید آلمانی است: QWERTZ!"
+      }
+    },
+    {
+      "de": "Lampe",
+      "article": "die",
+      "plural": "Lampen",
+      "fa": "چراغ",
+      "en": "lamp",
+      "example": {
+        "de": "Die Lampe ist an.",
+        "fa": "چراغ روشن است."
+      }
+    },
+    {
+      "de": "Tasse",
+      "article": "die",
+      "plural": "Tassen",
+      "fa": "فنجان",
+      "en": "cup",
+      "example": {
+        "de": "Die Tasse ist leer.",
+        "fa": "فنجان خالی است."
+      }
+    },
+    {
+      "de": "Handy",
+      "article": "das",
+      "plural": "Handys",
+      "fa": "تلفن همراه",
+      "en": "mobile phone",
+      "example": {
+        "de": "Das Handy ist teuer.",
+        "fa": "گوشی گران است."
+      }
+    },
+    {
+      "de": "Buch",
+      "article": "das",
+      "plural": "Bücher",
+      "fa": "کتاب",
+      "en": "book",
+      "example": {
+        "de": "Das Buch ist interessant.",
+        "fa": "کتاب جالب است."
+      }
+    },
+    {
+      "de": "Büro",
+      "article": "das",
+      "plural": "Büros",
+      "fa": "دفتر کار",
+      "en": "office",
+      "example": {
+        "de": "Das Büro ist hell.",
+        "fa": "دفتر روشن است."
+      }
+    },
+    {
+      "de": "Kabel",
+      "article": "das",
+      "plural": "Kabel",
+      "fa": "کابل",
+      "en": "cable",
+      "example": {
+        "de": "Das Kabel ist zu kurz.",
+        "fa": "کابل خیلی کوتاه است."
+      }
+    },
+    {
+      "de": "neu",
+      "fa": "نو، جدید",
+      "en": "new",
+      "example": {
+        "de": "Das Handy ist neu.",
+        "fa": "گوشی نو است."
+      }
+    },
+    {
+      "de": "kaputt",
+      "fa": "خراب",
+      "en": "broken",
+      "example": {
+        "de": "Die Maus ist kaputt.",
+        "fa": "ماوس خراب است."
+      }
+    }
+  ],
+  "phrases": [
+    {
+      "de": "Das ist ein … · Das ist eine …",
+      "fa": "این یک … است.",
+      "note": "«das» در Das ist همیشه das است (یعنی «این») — مهم نیست اسم بعدی چه جنسی دارد. اما ein/eine به جنس اسم بستگی دارد."
+    },
+    {
+      "de": "Das ist kein … · Das ist keine …",
+      "fa": "این … نیست.",
+      "note": "برای منفی کردن اسم، kein/keine بگو، نه nicht."
+    },
+    {
+      "de": "Der Computer ist neu.",
+      "fa": "کامپیوتر نو است.",
+      "note": "فارسی «ال» یا «را» ندارد، ولی آلمانی همیشه حرف تعریف می‌خواهد: der Computer، die Maus، das Handy."
+    },
+    {
+      "de": "Die Maus ist kaputt.",
+      "fa": "ماوس خراب است."
+    }
   ],
   "grammar": {
     "title": "der / die / das · ein / eine · kein / keine",
     "fa": "«ein» یعنی «یک» (نامعین): ein Computer، eine Maus، ein Handy. برای منفی کردن اسم، از «kein» استفاده کن، نه nicht: Das ist kein Computer. دقت کن: das در «Das ist …» یعنی «این» و همیشه das است، مهم نیست اسم بعدش چه جنسی دارد.",
     "table": [
-      ["der", "ein", "kein", "der Computer"],
-      ["die", "eine", "keine", "die Maus"],
-      ["das", "ein", "kein", "das Handy"],
-      ["die (Pl.)", "—", "keine", "die Bücher"]
+      [
+        "der",
+        "ein",
+        "kein",
+        "der Computer"
+      ],
+      [
+        "die",
+        "eine",
+        "keine",
+        "die Maus"
+      ],
+      [
+        "das",
+        "ein",
+        "kein",
+        "das Handy"
+      ],
+      [
+        "die (Pl.)",
+        "—",
+        "keine",
+        "die Bücher"
+      ]
     ],
-    "tableHead": ["bestimmt", "unbestimmt", "negativ", "Beispiel"],
+    "tableHead": [
+      "bestimmt",
+      "unbestimmt",
+      "negativ",
+      "Beispiel"
+    ],
     "examples": [
-      { "de": "Das ist ein Computer. Der Computer ist neu.", "fa": "این یک کامپیوتر است. کامپیوتر نو است." },
-      { "de": "Das ist keine Maus, das ist ein Handy!", "fa": "این ماوس نیست، این گوشی است!" }
+      {
+        "de": "Das ist ein Computer. Der Computer ist neu.",
+        "fa": "این یک کامپیوتر است. کامپیوتر نو است."
+      },
+      {
+        "de": "Das ist keine Maus, das ist ein Handy!",
+        "fa": "این ماوس نیست، این گوشی است!"
+      }
     ]
   },
   "dialogue": {
     "title": "Der neue Arbeitsplatz",
     "fa": "میز کار جدید",
     "lines": [
-      { "speaker": "Frau Weber", "de": "So, Pouya, das ist dein Arbeitsplatz.", "fa": "خب پویا، این میز کار توست." },
-      { "speaker": "Pouya", "de": "Toll! Ist der Computer neu?", "fa": "عالی! کامپیوتر نو است؟" },
-      { "speaker": "Frau Weber", "de": "Ja, der Computer ist neu. Und das ist ein Bildschirm für Design.", "fa": "بله، کامپیوتر نو است. و این یک مانیتور برای طراحی است." },
-      { "speaker": "Pouya", "de": "Und die Maus? Die Maus ist kaputt, glaube ich.", "fa": "و ماوس؟ فکر کنم ماوس خراب است." },
-      { "speaker": "Frau Weber", "de": "Oh! Kein Problem, ich habe eine Maus im Büro.", "fa": "اوه! مشکلی نیست، یک ماوس در دفترم دارم." },
-      { "speaker": "Pouya", "de": "Danke. Ist das eine deutsche Tastatur?", "fa": "ممنون. این صفحه‌کلید آلمانی است؟" },
-      { "speaker": "Frau Weber", "de": "Ja, QWERTZ. Das Z ist hier, nicht da!", "fa": "بله، QWERTZ. حرف Z اینجاست، نه آنجا!" }
+      {
+        "speaker": "Frau Weber",
+        "de": "So, Pouya, das ist dein Arbeitsplatz.",
+        "fa": "خب پویا، این میز کار توست."
+      },
+      {
+        "speaker": "Pouya",
+        "de": "Toll! Ist der Computer neu?",
+        "fa": "عالی! کامپیوتر نو است؟"
+      },
+      {
+        "speaker": "Frau Weber",
+        "de": "Ja, der Computer ist neu. Und das ist ein Bildschirm für Design.",
+        "fa": "بله، کامپیوتر نو است. و این یک مانیتور برای طراحی است."
+      },
+      {
+        "speaker": "Pouya",
+        "de": "Und die Maus? Die Maus ist kaputt, glaube ich.",
+        "fa": "و ماوس؟ فکر کنم ماوس خراب است."
+      },
+      {
+        "speaker": "Frau Weber",
+        "de": "Oh! Kein Problem, ich habe eine Maus im Büro.",
+        "fa": "اوه! مشکلی نیست، یک ماوس در دفترم دارم."
+      },
+      {
+        "speaker": "Pouya",
+        "de": "Danke. Ist das eine deutsche Tastatur?",
+        "fa": "ممنون. این صفحه‌کلید آلمانی است؟"
+      },
+      {
+        "speaker": "Frau Weber",
+        "de": "Ja, QWERTZ. Das Z ist hier, nicht da!",
+        "fa": "بله، QWERTZ. حرف Z اینجاست، نه آنجا!"
+      }
     ]
   },
   "exercises": [
-    { "type": "gap", "de": "___ Maus ist kaputt.", "answer": "Die", "fa": "ماوس خراب است." },
-    { "type": "gap", "de": "Das ist ___ Computer.", "answer": "ein", "fa": "این یک کامپیوتر است." },
-    { "type": "gap", "de": "Das ist ___ Tastatur.", "answer": "eine", "fa": "این یک صفحه‌کلید است." },
-    { "type": "gap", "de": "Das ist ___ Handy, das ist ein Buch.", "answer": "kein", "fa": "این گوشی نیست، این کتاب است." },
-    { "type": "order", "words": ["ist", "Das", "Lampe", "keine"], "answer": "Das ist keine Lampe", "fa": "این چراغ نیست." },
-    { "type": "order", "words": ["Büro", "hell", "Das", "ist"], "answer": "Das Büro ist hell", "fa": "دفتر روشن است." },
-    { "type": "translate", "fa": "کامپیوتر نو است.", "answer": "Der Computer ist neu.", "accept": [] },
-    { "type": "translate", "fa": "این یک گوشی است.", "answer": "Das ist ein Handy.", "accept": [] }
+    {
+      "type": "gap",
+      "de": "___ Maus ist kaputt.",
+      "answer": "Die",
+      "fa": "ماوس خراب است."
+    },
+    {
+      "type": "gap",
+      "de": "Das ist ___ Computer.",
+      "answer": "ein",
+      "fa": "این یک کامپیوتر است."
+    },
+    {
+      "type": "gap",
+      "de": "Das ist ___ Tastatur.",
+      "answer": "eine",
+      "fa": "این یک صفحه‌کلید است."
+    },
+    {
+      "type": "gap",
+      "de": "Das ist ___ Handy, das ist ein Buch.",
+      "answer": "kein",
+      "fa": "این گوشی نیست، این کتاب است."
+    },
+    {
+      "type": "order",
+      "words": [
+        "ist",
+        "Das",
+        "Lampe",
+        "keine"
+      ],
+      "answer": "Das ist keine Lampe",
+      "fa": "این چراغ نیست."
+    },
+    {
+      "type": "order",
+      "words": [
+        "Büro",
+        "hell",
+        "Das",
+        "ist"
+      ],
+      "answer": "Das Büro ist hell",
+      "fa": "دفتر روشن است."
+    },
+    {
+      "type": "translate",
+      "fa": "کامپیوتر نو است.",
+      "answer": "Der Computer ist neu.",
+      "accept": []
+    },
+    {
+      "type": "translate",
+      "fa": "این یک گوشی است.",
+      "answer": "Das ist ein Handy.",
+      "accept": []
+    }
   ],
   "speaking": {
     "fa": "دور و برت را نگاه کن و سه چیز را با der/die/das و ein/eine نام ببر.",
