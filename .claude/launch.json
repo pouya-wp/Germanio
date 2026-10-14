@@ -1,0 +1,18 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "brain",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@germanio/brain", "start"],
+      "port": 4317,
+      "url": "http://127.0.0.1:4317"
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@germanio/web", "dev"],
+      "port": 3000
+    }
+  ]
+}

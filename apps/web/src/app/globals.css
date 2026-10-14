@@ -1,0 +1,172 @@
+@import "tailwindcss";
+
+/*
+ * Meem (fontha.com) for Persian text. It is a licensed commercial font, so it is
+ * never bundled: `local()` uses the copy installed on the learner's machine and
+ * everyone else falls back to Vazirmatn. Meem has no ä/ö/ü/ß, so it is applied
+ * only to [lang="fa"] — German always renders in the Latin display face.
+ */
+@font-face { font-family: "Meem Local"; font-weight: 100; font-display: swap; src: local("Meem thin"), local("Meem-thin"); }
+@font-face { font-family: "Meem Local"; font-weight: 200; font-display: swap; src: local("Meem ExtraLight"), local("Meem-ExtraLight"); }
+@font-face { font-family: "Meem Local"; font-weight: 300; font-display: swap; src: local("Meem Light"), local("Meem-Light"); }
+@font-face { font-family: "Meem Local"; font-weight: 400; font-display: swap; src: local("Meem"), local("Meem-Regular"); }
+@font-face { font-family: "Meem Local"; font-weight: 500; font-display: swap; src: local("Meem Medium"), local("Meem-Medium"); }
+@font-face { font-family: "Meem Local"; font-weight: 600; font-display: swap; src: local("Meem SemiBold"), local("Meem-SemiBold"); }
+@font-face { font-family: "Meem Local"; font-weight: 700; font-display: swap; src: local("Meem Bold"), local("Meem-Bold"); }
+@font-face { font-family: "Meem Local"; font-weight: 800; font-display: swap; src: local("Meem ExtraBold"), local("Meem-ExtraBold"); }
+@font-face { font-family: "Meem Local"; font-weight: 900; font-display: swap; src: local("Meem Black"), local("Meem-Black"); }
+
+/*
+ * Germanio design tokens — "Bauhaus trifft Sternenhimmel".
+ * Paper and ink. The ONLY saturated colours are the three genders,
+ * so colour always carries meaning: der = Kobalt, die = Zinnober, das = Moos.
+ */
+:root {
+  --paper: #f2efe8;
+  --paper-2: #e9e5dc;
+  --surface: #fbfaf6;
+  --ink: #0e0e10;
+  --ink-2: #3a3a3f;
+  --muted: #6f6d67;
+  --line: #d8d3c8;
+  --line-strong: #0e0e10;
+
+  --genus-der: #1f4bd8;
+  --genus-die: #c4361f;
+  --genus-das: #2c7a43;
+
+  --good: var(--genus-das);
+  --again: var(--genus-die);
+
+  --radius: 2px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e0e10;
+    --paper-2: #141417;
+    --surface: #17171b;
+    --ink: #f2efe8;
+    --ink-2: #c9c6be;
+    --muted: #8d8b84;
+    --line: #2a2a30;
+    --line-strong: #f2efe8;
+    --genus-der: #7d9bff;
+    --genus-die: #ff7a5c;
+    --genus-das: #6cc48a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #0e0e10;
+  --paper-2: #141417;
+  --surface: #17171b;
+  --ink: #f2efe8;
+  --ink-2: #c9c6be;
+  --muted: #8d8b84;
+  --line: #2a2a30;
+  --line-strong: #f2efe8;
+  --genus-der: #7d9bff;
+  --genus-die: #ff7a5c;
+  --genus-das: #6cc48a;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-der: var(--genus-der);
+  --color-die: var(--genus-die);
+  --color-das: var(--genus-das);
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-fa: "Meem Local", var(--font-vazirmatn), var(--font-bricolage), sans-serif;
+
+  --ease-out-expo: var(--ease-out);
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "ss02";
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* Persian text: right-to-left in Meem (fallback Vazirmatn). */
+[lang="fa"] {
+  font-family: var(--font-fa);
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+/* Tiny uppercase mono labels — the Swiss grid's captions. */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hairline {
+  border-color: var(--line);
+}
+
+/* Paper grain: an SVG noise layer keeps flat colour from feeling digital. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}

@@ -1,0 +1,16 @@
+{
+  "name": "germanio",
+  "private": true,
+  "description": "Die Grenzen meiner Sprache — a local-first German learning OS",
+  "type": "module",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "format": "prettier --write .",
+    "data:build": "pnpm --filter @germanio/data build:dictionary"
+  },
+  "engines": { "node": ">=22" }
+}
