@@ -1,0 +1,65 @@
+{
+  "id": "a1-06",
+  "intro": {
+    "fa": "در آلمان همه‌چیز سر ساعت است: کلاس، کار، قطار. این درس ساعت گفتن و توصیف یک روز معمولی را یادت می‌دهد — و فعل‌های «جداشدنی» مثل aufstehen که نصفشان به آخر جمله می‌پرد.",
+    "de": "Am Ende kannst du sagen: Ich stehe um sieben Uhr auf. Um neun Uhr fange ich an."
+  },
+  "words": [
+    { "de": "Uhr", "article": "die", "plural": "Uhren", "fa": "ساعت", "en": "clock; o'clock", "example": { "de": "Es ist acht Uhr.", "fa": "ساعت هشت است." } },
+    { "de": "Stunde", "article": "die", "plural": "Stunden", "fa": "ساعت (مدت زمان)", "en": "hour", "example": { "de": "Ich lerne zwei Stunden.", "fa": "دو ساعت درس می‌خوانم." } },
+    { "de": "Tag", "article": "der", "plural": "Tage", "fa": "روز", "en": "day", "example": { "de": "Mein Tag ist lang.", "fa": "روزم طولانی است." } },
+    { "de": "Morgen", "article": "der", "plural": "Morgen", "fa": "صبح", "en": "morning", "example": { "de": "Guten Morgen!", "fa": "صبح بخیر!" } },
+    { "de": "Abend", "article": "der", "plural": "Abende", "fa": "عصر، شب", "en": "evening", "example": { "de": "Am Abend lese ich.", "fa": "عصر کتاب می‌خوانم." } },
+    { "de": "aufstehen", "fa": "از خواب بلند شدن", "en": "to get up", "example": { "de": "Ich stehe um sieben auf.", "fa": "ساعت هفت بیدار می‌شوم." } },
+    { "de": "anfangen", "fa": "شروع کردن", "en": "to begin", "example": { "de": "Der Kurs fängt um neun an.", "fa": "کلاس ساعت نه شروع می‌شود." } },
+    { "de": "einkaufen", "fa": "خرید کردن", "en": "to shop", "example": { "de": "Am Samstag kaufe ich ein.", "fa": "شنبه خرید می‌کنم." } },
+    { "de": "schlafen", "fa": "خوابیدن", "en": "to sleep", "example": { "de": "Ich schlafe acht Stunden.", "fa": "هشت ساعت می‌خوابم." } },
+    { "de": "frühstücken", "fa": "صبحانه خوردن", "en": "to have breakfast", "example": { "de": "Ich frühstücke um halb acht.", "fa": "هفت و نیم صبحانه می‌خورم." } },
+    { "de": "halb", "fa": "نیم (نیم ساعت مانده به …)", "en": "half", "example": { "de": "halb neun = 8:30", "fa": "halb neun یعنی ۸:۳۰ (نیم به نه)" } },
+    { "de": "um", "fa": "ساعتِ (زمان دقیق)", "en": "at (time)", "example": { "de": "um zehn Uhr", "fa": "ساعت ده" } },
+    { "de": "dann", "fa": "بعد، سپس", "en": "then", "example": { "de": "Dann arbeite ich.", "fa": "بعد کار می‌کنم." } },
+    { "de": "immer", "fa": "همیشه", "en": "always", "example": { "de": "Ich trinke immer Tee.", "fa": "همیشه چای می‌نوشم." } }
+  ],
+  "grammar": {
+    "title": "Trennbare Verben: aufstehen → Ich stehe … auf.",
+    "fa": "بعضی فعل‌ها یک پیشوند دارند (auf-، an-، ein-) که در جمله جدا می‌شود و به آخر جمله می‌رود. فعل اصلی جایگاه دوم می‌ماند و پیشوند جمله را «می‌بندد». این همان «Satzklammer» است — ستون فقرات جملهٔ آلمانی. و ساعت: halb neun یعنی «نیم به نه»، یعنی ۸:۳۰ — نه ۹:۳۰!",
+    "table": [
+      ["Ich", "stehe", "um sieben Uhr", "auf."],
+      ["Der Kurs", "fängt", "um neun", "an."],
+      ["Am Samstag", "kaufe", "ich", "ein."]
+    ],
+    "tableHead": ["Position 1", "Verb (2)", "Mitte", "Ende"],
+    "examples": [
+      { "de": "Wann stehst du auf? — Um halb sieben.", "fa": "کی بیدار می‌شوی؟ — ساعت شش و نیم." },
+      { "de": "Die Arbeit fängt um acht an.", "fa": "کار ساعت هشت شروع می‌شود." }
+    ]
+  },
+  "dialogue": {
+    "title": "Ein normaler Tag",
+    "fa": "یک روز معمولی",
+    "lines": [
+      { "speaker": "Lena", "de": "Pouya, wie ist dein Tag?", "fa": "پویا، روزت چطور است؟" },
+      { "speaker": "Pouya", "de": "Ich stehe immer um sieben Uhr auf.", "fa": "همیشه ساعت هفت بیدار می‌شوم." },
+      { "speaker": "Lena", "de": "So früh! Und dann?", "fa": "چقدر زود! بعدش؟" },
+      { "speaker": "Pouya", "de": "Dann frühstücke ich. Um neun fängt der Deutschkurs an.", "fa": "بعد صبحانه می‌خورم. ساعت نه کلاس آلمانی شروع می‌شود." },
+      { "speaker": "Lena", "de": "Und am Nachmittag?", "fa": "و بعدازظهر؟" },
+      { "speaker": "Pouya", "de": "Ich lerne zwei Stunden mit Germanio. Dann kaufe ich ein.", "fa": "دو ساعت با Germanio درس می‌خوانم. بعد خرید می‌کنم." },
+      { "speaker": "Lena", "de": "Und wann schläfst du?", "fa": "و کی می‌خوابی؟" },
+      { "speaker": "Pouya", "de": "Um halb elf. Ich bin dann immer sehr müde!", "fa": "ساعت ده و نیم. آن موقع همیشه خیلی خسته‌ام!" }
+    ]
+  },
+  "exercises": [
+    { "type": "gap", "de": "Ich stehe um sieben Uhr ___.", "answer": "auf", "fa": "ساعت هفت بیدار می‌شوم." },
+    { "type": "gap", "de": "Der Kurs ___ um neun an.", "answer": "fängt", "fa": "کلاس ساعت نه شروع می‌شود." },
+    { "type": "gap", "de": "8:30 = halb ___", "answer": "neun", "fa": "هشت و نیم (به آلمانی: نیم به نه)" },
+    { "type": "gap", "de": "Ich frühstücke ___ acht Uhr.", "answer": "um", "fa": "ساعت هشت صبحانه می‌خورم." },
+    { "type": "order", "words": ["auf", "Ich", "um", "stehe", "sieben"], "answer": "Ich stehe um sieben auf", "fa": "ساعت هفت بیدار می‌شوم." },
+    { "type": "order", "words": ["kaufe", "ein", "Dann", "ich"], "answer": "Dann kaufe ich ein", "fa": "بعد خرید می‌کنم." },
+    { "type": "translate", "fa": "ساعت هشت است.", "answer": "Es ist acht Uhr.", "accept": ["Es ist acht."] },
+    { "type": "translate", "fa": "کی بیدار می‌شوی؟", "answer": "Wann stehst du auf?", "accept": [] }
+  ],
+  "speaking": {
+    "fa": "روز معمولی‌ات را در سه جمله بگو: کی بیدار می‌شوی، چه می‌کنی، کی می‌خوابی.",
+    "model": "Ich stehe um sieben Uhr auf. Dann lerne ich Deutsch. Um elf Uhr schlafe ich."
+  }
+}

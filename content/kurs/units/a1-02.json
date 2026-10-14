@@ -1,0 +1,67 @@
+{
+  "id": "a1-02",
+  "intro": {
+    "fa": "شماره تلفن، سن، کد پستی، قیمت — همه‌جا عدد لازم داری. نکتهٔ عجیب آلمانی: در عددهای دو رقمی، اول یکان را می‌گویند بعد دهگان؛ مثل فارسی قدیم «یک و بیست». بعد از این درس عددهای ۰ تا ۱۰۰ را می‌فهمی.",
+    "de": "Am Ende kannst du sagen: Ich bin 24 Jahre alt. Meine Nummer ist 0176 …"
+  },
+  "words": [
+    { "de": "null", "fa": "صفر", "en": "zero", "example": { "de": "null, eins, zwei, drei", "fa": "صفر، یک، دو، سه" } },
+    { "de": "eins", "fa": "یک", "en": "one", "example": { "de": "Ich habe eins.", "fa": "من یکی دارم." } },
+    { "de": "zwei", "fa": "دو", "en": "two", "example": { "de": "zwei Kaffee, bitte", "fa": "دو تا قهوه، لطفاً" } },
+    { "de": "drei", "fa": "سه", "en": "three", "example": { "de": "Ich lerne drei Stunden.", "fa": "سه ساعت درس می‌خوانم." } },
+    { "de": "zehn", "fa": "ده", "en": "ten", "example": { "de": "Es ist zehn Uhr.", "fa": "ساعت ده است." } },
+    { "de": "zwanzig", "fa": "بیست", "en": "twenty", "example": { "de": "Ich bin zwanzig.", "fa": "من بیست سالم است." } },
+    { "de": "einundzwanzig", "fa": "بیست و یک", "en": "twenty-one", "example": { "de": "einundzwanzig = 1 + 20", "fa": "اول یک، بعد بیست" } },
+    { "de": "hundert", "fa": "صد", "en": "hundred", "example": { "de": "hundert Euro", "fa": "صد یورو" } },
+    { "de": "Zahl", "article": "die", "plural": "Zahlen", "fa": "عدد", "en": "number", "example": { "de": "Die Zahl ist groß.", "fa": "عدد بزرگ است." } },
+    { "de": "Nummer", "article": "die", "plural": "Nummern", "fa": "شماره", "en": "number (phone)", "example": { "de": "Wie ist deine Nummer?", "fa": "شماره‌ات چند است؟" } },
+    { "de": "Jahr", "article": "das", "plural": "Jahre", "fa": "سال", "en": "year", "example": { "de": "Ich bin 24 Jahre alt.", "fa": "۲۴ سالم است." } },
+    { "de": "alt", "fa": "پیر؛ (در سن) ساله", "en": "old", "example": { "de": "Wie alt bist du?", "fa": "چند سالته؟" } },
+    { "de": "wie", "fa": "چطور، چه", "en": "how", "example": { "de": "Wie ist deine Adresse?", "fa": "آدرست چیست؟" } },
+    { "de": "was", "fa": "چه چیز", "en": "what", "example": { "de": "Was ist das?", "fa": "این چیست؟" } },
+    { "de": "wo", "fa": "کجا", "en": "where", "example": { "de": "Wo wohnst du?", "fa": "کجا زندگی می‌کنی؟" } }
+  ],
+  "grammar": {
+    "title": "W-Fragen: wer, was, wo, woher, wie",
+    "fa": "سؤال‌هایی که با W شروع می‌شوند همیشه همین ساختار را دارند: کلمهٔ پرسشی، بعد فعل، بعد فاعل. فعل همیشه جایگاه دوم است — این مهم‌ترین قانون جمله‌سازی آلمانی است و بعداً بارها می‌بینی‌اش.",
+    "table": [
+      ["Wie", "heißt", "du?"],
+      ["Wo", "wohnst", "du?"],
+      ["Wie alt", "bist", "du?"],
+      ["Was", "ist", "das?"]
+    ],
+    "tableHead": ["W-Wort (1)", "Verb (2)", "…"],
+    "examples": [
+      { "de": "Wie ist deine Telefonnummer?", "fa": "شماره تلفنت چند است؟" },
+      { "de": "Wie alt sind Sie?", "fa": "شما چند سال دارید؟" }
+    ]
+  },
+  "dialogue": {
+    "title": "Im Sekretariat der Sprachschule",
+    "fa": "در دفتر آموزشگاه زبان",
+    "lines": [
+      { "speaker": "Frau Weber", "de": "Guten Tag! Wie ist Ihr Name?", "fa": "روز بخیر! اسم شما چیست؟" },
+      { "speaker": "Pouya", "de": "Mein Name ist Pouya Ahmadi.", "fa": "اسم من پویا احمدی است." },
+      { "speaker": "Frau Weber", "de": "Wie alt sind Sie, Herr Ahmadi?", "fa": "چند سال دارید، آقای احمدی؟" },
+      { "speaker": "Pouya", "de": "Ich bin vierundzwanzig Jahre alt.", "fa": "بیست و چهار سالم است." },
+      { "speaker": "Frau Weber", "de": "Und wie ist Ihre Telefonnummer?", "fa": "و شماره تلفنتان؟" },
+      { "speaker": "Pouya", "de": "Null, eins, sieben, sechs, zwei, drei, vier …", "fa": "صفر، یک، هفت، شش، دو، سه، چهار …" },
+      { "speaker": "Frau Weber", "de": "Danke. Der Kurs ist in Raum zwölf.", "fa": "ممنون. کلاس در اتاق دوازده است." },
+      { "speaker": "Pouya", "de": "Vielen Dank! Auf Wiedersehen.", "fa": "خیلی ممنون! خداحافظ." }
+    ]
+  },
+  "exercises": [
+    { "type": "gap", "de": "Wie ___ bist du? — Ich bin 24.", "answer": "alt", "fa": "چند سالته؟ — ۲۴." },
+    { "type": "gap", "de": "___ wohnst du? — In Köln.", "answer": "Wo", "fa": "کجا زندگی می‌کنی؟ — در کلن." },
+    { "type": "gap", "de": "21 = ___", "answer": "einundzwanzig", "fa": "بیست و یک" },
+    { "type": "gap", "de": "___ ist deine Nummer?", "answer": "Wie", "fa": "شماره‌ات چند است؟" },
+    { "type": "order", "words": ["alt", "du", "Wie", "bist"], "answer": "Wie alt bist du", "fa": "چند سالته؟" },
+    { "type": "order", "words": ["ist", "Was", "das"], "answer": "Was ist das", "fa": "این چیست؟" },
+    { "type": "translate", "fa": "من بیست سالم است.", "answer": "Ich bin zwanzig Jahre alt.", "accept": ["Ich bin zwanzig.", "Ich bin 20 Jahre alt.", "Ich bin 20."] },
+    { "type": "translate", "fa": "کجا زندگی می‌کنی؟", "answer": "Wo wohnst du?", "accept": [] }
+  ],
+  "speaking": {
+    "fa": "سنت و شماره تلفن خیالی‌ات را رقم به رقم به آلمانی بگو.",
+    "model": "Ich bin vierundzwanzig Jahre alt. Meine Nummer ist null, eins, sieben, sechs, eins, zwei, drei."
+  }
+}

@@ -163,5 +163,11 @@ export function Constellation({ className = '', interactive = true }: { classNam
     };
   }, [interactive]);
 
-  return <canvas ref={canvasRef} className={`block h-full w-full ${className}`} aria-hidden />;
+  // The canvas is absolutely positioned so its pixel size can never feed back into
+  // the layout that measures it (an in-flow canvas grows its parent on every resize).
+  return (
+    <div className={`relative h-full min-h-0 w-full ${className}`} aria-hidden>
+      <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full" />
+    </div>
+  );
 }

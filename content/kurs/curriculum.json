@@ -1,0 +1,70 @@
+{
+  "$comment": "Der Weg — the guided path from zero to B2. Each unit ends with a concrete can-do. Units with a file in units/ are authored; the rest are planned and get generated in the same format.",
+  "levels": [
+    { "id": "A1.1", "title": "Erste Schritte", "fa": "اولین قدم‌ها", "hours": 60 },
+    { "id": "A1.2", "title": "Alltag", "fa": "زندگی روزمره", "hours": 60 },
+    { "id": "A2.1", "title": "Leben in Deutschland", "fa": "زندگی در آلمان", "hours": 65 },
+    { "id": "A2.2", "title": "Arbeit und Ausbildung", "fa": "کار و آوسبیلدونگ", "hours": 65 },
+    { "id": "B1.1", "title": "Selbstständig", "fa": "مستقل", "hours": 85 },
+    { "id": "B1.2", "title": "Im Betrieb", "fa": "در محل کار", "hours": 85 },
+    { "id": "B2.1", "title": "Mitreden", "fa": "در بحث شرکت کردن", "hours": 115 },
+    { "id": "B2.2", "title": "Fachlich überzeugen", "fa": "متقاعد کردن تخصصی", "hours": 115 }
+  ],
+  "units": [
+    { "id": "a1-01", "level": "A1.1", "title": "Hallo, ich bin …", "fa": "سلام، من … هستم", "canDo": { "de": "Ich kann mich vorstellen.", "fa": "می‌توانم خودم را معرفی کنم." }, "grammar": ["pronomen.personal.nom", "verb.sein.haben"] },
+    { "id": "a1-02", "level": "A1.1", "title": "Zahlen und Kontakt", "fa": "عددها و اطلاعات تماس", "canDo": { "de": "Ich kann Zahlen, mein Alter und meine Telefonnummer sagen.", "fa": "می‌توانم عددها، سنم و شماره تلفنم را بگویم." }, "grammar": ["zahlen.uhrzeit", "satz.frage.w"] },
+    { "id": "a1-03", "level": "A1.1", "title": "Was machst du?", "fa": "چه کار می‌کنی؟", "canDo": { "de": "Ich kann über Beruf und Hobbys sprechen.", "fa": "می‌توانم دربارهٔ شغل و سرگرمی‌هایم حرف بزنم." }, "grammar": ["verb.praesens.regel", "satz.v2"] },
+    { "id": "a1-04", "level": "A1.1", "title": "Mein Arbeitsplatz", "fa": "محل کار من", "canDo": { "de": "Ich kann Dinge im Büro benennen — mit der, die, das.", "fa": "می‌توانم وسایل دفتر را با der، die، das نام ببرم." }, "grammar": ["nomen.genus", "artikel.unbestimmt", "negation.nicht-kein"] },
+    { "id": "a1-05", "level": "A1.1", "title": "Im Café", "fa": "در کافه", "canDo": { "de": "Ich kann etwas bestellen und bezahlen.", "fa": "می‌توانم چیزی سفارش بدهم و پول بدهم." }, "grammar": ["kasus.akkusativ", "verb.konjunktiv2.hoeflich"] },
+    { "id": "a1-06", "level": "A1.1", "title": "Mein Tag", "fa": "روز من", "canDo": { "de": "Ich kann die Uhrzeit sagen und meinen Tag beschreiben.", "fa": "می‌توانم ساعت را بگویم و روزم را توصیف کنم." }, "grammar": ["zahlen.uhrzeit", "verb.trennbar", "praep.zeit"] },
+
+    { "id": "a1-07", "level": "A1.2", "title": "Essen und Einkaufen", "fa": "غذا و خرید", "canDo": { "de": "Ich kann im Supermarkt einkaufen.", "fa": "می‌توانم از سوپرمارکت خرید کنم." }, "grammar": ["nomen.plural", "kasus.akkusativ"] },
+    { "id": "a1-08", "level": "A1.2", "title": "Wohnen", "fa": "سکونت", "canDo": { "de": "Ich kann meine Wohnung beschreiben.", "fa": "می‌توانم خانه‌ام را توصیف کنم." }, "grammar": ["pronomen.possessiv", "adj.komparation"] },
+    { "id": "a1-09", "level": "A1.2", "title": "Termine", "fa": "قرار ملاقات", "canDo": { "de": "Ich kann einen Termin machen und absagen.", "fa": "می‌توانم قرار بگذارم و لغو کنم." }, "grammar": ["verb.modal", "praep.zeit"] },
+    { "id": "a1-10", "level": "A1.2", "title": "In der Stadt", "fa": "در شهر", "canDo": { "de": "Ich kann nach dem Weg fragen.", "fa": "می‌توانم آدرس بپرسم." }, "grammar": ["verb.imperativ", "praep.dativ"] },
+    { "id": "a1-11", "level": "A1.2", "title": "Gesundheit", "fa": "سلامتی", "canDo": { "de": "Ich kann beim Arzt sagen, was mir wehtut.", "fa": "می‌توانم پیش دکتر بگویم کجایم درد می‌کند." }, "grammar": ["verb.modal", "kasus.dativ"] },
+    { "id": "a1-12", "level": "A1.2", "title": "Gestern", "fa": "دیروز", "canDo": { "de": "Ich kann erzählen, was ich gestern gemacht habe.", "fa": "می‌توانم تعریف کنم دیروز چه کار کردم." }, "grammar": ["verb.perfekt.haben", "verb.partizip2"] },
+
+    { "id": "a2-01", "level": "A2.1", "title": "Anmeldung und Ämter", "fa": "ثبت‌نام و اداره‌ها", "canDo": { "de": "Ich kann mich beim Bürgeramt anmelden.", "fa": "می‌توانم در اداره ثبت محل سکونت کنم." }, "grammar": ["verb.perfekt.sein", "register.formell"] },
+    { "id": "a2-02", "level": "A2.1", "title": "WG-Suche", "fa": "پیدا کردن خانهٔ اشتراکی", "canDo": { "de": "Ich kann auf eine Wohnungsanzeige antworten.", "fa": "می‌توانم به آگهی خانه جواب بدهم." }, "grammar": ["satz.nebensatz.weil-dass", "adj.deklination.unbestimmt"] },
+    { "id": "a2-03", "level": "A2.1", "title": "Bank und Handy", "fa": "بانک و تلفن همراه", "canDo": { "de": "Ich kann ein Konto eröffnen und einen Vertrag verstehen.", "fa": "می‌توانم حساب بانکی باز کنم و یک قرارداد ساده را بفهمم." }, "grammar": ["satz.ob-indirekt", "verb.dativ"] },
+    { "id": "a2-04", "level": "A2.1", "title": "Freizeit und Freunde", "fa": "اوقات فراغت و دوستان", "canDo": { "de": "Ich kann mich verabreden und Vorschläge machen.", "fa": "می‌توانم قرار دوستانه بگذارم و پیشنهاد بدهم." }, "grammar": ["verb.reflexiv", "satz.konnektoren.hauptsatz"] },
+    { "id": "a2-05", "level": "A2.1", "title": "Reisen", "fa": "سفر", "canDo": { "de": "Ich kann eine Reise planen und Tickets kaufen.", "fa": "می‌توانم سفر برنامه‌ریزی کنم و بلیت بخرم." }, "grammar": ["praep.wechsel", "verb.praeteritum.sein-haben-modal"] },
+    { "id": "a2-06", "level": "A2.1", "title": "Mein Leben bisher", "fa": "زندگی من تا امروز", "canDo": { "de": "Ich kann von meinem Leben erzählen.", "fa": "می‌توانم دربارهٔ زندگی‌ام تعریف کنم." }, "grammar": ["verb.perfekt.sein", "satz.temporal.mittelfeld"] },
+
+    { "id": "a2-07", "level": "A2.2", "title": "Berufe und Ausbildung", "fa": "شغل‌ها و آوسبیلدونگ", "canDo": { "de": "Ich kann das duale System erklären.", "fa": "می‌توانم سیستم آموزش دوگانه را توضیح بدهم." }, "grammar": ["adj.deklination.bestimmt", "nomen.n-deklination"] },
+    { "id": "a2-08", "level": "A2.2", "title": "Die Stellenanzeige", "fa": "آگهی استخدام", "canDo": { "de": "Ich kann eine Stellenanzeige verstehen.", "fa": "می‌توانم آگهی استخدام را بفهمم." }, "grammar": ["satz.relativsatz", "verb.passiv.praesens"] },
+    { "id": "a2-09", "level": "A2.2", "title": "Lebenslauf", "fa": "رزومه", "canDo": { "de": "Ich kann meinen Lebenslauf auf Deutsch schreiben.", "fa": "می‌توانم رزومه‌ام را به آلمانی بنویسم." }, "grammar": ["praep.zeit", "verb.praeteritum"] },
+    { "id": "a2-10", "level": "A2.2", "title": "Computer und Technik", "fa": "کامپیوتر و فناوری", "canDo": { "de": "Ich kann ein technisches Problem beschreiben.", "fa": "می‌توانم یک مشکل فنی را توصیف کنم." }, "grammar": ["satz.nebensatz.weil-dass", "verb.trennbar"] },
+    { "id": "a2-11", "level": "A2.2", "title": "Gestaltung und Medien", "fa": "طراحی و رسانه", "canDo": { "de": "Ich kann über Farben, Formen und Layouts sprechen.", "fa": "می‌توانم دربارهٔ رنگ، فرم و صفحه‌آرایی حرف بزنم." }, "grammar": ["adj.komparation", "adj.deklination.unbestimmt"] },
+    { "id": "a2-12", "level": "A2.2", "title": "Am Telefon", "fa": "پشت تلفن", "canDo": { "de": "Ich kann ein kurzes Telefonat mit einer Firma führen.", "fa": "می‌توانم با یک شرکت تلفنی کوتاه صحبت کنم." }, "grammar": ["verb.konjunktiv2.hoeflich", "satz.ob-indirekt"] },
+
+    { "id": "b1-01", "level": "B1.1", "title": "Die Bewerbung", "fa": "درخواست کار", "canDo": { "de": "Ich kann ein Anschreiben für eine Ausbildung schreiben.", "fa": "می‌توانم انگیزه‌نامه برای آوسبیلدونگ بنویسم." }, "grammar": ["register.formell", "satz.infinitiv-zu"] },
+    { "id": "b1-02", "level": "B1.1", "title": "Das Vorstellungsgespräch", "fa": "مصاحبهٔ استخدامی", "canDo": { "de": "Ich kann Fragen im Vorstellungsgespräch beantworten.", "fa": "می‌توانم به سؤال‌های مصاحبه جواب بدهم." }, "grammar": ["verb.konjunktiv2.irreal", "satz.obwohl-trotzdem"] },
+    { "id": "b1-03", "level": "B1.1", "title": "Meinungen", "fa": "نظرها", "canDo": { "de": "Ich kann meine Meinung sagen und begründen.", "fa": "می‌توانم نظرم را بگویم و دلیل بیاورم." }, "grammar": ["satz.konnektoren.zweiteilig", "pronomen.da-wo"] },
+    { "id": "b1-04", "level": "B1.1", "title": "Medien und Nachrichten", "fa": "رسانه و خبر", "canDo": { "de": "Ich kann eine Nachricht zusammenfassen.", "fa": "می‌توانم یک خبر را خلاصه کنم." }, "grammar": ["verb.passiv.praeteritum-perfekt", "kasus.genitiv"] },
+    { "id": "b1-05", "level": "B1.1", "title": "Konflikte lösen", "fa": "حل اختلاف", "canDo": { "de": "Ich kann mich höflich beschweren.", "fa": "می‌توانم مؤدبانه اعتراض کنم." }, "grammar": ["verb.praepositionen", "satz.um-zu-damit"] },
+    { "id": "b1-06", "level": "B1.1", "title": "Prüfung B1", "fa": "آزمون B1", "canDo": { "de": "Ich kenne das Format der B1-Prüfung.", "fa": "ساختار آزمون B1 را می‌شناسم." }, "grammar": ["satz.temporal.als-wenn", "verb.plusquamperfekt"] },
+
+    { "id": "b1-07", "level": "B1.2", "title": "Der erste Tag im Betrieb", "fa": "روز اول در شرکت", "canDo": { "de": "Ich kann mich im Team vorstellen und Fragen stellen.", "fa": "می‌توانم خودم را در تیم معرفی کنم و سؤال بپرسم." }, "grammar": ["verb.lassen", "pronomen.da-wo"] },
+    { "id": "b1-08", "level": "B1.2", "title": "Berufsschule", "fa": "مدرسهٔ حرفه‌ای", "canDo": { "de": "Ich kann einem Unterricht in der Berufsschule folgen.", "fa": "می‌توانم کلاس مدرسهٔ حرفه‌ای را دنبال کنم." }, "grammar": ["satz.relativsatz", "verb.passiv.praesens"] },
+    { "id": "b1-09", "level": "B1.2", "title": "Kunden und Service", "fa": "مشتری و خدمات", "canDo": { "de": "Ich kann einem Kunden etwas erklären.", "fa": "می‌توانم چیزی را برای مشتری توضیح بدهم." }, "grammar": ["satz.ob-indirekt", "verb.konjunktiv2.hoeflich"] },
+    { "id": "b1-10", "level": "B1.2", "title": "Projekte und Daily Standup", "fa": "پروژه‌ها و جلسهٔ روزانه", "canDo": { "de": "Ich kann im Standup berichten, was ich gemacht habe.", "fa": "می‌توانم در جلسهٔ روزانه گزارش کار بدهم." }, "grammar": ["verb.futur1", "satz.temporal.als-wenn"] },
+    { "id": "b1-11", "level": "B1.2", "title": "Arbeitsrecht", "fa": "حقوق کار", "canDo": { "de": "Ich verstehe meinen Ausbildungsvertrag.", "fa": "قرارداد آوسبیلدونگم را می‌فهمم." }, "grammar": ["praep.genitiv", "verb.passiv.modal"] },
+    { "id": "b1-12", "level": "B1.2", "title": "Präsentieren", "fa": "ارائه دادن", "canDo": { "de": "Ich kann ein kleines Projekt präsentieren.", "fa": "می‌توانم یک پروژهٔ کوچک را ارائه بدهم." }, "grammar": ["satz.konnektoren.zweiteilig", "verb.nomen-verb"] },
+
+    { "id": "b2-01", "level": "B2.1", "title": "Diskutieren", "fa": "بحث کردن", "canDo": { "de": "Ich kann in einer Diskussion argumentieren.", "fa": "می‌توانم در بحث استدلال کنم." }, "grammar": ["register.argumentation", "satz.modalpartikeln"] },
+    { "id": "b2-02", "level": "B2.1", "title": "Digitalisierung", "fa": "دیجیتالی شدن", "canDo": { "de": "Ich kann Vor- und Nachteile abwägen.", "fa": "می‌توانم مزایا و معایب را بسنجم." }, "grammar": ["satz.nominalisierung", "satz.konnektoren.b2"] },
+    { "id": "b2-03", "level": "B2.1", "title": "Indirekte Rede", "fa": "نقل قول غیرمستقیم", "canDo": { "de": "Ich kann wiedergeben, was andere gesagt haben.", "fa": "می‌توانم حرف دیگران را نقل کنم." }, "grammar": ["verb.konjunktiv1", "verb.konjunktiv2.vergangenheit"] },
+    { "id": "b2-04", "level": "B2.1", "title": "Fachtexte", "fa": "متن‌های تخصصی", "canDo": { "de": "Ich kann einen Fachtext verstehen.", "fa": "می‌توانم یک متن تخصصی را بفهمم." }, "grammar": ["satz.partizip-attribut", "verb.zustandspassiv"] },
+    { "id": "b2-05", "level": "B2.1", "title": "Gesellschaft", "fa": "جامعه", "canDo": { "de": "Ich kann über gesellschaftliche Themen sprechen.", "fa": "می‌توانم دربارهٔ موضوعات اجتماعی صحبت کنم." }, "grammar": ["satz.relativsatz.praep", "verb.futur2-vermutung"] },
+    { "id": "b2-06", "level": "B2.1", "title": "Prüfung B2", "fa": "آزمون B2", "canDo": { "de": "Ich kenne das Format der B2-Prüfung.", "fa": "ساختار آزمون B2 را می‌شناسم." }, "grammar": ["register.argumentation", "wortschatz.wortwahl"] },
+
+    { "id": "b2-07", "level": "B2.2", "title": "Code Review auf Deutsch", "fa": "بازبینی کد به آلمانی", "canDo": { "de": "Ich kann Code-Feedback geben und annehmen.", "fa": "می‌توانم دربارهٔ کد بازخورد بدهم و بگیرم." }, "grammar": ["satz.modalpartikeln", "verb.nomen-verb"] },
+    { "id": "b2-08", "level": "B2.2", "title": "Design-Kritik", "fa": "نقد طراحی", "canDo": { "de": "Ich kann Gestaltungsentscheidungen begründen.", "fa": "می‌توانم تصمیم‌های طراحی را توجیه کنم." }, "grammar": ["register.argumentation", "satz.konnektoren.b2"] },
+    { "id": "b2-09", "level": "B2.2", "title": "Kundengespräch", "fa": "جلسه با مشتری", "canDo": { "de": "Ich kann Anforderungen mit einem Kunden klären.", "fa": "می‌توانم نیازهای مشتری را روشن کنم." }, "grammar": ["satz.ob-indirekt", "verb.konjunktiv1"] },
+    { "id": "b2-10", "level": "B2.2", "title": "Dokumentation", "fa": "مستندسازی", "canDo": { "de": "Ich kann eine technische Dokumentation schreiben.", "fa": "می‌توانم مستندات فنی بنویسم." }, "grammar": ["verb.passiv.modal", "satz.nominalisierung"] },
+    { "id": "b2-11", "level": "B2.2", "title": "Abschlussprüfung", "fa": "آزمون پایانی", "canDo": { "de": "Ich kann ein Fachgespräch führen.", "fa": "می‌توانم یک گفت‌وگوی تخصصی را پیش ببرم." }, "grammar": ["register.argumentation", "wortschatz.wortwahl"] },
+    { "id": "b2-12", "level": "B2.2", "title": "Meine Zukunft", "fa": "آیندهٔ من", "canDo": { "de": "Ich kann über meine Ziele überzeugend sprechen.", "fa": "می‌توانم دربارهٔ هدف‌هایم قانع‌کننده صحبت کنم." }, "grammar": ["verb.konjunktiv2.irreal", "satz.konnektoren.b2"] }
+  ]
+}

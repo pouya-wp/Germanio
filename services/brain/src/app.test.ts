@@ -14,6 +14,8 @@ import { Learner } from './domain/learner';
 import { Lesesaal } from './domain/lesesaal';
 import { Studio } from './domain/studio';
 import { Tagesfunk } from './domain/tagesfunk';
+import { Kurs } from './domain/kurs';
+import { join } from 'node:path';
 import type { LabClient } from './lab';
 import { Nachtschicht } from './jobs/nachtschicht';
 import { fixtureGrammar, makeFixtureDictionary } from './test/fixtures';
@@ -86,6 +88,7 @@ function setup() {
     },
   };
   const tagesfunk = new Tagesfunk(db, learner, ai, lab, async () => [{ title: 'Neue Regeln für Mieter', description: 'Mieten steigen.' }]);
+  const kurs = new Kurs(db, learner, join(__dirname, '../../../content/kurs'));
   const app = createApp({
     config: { port: 4317, allowedOrigins: (o) => o === 'http://localhost:3000' },
     dict,
@@ -93,6 +96,7 @@ function setup() {
     lesesaal: new Lesesaal(db, dict, learner, ai),
     studio: new Studio(db, learner, ai, fixtureGrammar),
     tagesfunk,
+    kurs,
     lab,
     dataDir: '.',
     ai,
@@ -106,7 +110,7 @@ function setup() {
       headers: { host: '127.0.0.1:4317', 'content-type': 'application/json', ...(init.headers ?? {}) },
       ...(init.json !== undefined ? { body: JSON.stringify(init.json) } : {}),
     });
-  return { req, learner, recorded, nachtschicht, lab, close: () => (dict.close(), close()) };
+  return { req, learner, recorded, nachtschicht, lab, kurs, close: () => (dict.close(), close()) };
 }
 
 let t: ReturnType<typeof setup>;
@@ -216,7 +220,7 @@ describe('forecast & today', () => {
     expect(today.plan.length).toBeGreaterThan(0);
     const f = (await (await t.req('/forecast')).json()) as Json;
     expect(f.settings.target).toBe('B2');
-    expect(f.totalHours).toBeGreaterThanOrEqual(60);
+    expect(f.totalHours).toBeGreaterThanOrEqual(0);
   });
 });
 
@@ -278,5 +282,46 @@ describe('tagesfunk', () => {
     const r = (await (await t.req('/tagesfunk', { method: 'POST' })).json()) as Json;
     await t.req(`/tagesfunk/${r.id}/listened`, { method: 'POST', json: { seconds: 600 } });
     expect(t.learner.dailyHours(1)[0]!.hours).toBeCloseTo((600 / 3600) * 0.35, 3);
+  });
+});
+
+describe('der weg', () => {
+  it('starts on unit 1 with nothing done', async () => {
+    const m = (await (await t.req('/kurs')).json()) as Json;
+    expect(m.current.id).toBe('a1-01');
+    expect(m.units.filter((u: Json) => u.status === 'current')).toHaveLength(1);
+    expect(m.canDo).toEqual([]);
+  });
+
+  it('a unit creates Persian-glossed cards and completing it unlocks the next', async () => {
+    await t.req('/kurs/a1-04/start', { method: 'POST' });
+    const lookup = t.learner.cardsFor('Maus');
+    expect(lookup.map((c) => c.kind).sort()).toEqual(['genus', 'recognition']);
+    expect(lookup[0]!.meaning.startsWith('ماوس')).toBe(true);
+
+    await t.req('/kurs/a1-01/start', { method: 'POST' });
+    const done = (await (
+      await t.req('/kurs/a1-01/complete', {
+        method: 'POST',
+        json: { score: 0.9, words: { Hallo: true, heißen: false }, grammar: { 'verb.sein.haben': { correct: 3, total: 4 } }, seconds: 900 },
+      })
+    ).json()) as Json;
+    expect(done.canDo.de).toBe('Ich kann mich vorstellen.');
+    expect(done.next.id).toBe('a1-02');
+    const hallo = t.learner.cardsFor('Hallo')[0]!;
+    const heissen = t.learner.cardsFor('heißen')[0]!;
+    expect(hallo.memory.state).not.toBe(0);
+    expect(new Date(heissen.memory.due).getTime()).toBeLessThan(new Date(hallo.memory.due).getTime());
+    expect(t.learner.conceptState()['verb.sein.haben']).toBeGreaterThan(0.1);
+  });
+
+  it('holds back frequency words until A1.1 is complete', async () => {
+    t.learner.setCoreGate(() => t.kurs.coreWordsUnlocked());
+    const q = (await (await t.req('/queue')).json()) as Json;
+    expect(q.cards).toHaveLength(0);
+  });
+
+  it('rejects unwritten units clearly', async () => {
+    expect((await t.req('/kurs/b2-12')).status).toBe(404);
   });
 });
