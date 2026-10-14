@@ -19,6 +19,7 @@ import {
   type ReviewRequest,
   type Skill,
   type TimeLog,
+  type UnitWord,
 } from '@germanio/core';
 import type { z } from 'zod';
 import type { Dictionary, LexemeDetail } from '../db/dictionary';
@@ -34,6 +35,12 @@ export interface LearnerSettings {
   newCardsPerDay: number;
   /** Hours studied before Germanio existed (counted toward the forecast). */
   priorHours: number;
+  /** Set by onboarding. */
+  onboarded: boolean;
+  name: string;
+  track: 'fiae' | 'fisi' | 'mediengestalter' | 'unsure';
+  /** ISO date the Ausbildung starts — every lesson is framed against it. */
+  ausbildungStart: string;
 }
 
 export const DEFAULT_SETTINGS: LearnerSettings = {
@@ -41,7 +48,11 @@ export const DEFAULT_SETTINGS: LearnerSettings = {
   deadline: '2027-04-14',
   minutesPerDay: 210,
   newCardsPerDay: 20,
-  priorHours: 60,
+  priorHours: 0,
+  onboarded: false,
+  name: '',
+  track: 'unsure',
+  ausbildungStart: '2027-09-01',
 };
 
 /** Passive exposure (background podcast, ambient pages) counts at a discount. */
@@ -179,7 +190,60 @@ export class Learner {
   }
 
   /** Top up the new-card pool from the frequency list so there is always something to learn. */
+  /** The course can hold back context-free frequency words until the basics are done. */
+  private coreGate: () => boolean = () => true;
+  setCoreGate(gate: () => boolean): void {
+    this.coreGate = gate;
+  }
+
+  /** A word from a course unit: Persian meaning and example come from the lesson itself. */
+  addKursWord(w: UnitWord, unitId: string): CardRow[] {
+    const lex = this.dict.lookup(w.de, 3).matches.find((m) => m.lemma === w.de) ?? null;
+    const pos = lex?.pos ?? (w.de.includes(' ') ? 'phrase' : 'unknown');
+    const kinds: Card['kind'][] = w.article ? ['recognition', 'genus'] : ['recognition'];
+    const memory = newMemory();
+    const out: CardRow[] = [];
+    for (const kind of kinds) {
+      const row = this.db
+        .insert(cards)
+        .values({
+          lexemeId: lex?.id ?? null,
+          kind,
+          lemma: w.de,
+          pos,
+          gender: w.article ?? null,
+          meaning: `${w.fa} · ${w.en}`,
+          sentence: w.example.de,
+          sentenceTranslation: w.example.fa,
+          source: 'kurs',
+          sourceUrl: `kurs:${unitId}`,
+          memory,
+          due: memory.due,
+        })
+        .onConflictDoNothing()
+        .returning()
+        .get();
+      if (row) out.push(row);
+    }
+    return out;
+  }
+
+  cardsFor(lemma: string): CardRow[] {
+    return this.db.select().from(cards).where(eq(cards.lemma, lemma)).all();
+  }
+
+  /** Minutes of effective study this week (Monday–Sunday) against the weekly goal. */
+  week(now = new Date()): { minutes: number; goal: number; days: { day: string; minutes: number }[] } {
+    const days = this.dailyHours(7, now);
+    const today = new Date(now);
+    const dow = (today.getDay() + 6) % 7; // Monday = 0
+    const thisWeek = days.slice(days.length - 1 - dow);
+    const minutes = Math.round(thisWeek.reduce((a, d) => a + d.hours * 60, 0));
+    return { minutes, goal: this.settings().minutesPerDay * 6, days: thisWeek.map((d) => ({ day: d.day, minutes: Math.round(d.hours * 60) })) };
+  }
+
   ensureCorePool(minNew = 40): number {
+    if (!this.coreGate()) return 0;
     const pool = this.db.select({ n: count() }).from(cards).where(sql`json_extract(${cards.memory}, '$.state') = 0`).get();
     const missing = minNew - (pool?.n ?? 0);
     if (missing <= 0) return 0;
@@ -465,15 +529,20 @@ export class Learner {
     const recent = this.dailyHours(14, now);
     const knownLemmas = this.knownLemmas().length;
     const totalHours = this.totalHours();
+    // With under five active days the measured pace is noise (one 15-minute day would
+    // forecast B2 decades away). Until then project from the learner's own plan, and say so.
+    const activeDays = recent.filter((d) => d.hours > 0.05).length;
+    const basis: 'plan' | 'measured' = activeDays >= 5 ? 'measured' : 'plan';
+    const planned = (s.minutesPerDay / 60) * (6 / 7);
     const f = forecast({
       hoursLogged: totalHours,
-      recentDailyHours: recent.map((d) => d.hours),
+      recentDailyHours: basis === 'measured' ? recent.map((d) => d.hours) : [planned],
       knownLemmas,
       target: s.target,
       deadline: new Date(`${s.deadline}T00:00:00`),
       now,
     });
-    return { ...f, totalHours, knownLemmas, recent, settings: s };
+    return { ...f, basis, activeDays, totalHours, knownLemmas, recent, settings: s };
   }
 
   stats() {

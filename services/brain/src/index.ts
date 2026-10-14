@@ -15,6 +15,7 @@ import { Learner } from './domain/learner';
 import { Lesesaal } from './domain/lesesaal';
 import { Studio } from './domain/studio';
 import { Tagesfunk } from './domain/tagesfunk';
+import { Kurs } from './domain/kurs';
 import { createLabClient } from './lab';
 import { Nachtschicht } from './jobs/nachtschicht';
 
@@ -39,9 +40,11 @@ if (!dict.available) {
 const lesesaal = new Lesesaal(db, dict, learner, ai);
 const studio = new Studio(db, learner, ai, grammar);
 const lab = createLabClient();
+const kurs = new Kurs(db, learner, resolve(here, '../../../content/kurs'));
+learner.setCoreGate(() => kurs.coreWordsUnlocked());
 const tagesfunk = new Tagesfunk(db, learner, ai, lab);
 const nachtschicht = config.ai.provider === 'codex' ? new Nachtschicht(db, dict, ai, undefined, tagesfunk) : null;
-const app = createApp({ config, dict, learner, lesesaal, studio, tagesfunk, lab, dataDir: config.dataDir, ai, nachtschicht, grammar, version: pkg.version });
+const app = createApp({ config, dict, learner, lesesaal, studio, tagesfunk, kurs, lab, dataDir: config.dataDir, ai, nachtschicht, grammar, version: pkg.version });
 const server = serve({ fetch: app.fetch, hostname: config.host, port: config.port }, (info) => {
   console.log(`🧠 Germanio brain → http://${config.host}:${info.port}  (ai: ${ai.name}, data: ${config.dataDir})`);
   nachtschicht?.start();

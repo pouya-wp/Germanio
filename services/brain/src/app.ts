@@ -17,6 +17,7 @@ import { NotFound, type Learner } from './domain/learner';
 import type { Lesesaal } from './domain/lesesaal';
 import type { Studio } from './domain/studio';
 import type { Tagesfunk } from './domain/tagesfunk';
+import type { Kurs } from './domain/kurs';
 import type { LabClient } from './lab';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -29,6 +30,7 @@ export interface AppDeps {
   lesesaal: Lesesaal;
   studio: Studio;
   tagesfunk: Tagesfunk;
+  kurs: Kurs;
   lab: LabClient;
   dataDir: string;
   ai: LLMProvider;
@@ -44,6 +46,10 @@ const SettingsPatchSchema = z
     minutesPerDay: z.number().int().min(10).max(600),
     newCardsPerDay: z.number().int().min(0).max(100),
     priorHours: z.number().min(0).max(5000),
+    onboarded: z.boolean(),
+    name: z.string().max(60),
+    track: z.enum(['fiae', 'fisi', 'mediengestalter', 'unsure']),
+    ausbildungStart: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   })
   .partial();
 
@@ -54,7 +60,7 @@ const CorrectRequestSchema = z.object({
 });
 
 export function createApp(deps: AppDeps): Hono {
-  const { dict, learner, ai, config, lesesaal, studio, tagesfunk, lab } = deps;
+  const { dict, learner, ai, config, lesesaal, studio, tagesfunk, lab, kurs } = deps;
   const app = new Hono();
 
   // ── Local-only guard ────────────────────────────────────────────────────
@@ -214,6 +220,24 @@ export function createApp(deps: AppDeps): Hono {
   app.post('/grammar/answer', async (c) =>
     c.json(studio.answer(await body(c, z.object({ setId: z.number().int(), index: z.number().int().min(0), given: z.string().max(100) })))),
   );
+
+  // ── Der Weg ─────────────────────────────────────────────────────────────
+  app.get('/kurs', (c) => c.json(kurs.map()));
+  app.get('/kurs/:id', (c) => c.json(kurs.content(c.req.param('id'))));
+  app.post('/kurs/:id/start', (c) => c.json(kurs.start(c.req.param('id')), 201));
+  app.post('/kurs/:id/complete', async (c) => {
+    const result = await body(
+      c,
+      z.object({
+        score: z.number().min(0).max(1),
+        words: z.record(z.string(), z.boolean()),
+        grammar: z.record(z.string(), z.object({ correct: z.number().int().min(0), total: z.number().int().min(0) })),
+        seconds: z.number().min(0).max(4 * 3600),
+      }),
+    );
+    return c.json(kurs.complete(c.req.param('id'), result));
+  });
+  app.get('/week', (c) => c.json(learner.week()));
 
   // ── Tagesfunk & speech ──────────────────────────────────────────────────
   app.get('/tagesfunk', (c) => c.json({ episodes: tagesfunk.list() }));

@@ -192,3 +192,34 @@ describe('adjective endings', () => {
     expect(e('definite', 'pl', 'nom')).toBe('en'); // die guten Freunde
   });
 });
+
+describe('kurs content', () => {
+  it('every unit file and the curriculum validate, and grammar ids exist', async () => {
+    const { readFileSync, readdirSync } = await import('node:fs');
+    const { join } = await import('node:path');
+    const { CurriculumSchema, UnitContentSchema } = await import('./index');
+    const root = join(__dirname, '../../../content');
+    const curriculum = CurriculumSchema.parse(JSON.parse(readFileSync(join(root, 'kurs/curriculum.json'), 'utf8')));
+    const grammar = new Set((JSON.parse(readFileSync(join(root, 'grammar.json'), 'utf8')) as { nodes: { id: string }[] }).nodes.map((n) => n.id));
+    for (const u of curriculum.units) for (const g of u.grammar) expect(grammar.has(g), `${u.id}: ${g}`).toBe(true);
+    const files = readdirSync(join(root, 'kurs/units'));
+    expect(files.length).toBeGreaterThanOrEqual(6);
+    for (const f of files) {
+      const unit = UnitContentSchema.parse(JSON.parse(readFileSync(join(root, 'kurs/units', f), 'utf8')));
+      expect(curriculum.units.some((u) => u.id === unit.id)).toBe(true);
+      for (const ex of unit.exercises) {
+        if (ex.type === 'gap') expect(ex.de).toContain('___');
+        if (ex.type === 'order') {
+          const { sentenceKey } = await import('./index');
+          expect(sentenceKey(ex.words.slice().sort().join(' '))).toBe(sentenceKey(ex.answer.split(' ').sort().join(' ')));
+        }
+      }
+    }
+  });
+
+  it('assigns exactly one current unit', async () => {
+    const { unitStatuses } = await import('./index');
+    const s = unitStatuses([{ id: 'a' }, { id: 'b' }, { id: 'c' }], new Set(['a']));
+    expect(s).toEqual({ a: 'done', b: 'current', c: 'locked' });
+  });
+});

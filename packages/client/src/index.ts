@@ -8,6 +8,8 @@ import type {
   ReviewRequest,
   TimeLog,
   Cefr,
+  UnitContent,
+  UnitMeta,
 } from '@germanio/core';
 
 /**
@@ -49,6 +51,8 @@ export interface Health {
   dictionary: { ready: boolean; built_at?: string; sources?: string };
   ai: { provider: string; ready: boolean; detail: string };
   nachtschicht: { shift: string; processed: number; ms: number; error?: string }[];
+  aiPausedUntil?: string | null;
+  lab?: { ready: boolean };
 }
 
 export interface QueueResponse {
@@ -63,6 +67,33 @@ export interface Settings {
   minutesPerDay: number;
   newCardsPerDay: number;
   priorHours: number;
+  onboarded: boolean;
+  name: string;
+  track: 'fiae' | 'fisi' | 'mediengestalter' | 'unsure';
+  ausbildungStart: string;
+}
+
+export type UnitStatus = 'done' | 'current' | 'open' | 'locked';
+
+export interface UnitSummary extends UnitMeta {
+  status: UnitStatus;
+  authored: boolean;
+  score: number | null;
+}
+
+export interface KursMap {
+  levels: { id: string; title: string; fa: string; hours: number; total: number; done: number }[];
+  units: UnitSummary[];
+  current: UnitSummary | null;
+  canDo: { unitId: string; de: string; fa: string }[];
+  completedCount: number;
+}
+
+export interface UnitResult {
+  score: number;
+  words: Record<string, boolean>;
+  grammar: Record<string, { correct: number; total: number }>;
+  seconds: number;
 }
 
 export interface TodayResponse {
@@ -76,6 +107,9 @@ export interface TodayResponse {
 
 export interface ForecastResponse extends Omit<Forecast, 'eta'> {
   eta: string | null;
+  /** 'plan' until there are five active days of data, then 'measured'. */
+  basis: 'plan' | 'measured';
+  activeDays: number;
   totalHours: number;
   knownLemmas: number;
   recent: { day: string; hours: number }[];
@@ -207,6 +241,11 @@ export interface BrainClient {
   episode(id: string): Promise<Episode>;
   produceEpisode(): Promise<{ id: string }>;
   listened(id: string, seconds: number): Promise<void>;
+  kurs(): Promise<KursMap>;
+  unit(id: string): Promise<{ meta: UnitMeta; content: UnitContent }>;
+  startUnit(id: string): Promise<{ cardIds: number[] }>;
+  completeUnit(id: string, result: UnitResult): Promise<{ canDo: { de: string; fa: string }; next: UnitSummary | null; completedCount: number }>;
+  week(): Promise<{ minutes: number; goal: number; days: { day: string; minutes: number }[] }>;
   /** URL of a brain-served audio resource (episode audio, Piper TTS). */
   audioUrl(path: string): string;
   ttsUrl(text: string, voice?: 'thorsten' | 'kerstin'): string;
@@ -269,6 +308,11 @@ export function createBrainClient(baseUrl: string = DEFAULT_BRAIN_URL, fetchImpl
     episode: (id) => call(`/tagesfunk/${id}`),
     produceEpisode: () => call('/tagesfunk', { method: 'POST', timeoutMs: 20 * 60_000 }),
     listened: async (id, seconds) => void (await call(`/tagesfunk/${id}/listened`, { method: 'POST', body: { seconds } })),
+    kurs: () => call('/kurs'),
+    unit: (id) => call(`/kurs/${id}`),
+    startUnit: (id) => call(`/kurs/${id}/start`, { method: 'POST' }),
+    completeUnit: (id, result) => call(`/kurs/${id}/complete`, { method: 'POST', body: result }),
+    week: () => call('/week'),
     audioUrl: (path) => `${baseUrl}${path}`,
     ttsUrl: (text, voice = 'thorsten') => `${baseUrl}/tts?voice=${voice}&text=${encodeURIComponent(text)}`,
   };

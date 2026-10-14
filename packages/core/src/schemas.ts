@@ -52,7 +52,7 @@ export type LookupResult = z.infer<typeof LookupResultSchema>;
 export const CARD_KINDS = ['recognition', 'production', 'listening', 'genus', 'plural', 'cloze'] as const;
 export const CardKindSchema = z.enum(CARD_KINDS);
 
-export const SOURCES = ['web', 'youtube', 'desktop', 'reader', 'podcast', 'messenger', 'manual', 'core'] as const;
+export const SOURCES = ['web', 'youtube', 'desktop', 'reader', 'podcast', 'messenger', 'manual', 'core', 'kurs'] as const;
 export const SourceSchema = z.enum(SOURCES);
 
 export const MemoryStateSchema = z.object({

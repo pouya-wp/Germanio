@@ -6,6 +6,7 @@ import { defineStrings } from '@germanio/i18n-adaptive';
  */
 export const strings = defineStrings({
   'nav.heute': { de: 'Heute', en: 'Today', fa: 'امروز', lemmas: ['heute'] },
+  'nav.kurs': { de: 'Der Weg', en: 'The path', fa: 'مسیر', lemmas: ['der', 'Weg'] },
   'nav.wortschatz': { de: 'Wortschatz', en: 'Vocabulary', fa: 'واژگان', lemmas: ['Wortschatz'] },
   'nav.lesesaal': { de: 'Lesesaal', en: 'Reading room', fa: 'قرائت‌خانه', lemmas: ['Lesesaal'] },
   'nav.tagesfunk': { de: 'Tagesfunk', en: 'Daily radio', fa: 'رادیوی روزانه', lemmas: ['Tag', 'Funk'] },

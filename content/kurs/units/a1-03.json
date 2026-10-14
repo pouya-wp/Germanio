@@ -1,0 +1,68 @@
+{
+  "id": "a1-03",
+  "intro": {
+    "fa": "در آلمان بعد از اسم، اولین سؤال این است: «چه کار می‌کنی؟». این درس واژه‌های شغل و سرگرمی را یادت می‌دهد — از جمله شغل آینده‌ات: Fachinformatiker یا Mediengestalter.",
+    "de": "Am Ende kannst du sagen: Ich möchte Fachinformatiker werden. Ich spiele gern Fußball."
+  },
+  "words": [
+    { "de": "machen", "fa": "انجام دادن، کردن", "en": "to do, to make", "example": { "de": "Was machst du?", "fa": "چه کار می‌کنی؟" } },
+    { "de": "arbeiten", "fa": "کار کردن", "en": "to work", "example": { "de": "Ich arbeite am Computer.", "fa": "من با کامپیوتر کار می‌کنم." } },
+    { "de": "lernen", "fa": "یاد گرفتن، درس خواندن", "en": "to learn", "example": { "de": "Ich lerne Deutsch.", "fa": "من آلمانی یاد می‌گیرم." } },
+    { "de": "spielen", "fa": "بازی کردن؛ نواختن", "en": "to play", "example": { "de": "Wir spielen Fußball.", "fa": "ما فوتبال بازی می‌کنیم." } },
+    { "de": "gern", "fa": "با علاقه (دوست داشتن انجام کاری)", "en": "gladly, like to", "example": { "de": "Ich spiele gern Gitarre.", "fa": "من دوست دارم گیتار بزنم." } },
+    { "de": "Beruf", "article": "der", "plural": "Berufe", "fa": "شغل، حرفه", "en": "profession", "example": { "de": "Was sind Sie von Beruf?", "fa": "شغل شما چیست؟" } },
+    { "de": "Ausbildung", "article": "die", "plural": "Ausbildungen", "fa": "آموزش حرفه‌ای، آوسبیلدونگ", "en": "vocational training", "example": { "de": "Ich mache eine Ausbildung.", "fa": "من آوسبیلدونگ می‌گذرانم." } },
+    { "de": "Fachinformatiker", "article": "der", "plural": "Fachinformatiker", "fa": "متخصص فناوری اطلاعات", "en": "IT specialist", "example": { "de": "Ich möchte Fachinformatiker werden.", "fa": "می‌خواهم متخصص فناوری اطلاعات بشوم." } },
+    { "de": "Mediengestalter", "article": "der", "plural": "Mediengestalter", "fa": "طراح رسانه", "en": "media designer", "example": { "de": "Mediengestalter gestalten Webseiten.", "fa": "طراحان رسانه وب‌سایت طراحی می‌کنند." } },
+    { "de": "Hobby", "article": "das", "plural": "Hobbys", "fa": "سرگرمی", "en": "hobby", "example": { "de": "Mein Hobby ist Fotografie.", "fa": "سرگرمی من عکاسی است." } },
+    { "de": "Sprache", "article": "die", "plural": "Sprachen", "fa": "زبان", "en": "language", "example": { "de": "Ich spreche zwei Sprachen.", "fa": "من دو زبان صحبت می‌کنم." } },
+    { "de": "sprechen", "fa": "صحبت کردن", "en": "to speak", "example": { "de": "Sprichst du Englisch?", "fa": "انگلیسی صحبت می‌کنی؟" } },
+    { "de": "werden", "fa": "شدن", "en": "to become", "example": { "de": "Ich möchte Designer werden.", "fa": "می‌خواهم طراح بشوم." } },
+    { "de": "jetzt", "fa": "حالا، الان", "en": "now", "example": { "de": "Jetzt lerne ich Deutsch.", "fa": "الان آلمانی یاد می‌گیرم." } }
+  ],
+  "grammar": {
+    "title": "Präsens: ich lerne, du lernst …",
+    "fa": "بیشتر فعل‌های آلمانی منظم‌اند: ریشه را برمی‌داری (lern-) و پسوند می‌گذاری. این پسوندها را حفظ کن: e، st، t، en، t، en. یک نکتهٔ طلایی دیگر: فعل همیشه جایگاه دوم جمله است. اگر «Jetzt» اول بیاید، فاعل بعد از فعل می‌رود: Jetzt lerne ich.",
+    "table": [
+      ["ich", "lerne", "arbeite"],
+      ["du", "lernst", "arbeitest"],
+      ["er / sie / es", "lernt", "arbeitet"],
+      ["wir", "lernen", "arbeiten"],
+      ["ihr", "lernt", "arbeitet"],
+      ["sie / Sie", "lernen", "arbeiten"]
+    ],
+    "tableHead": ["", "lernen", "arbeiten"],
+    "examples": [
+      { "de": "Ich lerne jeden Tag Deutsch.", "fa": "هر روز آلمانی یاد می‌گیرم." },
+      { "de": "Jetzt arbeite ich am Computer.", "fa": "الان با کامپیوتر کار می‌کنم. (فعل جایگاه دوم!)" }
+    ]
+  },
+  "dialogue": {
+    "title": "In der Mittagspause",
+    "fa": "در وقت ناهار",
+    "lines": [
+      { "speaker": "Jonas", "de": "Und Pouya, was machst du hier in Deutschland?", "fa": "خب پویا، اینجا در آلمان چه کار می‌کنی؟" },
+      { "speaker": "Pouya", "de": "Ich lerne Deutsch. Bald mache ich eine Ausbildung.", "fa": "آلمانی یاد می‌گیرم. به‌زودی آوسبیلدونگ شروع می‌کنم." },
+      { "speaker": "Jonas", "de": "Cool! Welche Ausbildung?", "fa": "چه خوب! کدام رشته؟" },
+      { "speaker": "Pouya", "de": "Ich möchte Fachinformatiker werden. Ich arbeite gern am Computer.", "fa": "می‌خواهم متخصص IT بشوم. دوست دارم با کامپیوتر کار کنم." },
+      { "speaker": "Jonas", "de": "Ich bin Mediengestalter. Ich gestalte Webseiten.", "fa": "من طراح رسانه‌ام. وب‌سایت طراحی می‌کنم." },
+      { "speaker": "Pouya", "de": "Oh, Design mache ich auch gern! Was ist dein Hobby?", "fa": "اوه، من هم طراحی را دوست دارم! سرگرمی تو چیست؟" },
+      { "speaker": "Jonas", "de": "Ich spiele gern Fußball. Und du?", "fa": "دوست دارم فوتبال بازی کنم. تو چی؟" },
+      { "speaker": "Pouya", "de": "Ich spiele Gitarre.", "fa": "من گیتار می‌زنم." }
+    ]
+  },
+  "exercises": [
+    { "type": "gap", "de": "Ich ___ Deutsch.", "answer": "lerne", "fa": "من آلمانی یاد می‌گیرم." },
+    { "type": "gap", "de": "Was ___ du?", "answer": "machst", "fa": "چه کار می‌کنی؟" },
+    { "type": "gap", "de": "Er ___ am Computer.", "answer": "arbeitet", "fa": "او با کامپیوتر کار می‌کند." },
+    { "type": "gap", "de": "Wir ___ gern Fußball.", "answer": "spielen", "fa": "ما دوست داریم فوتبال بازی کنیم." },
+    { "type": "order", "words": ["lerne", "ich", "Jetzt", "Deutsch"], "answer": "Jetzt lerne ich Deutsch", "fa": "الان آلمانی یاد می‌گیرم." },
+    { "type": "order", "words": ["werden", "möchte", "Fachinformatiker", "Ich"], "answer": "Ich möchte Fachinformatiker werden", "fa": "می‌خواهم متخصص IT بشوم." },
+    { "type": "translate", "fa": "من با کامپیوتر کار می‌کنم.", "answer": "Ich arbeite am Computer.", "accept": ["Ich arbeite mit dem Computer."] },
+    { "type": "translate", "fa": "سرگرمی تو چیست؟", "answer": "Was ist dein Hobby?", "accept": [] }
+  ],
+  "speaking": {
+    "fa": "بگو چه کار می‌کنی، چه آوسبیلدونگی می‌خواهی و یک سرگرمی‌ات را.",
+    "model": "Ich lerne Deutsch. Ich möchte Fachinformatiker werden. Ich spiele gern Gitarre."
+  }
+}

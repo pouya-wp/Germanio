@@ -171,3 +171,13 @@ export const episodes = sqliteTable('episodes', {
   createdAt: text('created_at').notNull().default(now),
   listenedAt: text('listened_at'),
 });
+
+/** Der Weg: one row per unit the learner has started. */
+export const unitProgress = sqliteTable('unit_progress', {
+  unitId: text('unit_id').primaryKey(),
+  startedAt: text('started_at').notNull().default(now),
+  completedAt: text('completed_at'),
+  /** 0..1 share of exercises answered correctly on the first try. */
+  score: real('score'),
+  attempts: integer('attempts').notNull().default(0),
+});

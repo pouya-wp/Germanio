@@ -1,0 +1,66 @@
+{
+  "id": "a1-01",
+  "intro": {
+    "fa": "اولین جمله‌ای که در آلمان می‌گویی معرفی خودت است: در Ausländerbehörde، روز اول Berufsschule، در مصاحبه. بعد از این درس می‌توانی در ۲۰ ثانیه خودت را معرفی کنی.",
+    "de": "Am Ende kannst du sagen: Hallo, ich heiße Pouya. Ich komme aus dem Iran."
+  },
+  "words": [
+    { "de": "Hallo", "fa": "سلام", "en": "hello", "example": { "de": "Hallo, ich bin Pouya.", "fa": "سلام، من پویا هستم." } },
+    { "de": "Guten Tag", "fa": "روز بخیر (رسمی)", "en": "good day", "example": { "de": "Guten Tag, Frau Weber!", "fa": "روز بخیر، خانم وبر!" } },
+    { "de": "Tschüss", "fa": "خداحافظ (دوستانه)", "en": "bye", "example": { "de": "Tschüss, bis morgen!", "fa": "خداحافظ، تا فردا!" } },
+    { "de": "ich", "fa": "من", "en": "I", "example": { "de": "Ich bin Student.", "fa": "من دانشجو هستم." } },
+    { "de": "du", "fa": "تو", "en": "you (informal)", "example": { "de": "Wer bist du?", "fa": "تو کی هستی؟" } },
+    { "de": "Sie", "fa": "شما (رسمی)", "en": "you (formal)", "example": { "de": "Wie heißen Sie?", "fa": "اسم شما چیست؟" } },
+    { "de": "heißen", "fa": "نام داشتن", "en": "to be called", "example": { "de": "Ich heiße Pouya.", "fa": "اسم من پویاست." } },
+    { "de": "sein", "fa": "بودن", "en": "to be", "example": { "de": "Ich bin 24 Jahre alt.", "fa": "من ۲۴ سالم است." } },
+    { "de": "kommen", "fa": "آمدن", "en": "to come", "example": { "de": "Ich komme aus dem Iran.", "fa": "من اهل ایران هستم." } },
+    { "de": "wohnen", "fa": "زندگی کردن (سکونت)", "en": "to live (reside)", "example": { "de": "Ich wohne in Teheran.", "fa": "من در تهران زندگی می‌کنم." } },
+    { "de": "aus", "fa": "از (اهل جایی)", "en": "from", "example": { "de": "Woher kommst du? — Aus Deutschland.", "fa": "اهل کجایی؟ — اهل آلمان." } },
+    { "de": "woher", "fa": "از کجا", "en": "where from", "example": { "de": "Woher kommen Sie?", "fa": "شما اهل کجا هستید؟" } },
+    { "de": "Name", "article": "der", "plural": "Namen", "fa": "اسم", "en": "name", "example": { "de": "Mein Name ist Pouya.", "fa": "اسم من پویاست." } },
+    { "de": "Freut mich!", "fa": "خوشبختم!", "en": "nice to meet you", "example": { "de": "Ich bin Lena. — Freut mich!", "fa": "من لنا هستم. — خوشبختم!" } }
+  ],
+  "grammar": {
+    "title": "ich bin · du bist · Sie sind",
+    "fa": "در آلمانی فعل با فاعل عوض می‌شود. «sein» (بودن) و «heißen» (نام داشتن) اولین فعل‌هایی هستند که باید بدانی. نکتهٔ مهم: «Sie» با S بزرگ یعنی «شما»ی رسمی — با معلم، کارفرما و اداره همیشه Sie بگو. با هم‌سن‌ها و همکلاسی‌ها du.",
+    "table": [
+      ["ich", "bin", "heiße", "komme"],
+      ["du", "bist", "heißt", "kommst"],
+      ["er / sie", "ist", "heißt", "kommt"],
+      ["Sie", "sind", "heißen", "kommen"]
+    ],
+    "tableHead": ["", "sein", "heißen", "kommen"],
+    "examples": [
+      { "de": "Ich bin Pouya. Und du?", "fa": "من پویا هستم. تو چی؟" },
+      { "de": "Woher kommen Sie, Frau Weber?", "fa": "شما اهل کجا هستید، خانم وبر؟" }
+    ]
+  },
+  "dialogue": {
+    "title": "Der erste Tag im Sprachkurs",
+    "fa": "روز اول کلاس زبان",
+    "lines": [
+      { "speaker": "Lena", "de": "Hallo! Ich bin Lena. Wie heißt du?", "fa": "سلام! من لنا هستم. اسم تو چیست؟" },
+      { "speaker": "Pouya", "de": "Hallo, ich heiße Pouya.", "fa": "سلام، اسم من پویاست." },
+      { "speaker": "Lena", "de": "Freut mich, Pouya! Woher kommst du?", "fa": "خوشبختم، پویا! اهل کجایی؟" },
+      { "speaker": "Pouya", "de": "Ich komme aus dem Iran. Und du?", "fa": "من اهل ایرانم. تو چی؟" },
+      { "speaker": "Lena", "de": "Ich komme aus Köln. Ich wohne auch hier.", "fa": "من اهل کلنم. اینجا هم زندگی می‌کنم." },
+      { "speaker": "Pouya", "de": "Cool! Ich wohne jetzt auch in Köln.", "fa": "چه خوب! من هم الان در کلن زندگی می‌کنم." },
+      { "speaker": "Lena", "de": "Super. Tschüss, Pouya!", "fa": "عالی. خداحافظ، پویا!" },
+      { "speaker": "Pouya", "de": "Tschüss!", "fa": "خداحافظ!" }
+    ]
+  },
+  "exercises": [
+    { "type": "gap", "de": "Ich ___ Pouya.", "answer": "heiße", "accept": ["bin"], "fa": "اسم من پویاست." },
+    { "type": "gap", "de": "Woher ___ du?", "answer": "kommst", "fa": "تو اهل کجایی؟" },
+    { "type": "gap", "de": "Wie heißen ___, Frau Weber?", "answer": "Sie", "fa": "اسم شما چیست، خانم وبر؟ (رسمی)" },
+    { "type": "gap", "de": "Du ___ Lena, oder?", "answer": "bist", "fa": "تو لنا هستی، درسته؟" },
+    { "type": "order", "words": ["komme", "aus", "Ich", "dem", "Iran"], "answer": "Ich komme aus dem Iran", "fa": "من اهل ایرانم." },
+    { "type": "order", "words": ["in", "wohne", "Köln", "Ich"], "answer": "Ich wohne in Köln", "fa": "من در کلن زندگی می‌کنم." },
+    { "type": "translate", "fa": "اسم من پویاست.", "answer": "Ich heiße Pouya.", "accept": ["Mein Name ist Pouya.", "Ich bin Pouya."] },
+    { "type": "translate", "fa": "شما اهل کجا هستید؟", "answer": "Woher kommen Sie?", "accept": [] }
+  ],
+  "speaking": {
+    "fa": "خودت را با صدای بلند معرفی کن: اسمت، اهل کجایی، کجا زندگی می‌کنی.",
+    "model": "Hallo, ich heiße Pouya. Ich komme aus dem Iran. Ich wohne in Teheran."
+  }
+}

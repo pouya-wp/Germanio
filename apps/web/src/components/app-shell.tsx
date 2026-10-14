@@ -1,25 +1,36 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import type { ReactNode } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, type ReactNode } from 'react';
+import { brain } from '@/lib/brain';
 import type { StringKey } from '@/lib/strings';
 import { CommandPalette } from './command-palette';
 import { useLearner } from './providers';
 import { T } from './t';
 
+// Few, clear destinations: the path first, extra practice after. Unfinished areas stay hidden.
 const NAV: { href: string; k: StringKey; soon?: boolean }[] = [
   { href: '/heute', k: 'nav.heute' },
+  { href: '/kurs', k: 'nav.kurs' },
   { href: '/wortschatz', k: 'nav.wortschatz' },
-  { href: '/lesesaal', k: 'nav.lesesaal' },
   { href: '/tagesfunk', k: 'nav.tagesfunk' },
+  { href: '/lesesaal', k: 'nav.lesesaal' },
   { href: '/schreiben', k: 'nav.schreiben' },
-  { href: '/grammatik', k: 'nav.grammatik', soon: true },
-  { href: '/sprachgrenze', k: 'nav.sprachgrenze', soon: true },
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
+  // First visit: onboarding before anything else.
+  useEffect(() => {
+    brain
+      .settings()
+      .then((s) => {
+        if (!s.onboarded) router.replace('/start');
+      })
+      .catch(() => {});
+  }, [router]);
   const { health, share, fallback, setFallback, allGerman, setAllGerman } = useLearner();
   const online = health && health !== 'offline';
 
