@@ -14,6 +14,8 @@ import { openLearnerDb } from './db/learner';
 import { Learner } from './domain/learner';
 import { Lesesaal } from './domain/lesesaal';
 import { Studio } from './domain/studio';
+import { Tagesfunk } from './domain/tagesfunk';
+import { createLabClient } from './lab';
 import { Nachtschicht } from './jobs/nachtschicht';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -29,7 +31,6 @@ const base: LLMProvider =
     : new CodexProvider({ model: config.ai.model, defaultEffort: config.ai.reasoningEffort, concurrency: 1 });
 const ai = new CachedProvider(base, db);
 const learner = new Learner(db, dict, grammar);
-const nachtschicht = config.ai.provider === 'codex' ? new Nachtschicht(db, dict, ai) : null;
 
 if (!dict.available) {
   console.warn(`⚠ dictionary not found at ${config.dictionaryPath} — run: pnpm data:build`);
@@ -37,7 +38,10 @@ if (!dict.available) {
 
 const lesesaal = new Lesesaal(db, dict, learner, ai);
 const studio = new Studio(db, learner, ai, grammar);
-const app = createApp({ config, dict, learner, lesesaal, studio, ai, nachtschicht, grammar, version: pkg.version });
+const lab = createLabClient();
+const tagesfunk = new Tagesfunk(db, learner, ai, lab);
+const nachtschicht = config.ai.provider === 'codex' ? new Nachtschicht(db, dict, ai, undefined, tagesfunk) : null;
+const app = createApp({ config, dict, learner, lesesaal, studio, tagesfunk, lab, dataDir: config.dataDir, ai, nachtschicht, grammar, version: pkg.version });
 const server = serve({ fetch: app.fetch, hostname: config.host, port: config.port }, (info) => {
   console.log(`🧠 Germanio brain → http://${config.host}:${info.port}  (ai: ${ai.name}, data: ${config.dataDir})`);
   nachtschicht?.start();

@@ -4,6 +4,7 @@ import type { LearnerDb } from '../db/learner';
 import { cards, glosses } from '../db/schema';
 import { glossBatch } from '../ai/tasks';
 import { AiError, type LLMProvider } from '../ai/provider';
+import type { Tagesfunk } from '../domain/tagesfunk';
 
 /**
  * Nachtschicht — background generation so that nothing interactive ever waits
@@ -33,6 +34,7 @@ export class Nachtschicht {
     private readonly dict: Dictionary,
     private readonly ai: LLMProvider,
     private readonly opts: { intervalMs: number; batchSize: number } = { intervalMs: 60_000, batchSize: 25 },
+    private readonly tagesfunk: Tagesfunk | null = null,
   ) {}
 
   start(): void {
@@ -51,13 +53,20 @@ export class Nachtschicht {
     this.pausedUntil = null;
     this.busy = true;
     const started = Date.now();
+    let shift = 'gloss';
     try {
       const processed = await this.glossShift();
-      if (processed === 0) return null;
-      return this.record({ shift: 'gloss', processed, ms: Date.now() - started });
+      if (processed > 0) return this.record({ shift, processed, ms: Date.now() - started });
+      // Glosses done: produce today's Tagesfunk once per learner day.
+      if (this.tagesfunk && !this.tagesfunk.hasToday()) {
+        shift = 'tagesfunk';
+        await this.tagesfunk.produce();
+        return this.record({ shift, processed: 1, ms: Date.now() - started });
+      }
+      return null;
     } catch (e) {
       if (e instanceof AiError && e.kind === 'rate-limited') this.pausedUntil = e.retryAt;
-      return this.record({ shift: 'gloss', processed: 0, ms: Date.now() - started, error: e instanceof Error ? e.message : String(e) });
+      return this.record({ shift, processed: 0, ms: Date.now() - started, error: e instanceof Error ? e.message : String(e) });
     } finally {
       this.busy = false;
     }

@@ -146,3 +146,37 @@ Recent mistakes on this concept: ${input.mistakes.slice(0, 5).join(' | ') || 'no
   });
   return value;
 }
+
+// ── Tagesfunk ────────────────────────────────────────────────────────────────
+
+export const EpisodeScriptSchema = z.object({
+  title: z.string(),
+  summaryFa: z.string(),
+  segments: z.array(z.object({ speaker: z.enum(['Lena', 'Jonas']), text: z.string() })),
+  vocabulary: z.array(z.object({ de: z.string(), fa: z.string() })),
+});
+export type EpisodeScript = z.infer<typeof EpisodeScriptSchema>;
+
+/** A short two-host radio show built from today's headlines, at the learner's level. */
+export async function episodeScript(
+  ai: LLMProvider,
+  input: { level: Cefr; headlines: { title: string; description: string }[]; targets: string[]; day: string },
+): Promise<EpisodeScript> {
+  const { value } = await ai.generate({
+    task: 'tagesfunk',
+    effort: 'medium',
+    system: `You write "Tagesfunk", a personal 5-minute German radio show for one learner. ${LEARNER}
+Hosts: Lena (warm, curious) and Jonas (calm, a bit funny). Level: ${input.level} — speak in short, clear sentences
+at this level, natural spoken German, du-Form with the listener.
+Structure: greeting with the date → 3 news topics explained simply (in your own words, never copied) →
+one short "Wort des Tages" segment explaining one target word → a tiny tip for life or Ausbildung in Germany → goodbye.
+Weave EVERY target word in at least twice. 30–50 segments, each one or two sentences.
+Also give a Persian summary (2–3 sentences) and a vocabulary list of up to 10 key words with Persian meanings.`,
+    prompt: `Date: ${input.day}
+Target words: ${input.targets.join(', ') || '(none yet)'}
+Headlines:
+${input.headlines.map((h) => `- ${h.title}: ${h.description}`).join('\n')}`,
+    schema: EpisodeScriptSchema,
+  });
+  return value;
+}

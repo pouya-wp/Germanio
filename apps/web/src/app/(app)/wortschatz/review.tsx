@@ -17,8 +17,15 @@ const GRADES: { g: Grade; k: StringKey; key: string }[] = [
   { g: Rating.Easy, k: 'review.easy', key: '4' },
 ];
 
+/** Piper (local neural TTS via brain → lab); the browser's own voice is the fallback. */
 function speak(text: string) {
-  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+  if (typeof window === 'undefined') return;
+  const a = new Audio(brain.ttsUrl(text));
+  a.play().catch(() => browserSpeak(text));
+}
+
+function browserSpeak(text: string) {
+  if (!('speechSynthesis' in window)) return;
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'de-DE';
   u.rate = 0.92;

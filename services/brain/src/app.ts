@@ -16,6 +16,10 @@ import type { Dictionary } from './db/dictionary';
 import { NotFound, type Learner } from './domain/learner';
 import type { Lesesaal } from './domain/lesesaal';
 import type { Studio } from './domain/studio';
+import type { Tagesfunk } from './domain/tagesfunk';
+import type { LabClient } from './lab';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import type { Nachtschicht } from './jobs/nachtschicht';
 
 export interface AppDeps {
@@ -24,6 +28,9 @@ export interface AppDeps {
   learner: Learner;
   lesesaal: Lesesaal;
   studio: Studio;
+  tagesfunk: Tagesfunk;
+  lab: LabClient;
+  dataDir: string;
   ai: LLMProvider;
   nachtschicht: Nachtschicht | null;
   grammar: ConceptNode[];
@@ -47,7 +54,7 @@ const CorrectRequestSchema = z.object({
 });
 
 export function createApp(deps: AppDeps): Hono {
-  const { dict, learner, ai, config, lesesaal, studio } = deps;
+  const { dict, learner, ai, config, lesesaal, studio, tagesfunk, lab } = deps;
   const app = new Hono();
 
   // ── Local-only guard ────────────────────────────────────────────────────
@@ -86,6 +93,7 @@ export function createApp(deps: AppDeps): Hono {
       ai: { provider: ai.name, ...aiStatus },
       nachtschicht: deps.nachtschicht?.history.slice(0, 5) ?? [],
       aiPausedUntil: deps.nachtschicht?.pausedUntil?.toISOString() ?? null,
+      lab: { ready: await lab.available() },
     });
   });
 
@@ -206,6 +214,31 @@ export function createApp(deps: AppDeps): Hono {
   app.post('/grammar/answer', async (c) =>
     c.json(studio.answer(await body(c, z.object({ setId: z.number().int(), index: z.number().int().min(0), given: z.string().max(100) })))),
   );
+
+  // ── Tagesfunk & speech ──────────────────────────────────────────────────
+  app.get('/tagesfunk', (c) => c.json({ episodes: tagesfunk.list() }));
+  app.post('/tagesfunk', async (c) => c.json({ id: await tagesfunk.produce() }, 201));
+  app.get('/tagesfunk/:id', (c) => c.json(tagesfunk.get(c.req.param('id'))));
+  app.get('/tagesfunk/:id/audio', async (c) => {
+    const ep = tagesfunk.get(c.req.param('id'));
+    if (!ep.audioFile) throw new NotFound('audio not rendered yet');
+    const bytes = await readFile(join(deps.dataDir, 'podcasts', ep.audioFile));
+    return c.body(bytes, 200, { 'content-type': 'audio/wav', 'cache-control': 'max-age=86400' });
+  });
+  app.post('/tagesfunk/:id/listened', async (c) => {
+    const { seconds } = await body(c, z.object({ seconds: z.number().min(0).max(7200) }));
+    tagesfunk.listened(c.req.param('id'), Math.round(seconds));
+    return c.json({ ok: true });
+  });
+
+  /** Local neural TTS (Piper via lab). Browsers can't reach lab directly, so brain relays. */
+  app.get('/tts', async (c) => {
+    const text = (c.req.query('text') ?? '').slice(0, 500);
+    const voice = c.req.query('voice') === 'kerstin' ? 'kerstin' : 'thorsten';
+    if (!text.trim()) return c.json({ error: 'text required' }, 400);
+    if (!(await lab.available())) return c.json({ error: 'lab offline' }, 503);
+    return c.body(await lab.tts(text, voice), 200, { 'content-type': 'audio/wav', 'cache-control': 'max-age=31536000, immutable' });
+  });
 
   return app;
 }

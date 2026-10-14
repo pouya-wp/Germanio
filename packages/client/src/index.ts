@@ -146,6 +146,26 @@ export interface DrillSet {
   items: { prompt: string; answer: string; alternatives: string[]; hintFa: string; explanationDe: string }[];
 }
 
+export interface EpisodeSummary {
+  id: string;
+  title: string;
+  duration: number | null;
+  level: Cefr;
+  createdAt: string;
+  listenedAt: string | null;
+  audioFile: string | null;
+}
+
+export interface Episode extends EpisodeSummary {
+  script: {
+    title: string;
+    summaryFa: string;
+    segments: { speaker: 'Lena' | 'Jonas'; text: string }[];
+    vocabulary: { de: string; fa: string }[];
+  };
+  timings: { index: number; start: number; end: number }[] | null;
+}
+
 export class BrainError extends Error {
   constructor(
     message: string,
@@ -183,6 +203,13 @@ export interface BrainClient {
   grammar(): Promise<{ nodes: GrammarNode[] }>;
   drills(conceptId: string, fresh?: boolean): Promise<{ id: number; set: DrillSet }>;
   answer(setId: number, index: number, given: string): Promise<{ correct: boolean; answer: string; explanationDe: string; pKnown: number }>;
+  episodes(): Promise<{ episodes: EpisodeSummary[] }>;
+  episode(id: string): Promise<Episode>;
+  produceEpisode(): Promise<{ id: string }>;
+  listened(id: string, seconds: number): Promise<void>;
+  /** URL of a brain-served audio resource (episode audio, Piper TTS). */
+  audioUrl(path: string): string;
+  ttsUrl(text: string, voice?: 'thorsten' | 'kerstin'): string;
 }
 
 /** AI-backed calls go through the learner's subscription and can take a while. */
@@ -238,5 +265,11 @@ export function createBrainClient(baseUrl: string = DEFAULT_BRAIN_URL, fetchImpl
     grammar: () => call('/grammar'),
     drills: (conceptId, fresh) => call(`/grammar/${encodeURIComponent(conceptId)}/drills${fresh ? '?fresh=1' : ''}`, { timeoutMs: AI }),
     answer: (setId, index, given) => call('/grammar/answer', { method: 'POST', body: { setId, index, given } }),
+    episodes: () => call('/tagesfunk'),
+    episode: (id) => call(`/tagesfunk/${id}`),
+    produceEpisode: () => call('/tagesfunk', { method: 'POST', timeoutMs: 20 * 60_000 }),
+    listened: async (id, seconds) => void (await call(`/tagesfunk/${id}/listened`, { method: 'POST', body: { seconds } })),
+    audioUrl: (path) => `${baseUrl}${path}`,
+    ttsUrl: (text, voice = 'thorsten') => `${baseUrl}/tts?voice=${voice}&text=${encodeURIComponent(text)}`,
   };
 }
