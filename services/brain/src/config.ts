@@ -22,7 +22,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
   // Firefox gives each install a random UUID origin (moz-extension://<uuid>); pin it via env once known.
   const extensionId = env.GERMANIO_EXTENSION_ID;
   const webOrigins = new Set(
-    (env.GERMANIO_WEB_ORIGINS ?? 'http://localhost:3000,http://127.0.0.1:3000,http://tauri.localhost,tauri://localhost')
+    (env.GERMANIO_WEB_ORIGINS ?? 'http://localhost:3000,http://127.0.0.1:3000,http://localhost:1420,http://tauri.localhost,tauri://localhost')
       .split(',')
       .map((s) => s.trim()),
   );
