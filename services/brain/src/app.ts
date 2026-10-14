@@ -14,12 +14,16 @@ import { correctText } from './ai/tasks';
 import type { Config } from './config';
 import type { Dictionary } from './db/dictionary';
 import { NotFound, type Learner } from './domain/learner';
+import type { Lesesaal } from './domain/lesesaal';
+import type { Studio } from './domain/studio';
 import type { Nachtschicht } from './jobs/nachtschicht';
 
 export interface AppDeps {
   config: Pick<Config, 'port' | 'allowedOrigins'>;
   dict: Dictionary;
   learner: Learner;
+  lesesaal: Lesesaal;
+  studio: Studio;
   ai: LLMProvider;
   nachtschicht: Nachtschicht | null;
   grammar: ConceptNode[];
@@ -43,7 +47,7 @@ const CorrectRequestSchema = z.object({
 });
 
 export function createApp(deps: AppDeps): Hono {
-  const { dict, learner, ai, config } = deps;
+  const { dict, learner, ai, config, lesesaal, studio } = deps;
   const app = new Hono();
 
   // ── Local-only guard ────────────────────────────────────────────────────
@@ -165,6 +169,43 @@ export function createApp(deps: AppDeps): Hono {
     learner.logTime({ source: 'manual', activity: 'writing', seconds: Math.max(30, req.text.length), active: true });
     return c.json({ correction, zettelIds });
   });
+
+  // ── Lesesaal ────────────────────────────────────────────────────────────
+  app.get('/texts', (c) => c.json({ texts: lesesaal.list() }));
+  app.get('/texts/:id', (c) => c.json(lesesaal.open(Number(c.req.param('id')))));
+  app.post('/texts', async (c) => {
+    const req = await body(
+      c,
+      z.union([
+        z.object({ url: z.string().url() }),
+        z.object({ title: z.string().max(200), body: z.string().min(20).max(60_000) }),
+      ]),
+    );
+    const row = 'url' in req ? await lesesaal.importUrl(req.url) : lesesaal.importText(req);
+    return c.json(row, 201);
+  });
+  app.post('/texts/:id/simplify', async (c) => {
+    const { level } = await body(c, z.object({ level: CefrSchema.optional() }));
+    return c.json(await lesesaal.simplify(Number(c.req.param('id')), level), 201);
+  });
+  app.post('/stories', async (c) => {
+    const { topic, level } = await body(c, z.object({ topic: z.string().min(2).max(200), level: CefrSchema.optional() }));
+    return c.json(await lesesaal.story(topic, level), 201);
+  });
+
+  // ── Schreiben ───────────────────────────────────────────────────────────
+  app.get('/journal', (c) => c.json({ entries: studio.journal() }));
+  app.post('/journal', async (c) => {
+    const req = await body(c, z.object({ text: z.string().min(1).max(4000), prompt: z.string().max(500).nullable().optional(), level: CefrSchema.optional() }));
+    return c.json(await studio.write(req), 201);
+  });
+  app.get('/zettels', (c) => c.json({ zettels: learner.zettels() }));
+
+  // ── Grammatik drills ────────────────────────────────────────────────────
+  app.get('/grammar/:id/drills', async (c) => c.json(await studio.drills(c.req.param('id'), c.req.query('fresh') === '1')));
+  app.post('/grammar/answer', async (c) =>
+    c.json(studio.answer(await body(c, z.object({ setId: z.number().int(), index: z.number().int().min(0), given: z.string().max(100) })))),
+  );
 
   return app;
 }

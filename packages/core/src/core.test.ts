@@ -176,3 +176,19 @@ describe('schemas', () => {
     expect(ok.success).toBe(true);
   });
 });
+
+describe('adjective endings', () => {
+  it('follows weak, mixed and strong declension', async () => {
+    const { adjectiveEnding: e } = await import('./index');
+    expect(e('definite', 'der', 'nom')).toBe('e'); // der gute Mann
+    expect(e('definite', 'der', 'akk')).toBe('en'); // den guten Mann
+    expect(e('definite', 'die', 'akk')).toBe('e'); // die gute Frau
+    expect(e('indefinite', 'der', 'nom')).toBe('er'); // ein guter Mann
+    expect(e('indefinite', 'das', 'akk')).toBe('es'); // ein gutes Kind
+    expect(e('indefinite', 'die', 'dat')).toBe('en'); // einer guten Frau
+    expect(e('none', 'das', 'nom')).toBe('es'); // gutes Bier
+    expect(e('none', 'der', 'dat')).toBe('em'); // mit gutem Wein
+    expect(e('none', 'pl', 'gen')).toBe('er'); // guter Freunde
+    expect(e('definite', 'pl', 'nom')).toBe('en'); // die guten Freunde
+  });
+});

@@ -11,6 +11,8 @@ import { createApp } from './app';
 import { Dictionary } from './db/dictionary';
 import { openLearnerDb } from './db/learner';
 import { Learner } from './domain/learner';
+import { Lesesaal } from './domain/lesesaal';
+import { Studio } from './domain/studio';
 import { Nachtschicht } from './jobs/nachtschicht';
 import { fixtureGrammar, makeFixtureDictionary } from './test/fixtures';
 
@@ -34,6 +36,14 @@ function setup() {
           exampleDe: 'Beispiel.',
           exampleFa: 'مثال.',
         })),
+    }),
+    story: () => ({ title: 'Das neue Haus', body: 'Das Haus ist schön. Ich gehe in das Haus.', glossary: [{ de: 'Haus', fa: 'خانه' }] }),
+    simplify: () => ({ title: 'Einfach', body: 'Das Haus ist schön.', glossary: [] }),
+    drills: () => ({
+      explanationDe: 'Richtung → Akkusativ.',
+      explanationFa: 'جهت ← مفعولی.',
+      pattern: 'in + Akk (wohin?) / in + Dat (wo?)',
+      items: [{ prompt: 'Ich gehe in ___ Schule.', answer: 'die', alternatives: [], hintFa: 'جهت', explanationDe: 'Wohin? → Akkusativ' }],
     }),
     correct: () => ({
       corrected: 'Ich gehe in die Schule.',
@@ -59,6 +69,8 @@ function setup() {
     config: { port: 4317, allowedOrigins: (o) => o === 'http://localhost:3000' },
     dict,
     learner,
+    lesesaal: new Lesesaal(db, dict, learner, ai),
+    studio: new Studio(db, learner, ai, fixtureGrammar),
     ai,
     nachtschicht,
     grammar: fixtureGrammar,
@@ -191,5 +203,38 @@ describe('rate limits', () => {
     const at = parseRetryAt('You’ve hit your usage limit … try again at 5:04 PM.', now);
     expect([at.getHours(), at.getMinutes(), at.getDate()]).toEqual([17, 4, 14]);
     expect(parseRetryAt('try again at 9:00 AM', now).getDate()).toBe(15);
+  });
+});
+
+describe('lesesaal', () => {
+  it('imports a text and overlays word status with coverage', async () => {
+    const created = (await (await t.req('/texts', { method: 'POST', json: { title: 'Test', body: 'Das Haus ist schön und ich gehe heute nach Hause.' } })).json()) as Json;
+    const opened = (await (await t.req(`/texts/${created.id}`)).json()) as Json;
+    expect(opened.tokens.find((x: Json) => x.text === 'Haus').lemma).toBe('Haus');
+    expect(opened.coverage).toBe(0);
+  });
+
+  it('generates a story from known + target words and stores its glossary', async () => {
+    const story = (await (await t.req('/stories', { method: 'POST', json: { topic: 'WG' } })).json()) as Json;
+    expect(story.kind).toBe('story');
+    expect(story.glossary).toEqual([{ de: 'Haus', fa: 'خانه' }]);
+  });
+});
+
+describe('schreiben & grammatik', () => {
+  it('stores journal entries with their correction', async () => {
+    await t.req('/journal', { method: 'POST', json: { text: 'Ich gehe in der Schule.' } });
+    const j = (await (await t.req('/journal')).json()) as Json;
+    expect(j.entries[0].correction.errors[0].conceptId).toBe('praep.wechsel');
+  });
+
+  it('serves drills once and grades answers locally', async () => {
+    const d = (await (await t.req('/grammar/praep.wechsel/drills')).json()) as Json;
+    await t.req('/grammar/praep.wechsel/drills');
+    expect(t.recorded.calls.filter((c) => c.task === 'drills')).toHaveLength(1);
+    const ok = (await (await t.req('/grammar/answer', { method: 'POST', json: { setId: d.id, index: 0, given: ' Die ' } })).json()) as Json;
+    expect(ok.correct).toBe(true);
+    const bad = (await (await t.req('/grammar/answer', { method: 'POST', json: { setId: d.id, index: 0, given: 'der' } })).json()) as Json;
+    expect(bad.correct).toBe(false);
   });
 });

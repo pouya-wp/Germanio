@@ -1,4 +1,4 @@
-import { and, asc, count, eq, gte, inArray, lt, lte, ne, sql, sum } from 'drizzle-orm';
+import { and, asc, count, desc, eq, gte, inArray, lt, lte, ne, sql, sum } from 'drizzle-orm';
 import {
   bktUpdate,
   buildPlan,
@@ -6,6 +6,7 @@ import {
   forecast,
   frontier,
   isKnown,
+  levelFromProgress,
   newMemory,
   review as fsrsReview,
   State,
@@ -263,6 +264,29 @@ export class Learner {
     return { card: this.toCard({ ...row, memory, due: memory.due }), nextDue: memory.due };
   }
 
+  /** Current CEFR level for prompts (never below A1 — prompts need a target). */
+  level(): Cefr {
+    const p = this.forecast().progress;
+    return levelFromProgress(Math.max(1, p)).level as Cefr;
+  }
+
+  /** Lemmas currently in learning (reviewed, not yet stable), most recently reviewed first. */
+  learningLemmas(limit: number): string[] {
+    const rows = this.db
+      .select({ lemma: cards.lemma, memory: cards.memory })
+      .from(cards)
+      .where(and(eq(cards.kind, 'recognition'), ne(sql`json_extract(${cards.memory}, '$.state')`, State.New)))
+      .orderBy(desc(sql`json_extract(${cards.memory}, '$.lastReview')`))
+      .limit(limit * 3)
+      .all();
+    return [...new Set(rows.filter((r) => !isKnown(r.memory)).map((r) => r.lemma))].slice(0, limit);
+  }
+
+  /** The most frequent lemmas — a stand-in vocabulary before the learner knows any words. */
+  coreLemmas(limit: number): string[] {
+    return this.dict.nextCore(new Set(), limit).map((l) => l.lemma);
+  }
+
   /** Learner-side gloss (Persian meaning etc.) produced by Nachtschicht, if any. */
   gloss(lemma: string) {
     return this.db.select().from(glosses).where(eq(glosses.lemma, lemma)).get() ?? null;
@@ -370,6 +394,26 @@ export class Learner {
       for (const id of c.correctConcepts) this.observeConcept(id, true);
     });
     return { zettelIds };
+  }
+
+  /** Recent corrections filed under a concept ("in der Schule → in die Schule"), newest first. */
+  mistakesFor(conceptId: string, limit = 5): string[] {
+    const node = this.grammar.find((n) => n.id === conceptId);
+    if (!node) return [];
+    const rule = this.db.select().from(zettels).where(and(eq(zettels.kind, 'rule'), eq(zettels.title, node.title))).get();
+    if (!rule || rule.links.length === 0) return [];
+    return this.db
+      .select({ title: zettels.title })
+      .from(zettels)
+      .where(inArray(zettels.id, rule.links))
+      .orderBy(desc(zettels.id))
+      .limit(limit)
+      .all()
+      .map((z) => z.title);
+  }
+
+  zettels(limit = 200) {
+    return this.db.select().from(zettels).orderBy(desc(zettels.id)).limit(limit).all();
   }
 
   /** Every correction Zettel links to the rule Zettel of its concept (created on first use). */
