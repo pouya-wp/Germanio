@@ -116,3 +116,45 @@ export const settings = sqliteTable('settings', {
   key: text('key').primaryKey(),
   value: text('value', { mode: 'json' }).notNull(),
 });
+
+/** Lesesaal: texts the learner reads (imported, simplified, or generated stories). */
+export const texts = sqliteTable(
+  'texts',
+  {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    title: text('title').notNull(),
+    body: text('body').notNull(),
+    kind: text('kind', { enum: ['import', 'simplified', 'story', 'library'] }).notNull(),
+    level: text('level'),
+    sourceUrl: text('source_url'),
+    parentId: integer('parent_id'),
+    /** Words still new at the text's level, with Persian meanings. */
+    glossary: text('glossary', { mode: 'json' }).$type<{ de: string; fa: string }[]>().notNull().default(sql`'[]'`),
+    /** Share of tokens known when last opened — Krashen's comprehensibility. */
+    coverage: real('coverage'),
+    createdAt: text('created_at').notNull().default(now),
+    readAt: text('read_at'),
+  },
+  (t) => [index('texts_created').on(t.createdAt)],
+);
+
+/** Schreiben: journal entries with their correction. */
+export const journal = sqliteTable('journal', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  prompt: text('prompt'),
+  text: text('text').notNull(),
+  correction: text('correction', { mode: 'json' }),
+  createdAt: text('created_at').notNull().default(now),
+});
+
+/** Grammatik: generated drill sets per concept, reused until replaced. */
+export const drillSets = sqliteTable(
+  'drill_sets',
+  {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    conceptId: text('concept_id').notNull(),
+    data: text('data', { mode: 'json' }).notNull(),
+    createdAt: text('created_at').notNull().default(now),
+  },
+  (t) => [index('drill_sets_concept').on(t.conceptId)],
+);

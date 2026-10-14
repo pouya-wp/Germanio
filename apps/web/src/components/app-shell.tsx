@@ -11,8 +11,8 @@ import { T } from './t';
 const NAV: { href: string; k: StringKey; soon?: boolean }[] = [
   { href: '/heute', k: 'nav.heute' },
   { href: '/wortschatz', k: 'nav.wortschatz' },
-  { href: '/lesesaal', k: 'nav.lesesaal', soon: true },
-  { href: '/schreiben', k: 'nav.schreiben', soon: true },
+  { href: '/lesesaal', k: 'nav.lesesaal' },
+  { href: '/schreiben', k: 'nav.schreiben' },
   { href: '/grammatik', k: 'nav.grammatik', soon: true },
   { href: '/sprachgrenze', k: 'nav.sprachgrenze', soon: true },
 ];

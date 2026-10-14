@@ -12,6 +12,8 @@ import { loadConfig } from './config';
 import { Dictionary } from './db/dictionary';
 import { openLearnerDb } from './db/learner';
 import { Learner } from './domain/learner';
+import { Lesesaal } from './domain/lesesaal';
+import { Studio } from './domain/studio';
 import { Nachtschicht } from './jobs/nachtschicht';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -33,7 +35,9 @@ if (!dict.available) {
   console.warn(`⚠ dictionary not found at ${config.dictionaryPath} — run: pnpm data:build`);
 }
 
-const app = createApp({ config, dict, learner, ai, nachtschicht, grammar, version: pkg.version });
+const lesesaal = new Lesesaal(db, dict, learner, ai);
+const studio = new Studio(db, learner, ai, grammar);
+const app = createApp({ config, dict, learner, lesesaal, studio, ai, nachtschicht, grammar, version: pkg.version });
 const server = serve({ fetch: app.fetch, hostname: config.host, port: config.port }, (info) => {
   console.log(`🧠 Germanio brain → http://${config.host}:${info.port}  (ai: ${ai.name}, data: ${config.dataDir})`);
   nachtschicht?.start();

@@ -96,10 +96,62 @@ export interface MineResponse {
   alreadyKnown: boolean;
 }
 
+export interface TextSummary {
+  id: number;
+  title: string;
+  kind: 'import' | 'simplified' | 'story' | 'library';
+  level: Cefr | null;
+  coverage: number | null;
+  sourceUrl: string | null;
+  createdAt: string;
+  readAt: string | null;
+}
+
+export interface TextDetail extends TextSummary {
+  body: string;
+  parentId: number | null;
+  glossary: { de: string; fa: string }[];
+  tokens: AnalyzedToken[];
+}
+
+export interface JournalEntry {
+  id: number;
+  prompt: string | null;
+  text: string;
+  correction: Correction | null;
+  createdAt: string;
+}
+
+export interface Zettel {
+  id: number;
+  title: string;
+  body: string;
+  kind: 'rule' | 'correction' | 'sentence' | 'note';
+  links: number[];
+  createdAt: string;
+}
+
+export interface GrammarNode {
+  id: string;
+  title: string;
+  level: Cefr;
+  requires: string[];
+  pKnown: number | null;
+}
+
+export interface DrillSet {
+  explanationDe: string;
+  explanationFa: string;
+  pattern: string;
+  items: { prompt: string; answer: string; alternatives: string[]; hintFa: string; explanationDe: string }[];
+}
+
 export class BrainError extends Error {
   constructor(
     message: string,
     readonly status: number,
+    /** Set when the learner's AI subscription is rate-limited (HTTP 429). */
+    readonly retryAt: string | null = null,
   ) {
     super(message);
   }
@@ -120,7 +172,21 @@ export interface BrainClient {
   settings(): Promise<Settings>;
   updateSettings(patch: Partial<Settings>): Promise<Settings>;
   correct(text: string, level?: Cefr, context?: string): Promise<{ correction: Correction; zettelIds: number[] }>;
+  texts(): Promise<{ texts: TextSummary[] }>;
+  text(id: number): Promise<TextDetail>;
+  importText(input: { title: string; body: string } | { url: string }): Promise<TextSummary>;
+  simplify(id: number, level?: Cefr): Promise<TextSummary>;
+  story(topic: string, level?: Cefr): Promise<TextSummary>;
+  journal(): Promise<{ entries: JournalEntry[] }>;
+  write(text: string, prompt?: string | null): Promise<{ id: number; correction: Correction; zettelIds: number[] }>;
+  zettels(): Promise<{ zettels: Zettel[] }>;
+  grammar(): Promise<{ nodes: GrammarNode[] }>;
+  drills(conceptId: string, fresh?: boolean): Promise<{ id: number; set: DrillSet }>;
+  answer(setId: number, index: number, given: string): Promise<{ correct: boolean; answer: string; explanationDe: string; pKnown: number }>;
 }
+
+/** AI-backed calls go through the learner's subscription and can take a while. */
+const AI = 240_000;
 
 export function createBrainClient(baseUrl: string = DEFAULT_BRAIN_URL, fetchImpl: typeof fetch = fetch): BrainClient {
   const call = async <T>(path: string, init?: { method?: string; body?: unknown; timeoutMs?: number }): Promise<T> => {
@@ -134,8 +200,8 @@ export function createBrainClient(baseUrl: string = DEFAULT_BRAIN_URL, fetchImpl
           ? { body: JSON.stringify(init.body), headers: { 'Content-Type': 'application/json' } }
           : {}),
       });
-      const data = (await res.json().catch(() => ({}))) as T & { error?: string };
-      if (!res.ok) throw new BrainError(data.error ?? res.statusText, res.status);
+      const data = (await res.json().catch(() => ({}))) as T & { error?: string; retryAt?: string | null };
+      if (!res.ok) throw new BrainError(data.error ?? res.statusText, res.status, data.retryAt ?? null);
       return data;
     } catch (e) {
       if (e instanceof BrainError) throw e;
@@ -160,6 +226,17 @@ export function createBrainClient(baseUrl: string = DEFAULT_BRAIN_URL, fetchImpl
     settings: () => call('/settings'),
     updateSettings: (patch) => call('/settings', { method: 'PATCH', body: patch }),
     correct: (text, level, context) =>
-      call('/correct', { method: 'POST', body: { text, ...(level ? { level } : {}), ...(context ? { context } : {}) }, timeoutMs: 240_000 }),
+      call('/correct', { method: 'POST', body: { text, ...(level ? { level } : {}), ...(context ? { context } : {}) }, timeoutMs: AI }),
+    texts: () => call('/texts'),
+    text: (id) => call(`/texts/${id}`),
+    importText: (input) => call('/texts', { method: 'POST', body: input, timeoutMs: 30_000 }),
+    simplify: (id, level) => call(`/texts/${id}/simplify`, { method: 'POST', body: level ? { level } : {}, timeoutMs: AI }),
+    story: (topic, level) => call('/stories', { method: 'POST', body: { topic, ...(level ? { level } : {}) }, timeoutMs: AI }),
+    journal: () => call('/journal'),
+    write: (text, prompt) => call('/journal', { method: 'POST', body: { text, prompt: prompt ?? null }, timeoutMs: AI }),
+    zettels: () => call('/zettels'),
+    grammar: () => call('/grammar'),
+    drills: (conceptId, fresh) => call(`/grammar/${encodeURIComponent(conceptId)}/drills${fresh ? '?fresh=1' : ''}`, { timeoutMs: AI }),
+    answer: (setId, index, given) => call('/grammar/answer', { method: 'POST', body: { setId, index, given } }),
   };
 }

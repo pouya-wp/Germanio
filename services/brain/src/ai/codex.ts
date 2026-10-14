@@ -22,6 +22,8 @@ export class CodexProvider implements LLMProvider {
   private entry: Promise<string[]> | null = null;
   private running = 0;
   private queue: (() => void)[] = [];
+  /** After a usage-limit error, fail fast until the subscription resets instead of spawning Codex again. */
+  private blockedUntil: Date | null = null;
 
   constructor(
     private readonly opts: {
@@ -68,6 +70,9 @@ export class CodexProvider implements LLMProvider {
   }
 
   async generate<T>(req: GenerateRequest<T>): Promise<GenerateResult<T>> {
+    if (this.blockedUntil && Date.now() < this.blockedUntil.getTime()) {
+      throw new AiError('ChatGPT usage limit reached', 'rate-limited', this.blockedUntil);
+    }
     const release = await this.slot();
     const dir = await mkdtemp(join(tmpdir(), 'germanio-codex-'));
     const started = Date.now();
@@ -95,7 +100,10 @@ export class CodexProvider implements LLMProvider {
       ];
 
       const prompt = `${req.system.trim()}\n\n---\n\n${req.prompt.trim()}\n\nRespond only with JSON matching the provided schema. Do not run any commands.`;
-      const tokens = await run(bin!, args, prompt, this.opts.timeoutMs ?? 180_000, req.signal);
+      const tokens = await run(bin!, args, prompt, this.opts.timeoutMs ?? 180_000, req.signal).catch((e: unknown) => {
+        if (e instanceof AiError && e.kind === 'rate-limited') this.blockedUntil = e.retryAt;
+        throw e;
+      });
 
       const raw = await readFile(outPath, 'utf8').catch(() => '');
       let json: unknown;
