@@ -2,8 +2,9 @@
 
 import { motion } from 'motion/react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { answersMatch, expandUmlautShortcuts, GENDERS, sentenceKey, type Exercise, type Gender, type UnitWord } from '@germanio/core';
+import { answersMatch, expandUmlautShortcuts, GENDERS, phraseFor, sentenceKey, type Exercise, type Gender, type Phrase, type UnitWord } from '@germanio/core';
 import { say } from '@/lib/speak';
+import { FaText } from '../fa-text';
 import { GENUS_TEXT } from '../genus';
 
 /**
@@ -50,7 +51,7 @@ export interface Verdict {
 }
 
 /** Renders one item; calls onAnswer once with the verdict. */
-export function PracticeView({ item, onAnswer, locked }: { item: PracticeItem; onAnswer: (v: Verdict) => void; locked: boolean }) {
+export function PracticeView({ item, phrases, onAnswer, locked }: { item: PracticeItem; phrases: Phrase[]; onAnswer: (v: Verdict) => void; locked: boolean }) {
   switch (item.kind) {
     case 'meaning':
       return <Choice key={itemKey(item)} prompt={<Word w={item.word} />} hint="معنی این واژه چیست؟" options={item.options} correct={item.word.fa} fa onAnswer={onAnswer} locked={locked} sayText={item.word.de} />;
@@ -61,7 +62,7 @@ export function PracticeView({ item, onAnswer, locked }: { item: PracticeItem; o
     case 'authored':
       if (item.exercise.type === 'gap') return <Gap key={itemKey(item)} ex={item.exercise} onAnswer={onAnswer} locked={locked} />;
       if (item.exercise.type === 'order') return <Order key={itemKey(item)} ex={item.exercise} onAnswer={onAnswer} locked={locked} />;
-      return <Translate key={itemKey(item)} ex={item.exercise} onAnswer={onAnswer} locked={locked} />;
+      return <Translate key={itemKey(item)} ex={item.exercise} phrase={phraseFor(item.exercise.answer, phrases)} onAnswer={onAnswer} locked={locked} />;
   }
 }
 
@@ -275,15 +276,27 @@ function Order({ ex, onAnswer, locked }: { ex: Extract<Exercise, { type: 'order'
   );
 }
 
-function Translate({ ex, onAnswer, locked }: { ex: Extract<Exercise, { type: 'translate' }>; onAnswer: (v: Verdict) => void; locked: boolean }) {
+function Translate({
+  ex,
+  phrase,
+  onAnswer,
+  locked,
+}: {
+  ex: Extract<Exercise, { type: 'translate' }>;
+  phrase: Phrase | null;
+  onAnswer: (v: Verdict) => void;
+  locked: boolean;
+}) {
   const [value, setValue] = useState('');
   const [done, setDone] = useState(false);
+  const [hint, setHint] = useState(false);
   const check = () => {
     if (done || locked || !value.trim()) return;
     setDone(true);
     const ok = [ex.answer, ...ex.accept].some((a) => sentenceKey(a) === sentenceKey(value));
     void say(ex.answer);
-    onAnswer({ correct: ok, answer: ex.answer });
+    // A wrong answer explains the pattern, not just the solution.
+    onAnswer({ correct: ok, answer: ex.answer, ...(phrase?.note ? { fa: phrase.note } : {}) });
   };
   return (
     <div>
@@ -304,10 +317,23 @@ function Translate({ ex, onAnswer, locked }: { ex: Extract<Exercise, { type: 'tr
         lang="de"
       />
       <p className="label mt-3">a: → ä · o: → ö · u: → ü · s: → ß</p>
+      {hint && phrase && (
+        <div className="mt-6 border-l-2 border-ink pl-4">
+          <p className="text-2xl font-semibold tracking-tight">{phrase.de}</p>
+          {phrase.note && <p lang="fa" className="mt-1 text-ink-2"><FaText>{phrase.note}</FaText></p>}
+        </div>
+      )}
       {!done && (
-        <button onClick={check} className="mt-6 border border-ink px-5 py-3 font-medium hover:bg-ink hover:text-paper">
-          Prüfen ↵
-        </button>
+        <div className="mt-6 flex gap-3">
+          <button onClick={check} className="border border-ink px-5 py-3 font-medium hover:bg-ink hover:text-paper">
+            Prüfen ↵
+          </button>
+          {phrase && !hint && (
+            <button onClick={() => setHint(true)} lang="fa" className="border border-line px-5 py-3 hover:border-ink">
+              راهنما: الگوی جمله
+            </button>
+          )}
+        </div>
       )}
     </div>
   );

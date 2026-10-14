@@ -223,3 +223,32 @@ describe('kurs content', () => {
     expect(s).toEqual({ a: 'done', b: 'current', c: 'locked' });
   });
 });
+
+describe('kurs pedagogy', () => {
+  it('every translation task is built on a Satzbaustein taught in this or an earlier unit', async () => {
+    const { readFileSync, readdirSync } = await import('node:fs');
+    const { join } = await import('node:path');
+    const { UnitContentSchema, phraseFor } = await import('./index');
+    const dir = join(__dirname, '../../../content/kurs/units');
+    const units = readdirSync(dir).sort().map((f) => UnitContentSchema.parse(JSON.parse(readFileSync(join(dir, f), 'utf8'))));
+    const taught: { de: string; fa: string }[] = [];
+    const missing: string[] = [];
+    for (const u of units) {
+      taught.push(...u.phrases);
+      for (const ex of u.exercises) {
+        if (ex.type === 'translate' && !phraseFor(ex.answer, taught)) missing.push(`${u.id}: "${ex.answer}"`);
+      }
+    }
+    expect(missing, `untaught production tasks:\n${missing.join('\n')}`).toEqual([]);
+  });
+
+  it('finds the age pattern for "Ich bin zwanzig Jahre alt"', async () => {
+    const { phraseFor } = await import('./index');
+    const p = phraseFor('Ich bin zwanzig Jahre alt.', [
+      { de: 'Ich heiße …', fa: '' },
+      { de: 'Ich bin … Jahre alt.', fa: 'من … سالم است.' },
+    ]);
+    expect(p?.de).toBe('Ich bin … Jahre alt.');
+    expect(phraseFor('Ich habe einen großen Hund gekauft.', [{ de: 'Ich bin … Jahre alt.', fa: '' }])).toBeNull();
+  });
+});
