@@ -188,6 +188,8 @@ function Woerter({ words, results, onNext }: { words: UnitWord[]; results: Recor
           </button>
           {w.plural && <p className="mt-3 font-mono text-muted">Plural: die {w.plural}</p>}
           <p lang="fa" className="mt-6 text-left text-3xl font-medium">{w.fa}</p>
+          {/* English is the learner's strongest bridge to German: cognates (Haus · house) stick instantly. */}
+          <p lang="en" className="mt-1 text-xl text-muted">{w.en}</p>
           <button onClick={() => void say(w.example.de)} className="mt-10 block border-l-2 border-ink pl-5 text-left">
             <span className="block text-2xl">{w.example.de} <span className="text-muted">▶</span></span>
             <span lang="fa" className="mt-1 block text-left text-lg text-ink-2">{w.example.fa}</span>

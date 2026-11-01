@@ -1,0 +1,73 @@
+{
+  "id": "a1-11",
+  "intro": {
+    "fa": "مریض شدن در کشور غریب استرس دارد — مگر اینکه بتوانی بگویی چه‌ات شده. این درس اعضای بدن، علائم ساده، و جمله‌های ضروری مطب را یاد می‌دهد. ضمناً در آوسبیلدونگ اگر مریض شوی باید به شرکت خبر بدهی و krankschreiben بگیری.",
+    "de": "Am Ende kannst du sagen: Ich habe Kopfschmerzen. Mir ist schlecht. Ich bin krank."
+  },
+  "words": [
+    { "de": "krank", "fa": "بیمار، مریض", "en": "sick, ill", "example": { "de": "Ich bin heute krank.", "fa": "امروز مریضم." } },
+    { "de": "gesund", "fa": "سالم", "en": "healthy", "example": { "de": "Obst ist gesund.", "fa": "میوه سالم است." } },
+    { "de": "Arzt", "article": "der", "plural": "Ärzte", "fa": "پزشک (مرد)", "en": "doctor", "example": { "de": "Ich gehe zum Arzt.", "fa": "پیش دکتر می‌روم." } },
+    { "de": "Kopf", "article": "der", "plural": "Köpfe", "fa": "سر", "en": "head", "example": { "de": "Mein Kopf tut weh.", "fa": "سرم درد می‌کند." } },
+    { "de": "Bauch", "article": "der", "plural": "Bäuche", "fa": "شکم", "en": "belly, stomach", "example": { "de": "Der Bauch tut weh.", "fa": "شکمم درد می‌کند." } },
+    { "de": "Hals", "article": "der", "plural": "Hälse", "fa": "گلو، گردن", "en": "throat, neck", "example": { "de": "Ich habe Halsschmerzen.", "fa": "گلودرد دارم." } },
+    { "de": "Rücken", "article": "der", "plural": "Rücken", "fa": "کمر، پشت", "en": "back", "example": { "de": "Mein Rücken tut weh.", "fa": "کمرم درد می‌کند." } },
+    { "de": "Fieber", "article": "das", "fa": "تب", "en": "fever", "example": { "de": "Ich habe Fieber.", "fa": "تب دارم." } },
+    { "de": "Schmerzen", "article": "die", "fa": "درد (جمع)", "en": "pain", "example": { "de": "Ich habe Kopfschmerzen.", "fa": "سردرد دارم." } },
+    { "de": "wehtun", "fa": "درد کردن", "en": "to hurt", "example": { "de": "Was tut weh?", "fa": "کجا درد می‌کند؟" } },
+    { "de": "Tablette", "article": "die", "plural": "Tabletten", "fa": "قرص", "en": "pill, tablet", "example": { "de": "Nehmen Sie eine Tablette.", "fa": "یک قرص بخورید." } },
+    { "de": "Apotheke", "article": "die", "plural": "Apotheken", "fa": "داروخانه", "en": "pharmacy", "example": { "de": "Die Apotheke ist neben dem Arzt.", "fa": "داروخانه کنار مطب است." } },
+    { "de": "müde", "fa": "خسته", "en": "tired", "example": { "de": "Ich bin sehr müde.", "fa": "خیلی خسته‌ام." } },
+    { "de": "Gute Besserung!", "fa": "زود خوب شوی!", "en": "get well soon", "example": { "de": "Du bist krank? Gute Besserung!", "fa": "مریضی؟ زود خوب شوی!" } }
+  ],
+  "phrases": [
+    { "de": "Ich habe Kopfschmerzen.", "fa": "سردرد دارم.", "note": "درد را «داشتن» می‌گویند: Ich habe Kopfschmerzen / Bauchschmerzen / Halsschmerzen — اسم عضو + schmerzen." },
+    { "de": "Mein Kopf tut weh.", "fa": "سرم درد می‌کند.", "note": "راه دوم: «… من درد می‌کند». wehtun جدا می‌شود: tut … weh." },
+    { "de": "Ich bin krank.", "fa": "مریضم.", "note": "اینجا مثل فارسی است: «من مریض هستم» = Ich bin krank." },
+    { "de": "Mir ist schlecht.", "fa": "حالت تهوع دارم / حالم بد است.", "note": "ساختار عجیب: «به من بد است» — با Dativ (mir). نگو «Ich bin schlecht»؛ یعنی «من آدم بدی هستم»!" },
+    { "de": "Ich kann heute nicht arbeiten.", "fa": "امروز نمی‌توانم کار کنم.", "note": "جملهٔ مهم برای خبر دادن به شرکت. nicht قبل از فعل آخر می‌آید." }
+  ],
+  "grammar": {
+    "title": "Körper und Schmerzen: Ich habe … / … tut weh",
+    "fa": "برای گفتن درد دو راه داری: ۱) Ich habe + اسمِ درد (Kopfschmerzen). ۲) عضو + tut weh (برای مفرد) یا tun weh (برای جمع): Die Füße tun weh. برای «حالم بد است» از Mir ist schlecht استفاده کن — ساختاری با Dativ که بعداً بیشتر می‌بینی.",
+    "table": [
+      ["Kopf", "Ich habe Kopfschmerzen.", "Mein Kopf tut weh."],
+      ["Bauch", "Ich habe Bauchschmerzen.", "Mein Bauch tut weh."],
+      ["Hals", "Ich habe Halsschmerzen.", "Mein Hals tut weh."],
+      ["Rücken", "Ich habe Rückenschmerzen.", "Mein Rücken tut weh."]
+    ],
+    "tableHead": ["", "Weg 1", "Weg 2"],
+    "examples": [
+      { "de": "Ich habe Fieber und Halsschmerzen.", "fa": "تب و گلودرد دارم." },
+      { "de": "Seit gestern tut mein Rücken weh.", "fa": "از دیروز کمرم درد می‌کند." }
+    ]
+  },
+  "dialogue": {
+    "title": "Beim Arzt",
+    "fa": "پیش دکتر",
+    "lines": [
+      { "speaker": "Dr. Klein", "de": "Guten Tag, Herr Ahmadi. Was fehlt Ihnen?", "fa": "روز بخیر، آقای احمدی. مشکلتان چیست؟" },
+      { "speaker": "Pouya", "de": "Ich bin krank. Ich habe Kopfschmerzen und Fieber.", "fa": "مریضم. سردرد و تب دارم." },
+      { "speaker": "Dr. Klein", "de": "Seit wann?", "fa": "از کی؟" },
+      { "speaker": "Pouya", "de": "Seit gestern. Und mein Hals tut weh.", "fa": "از دیروز. و گلویم درد می‌کند." },
+      { "speaker": "Dr. Klein", "de": "Das ist eine Erkältung. Sie müssen viel trinken und schlafen.", "fa": "سرماخوردگی است. باید زیاد مایعات بنوشید و بخوابید." },
+      { "speaker": "Pouya", "de": "Ich kann heute nicht arbeiten. Brauche ich eine Krankschreibung?", "fa": "امروز نمی‌توانم کار کنم. گواهی استعلاجی لازم دارم؟" },
+      { "speaker": "Dr. Klein", "de": "Ja, ich schreibe Sie drei Tage krank. Gute Besserung!", "fa": "بله، سه روز استعلاجی می‌نویسم. زود خوب شوید!" },
+      { "speaker": "Pouya", "de": "Danke schön!", "fa": "خیلی ممنون!" }
+    ]
+  },
+  "exercises": [
+    { "type": "gap", "de": "Ich habe ___.", "answer": "Kopfschmerzen", "accept": ["Fieber", "Bauchschmerzen", "Halsschmerzen"], "fa": "سردرد دارم." },
+    { "type": "gap", "de": "Mein Kopf tut ___.", "answer": "weh", "fa": "سرم درد می‌کند." },
+    { "type": "gap", "de": "___ ist schlecht.", "answer": "Mir", "fa": "حالت تهوع دارم." },
+    { "type": "gap", "de": "Ich gehe zum ___.", "answer": "Arzt", "fa": "پیش دکتر می‌روم." },
+    { "type": "order", "words": ["tut", "Mein", "weh", "Rücken"], "answer": "Mein Rücken tut weh", "fa": "کمرم درد می‌کند." },
+    { "type": "order", "words": ["heute", "kann", "Ich", "arbeiten", "nicht"], "answer": "Ich kann heute nicht arbeiten", "fa": "امروز نمی‌توانم کار کنم." },
+    { "type": "translate", "fa": "مریضم.", "answer": "Ich bin krank.", "accept": [] },
+    { "type": "translate", "fa": "سردرد دارم.", "answer": "Ich habe Kopfschmerzen.", "accept": ["Mein Kopf tut weh."] }
+  ],
+  "speaking": {
+    "fa": "نقش بازی کن: به شرکت زنگ بزن و بگو مریضی، چه علائمی داری و امروز نمی‌توانی بیایی.",
+    "model": "Guten Morgen, hier ist Pouya. Ich bin krank. Ich habe Fieber und Kopfschmerzen. Ich kann heute nicht arbeiten."
+  }
+}
