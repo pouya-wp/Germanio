@@ -1,0 +1,74 @@
+{
+  "id": "a1-12",
+  "intro": {
+    "fa": "پایان A1! حالا یاد می‌گیری از گذشته حرف بزنی. خبر خوب برای تو که انگلیسی بلدی: گذشتهٔ گفتاری آلمانی (Perfekt) شبیه present perfect انگلیسی است: I have worked ← Ich habe gearbeitet. فقط قسمت دوم فعل به آخر جمله می‌رود.",
+    "de": "Am Ende kannst du sagen: Gestern habe ich Deutsch gelernt und Pizza gegessen."
+  },
+  "words": [
+    { "de": "gestern", "fa": "دیروز", "en": "yesterday", "example": { "de": "Gestern habe ich viel gelernt.", "fa": "دیروز خیلی درس خواندم." } },
+    { "de": "letzte Woche", "fa": "هفتهٔ گذشته", "en": "last week", "example": { "de": "Letzte Woche habe ich gearbeitet.", "fa": "هفتهٔ پیش کار کردم." } },
+    { "de": "gemacht", "fa": "انجام داده (از machen)", "en": "done, made", "example": { "de": "Was hast du gemacht?", "fa": "چه کار کردی؟" } },
+    { "de": "gelernt", "fa": "یاد گرفته (از lernen)", "en": "learned", "example": { "de": "Ich habe Deutsch gelernt.", "fa": "آلمانی یاد گرفتم." } },
+    { "de": "gearbeitet", "fa": "کار کرده (از arbeiten)", "en": "worked", "example": { "de": "Er hat lange gearbeitet.", "fa": "او مدت زیادی کار کرد." } },
+    { "de": "gekauft", "fa": "خریده (از kaufen)", "en": "bought", "example": { "de": "Ich habe Brot gekauft.", "fa": "نان خریدم." } },
+    { "de": "gespielt", "fa": "بازی کرده (از spielen)", "en": "played", "example": { "de": "Wir haben Fußball gespielt.", "fa": "فوتبال بازی کردیم." } },
+    { "de": "gegessen", "fa": "خورده (از essen)", "en": "eaten", "example": { "de": "Ich habe Pizza gegessen.", "fa": "پیتزا خوردم." } },
+    { "de": "getrunken", "fa": "نوشیده (از trinken)", "en": "drunk (drink)", "example": { "de": "Ich habe Tee getrunken.", "fa": "چای نوشیدم." } },
+    { "de": "gesehen", "fa": "دیده (از sehen)", "en": "seen", "example": { "de": "Ich habe einen Film gesehen.", "fa": "یک فیلم دیدم." } },
+    { "de": "geschrieben", "fa": "نوشته (از schreiben)", "en": "written", "example": { "de": "Ich habe eine E-Mail geschrieben.", "fa": "یک ایمیل نوشتم." } },
+    { "de": "Film", "article": "der", "plural": "Filme", "fa": "فیلم", "en": "film, movie", "example": { "de": "Der Film war gut.", "fa": "فیلم خوب بود." } },
+    { "de": "war", "fa": "بود (از sein)", "en": "was", "example": { "de": "Das war super!", "fa": "عالی بود!" } },
+    { "de": "hatte", "fa": "داشت (از haben)", "en": "had", "example": { "de": "Ich hatte keine Zeit.", "fa": "وقت نداشتم." } }
+  ],
+  "phrases": [
+    { "de": "Was hast du gestern gemacht?", "fa": "دیروز چه کار کردی؟", "note": "مثل انگلیسی What have you done؟ — haben جایگاه دوم، gemacht آخر جمله." },
+    { "de": "Ich habe … gelernt.", "fa": "… یاد گرفتم.", "note": "Perfekt = haben + قسمت سوم فعل (Partizip II) که به آخر جمله می‌رود. فارسی هم فعل را آخر می‌گذارد — اینجا به نفع توست!" },
+    { "de": "Gestern habe ich … gegessen.", "fa": "دیروز … خوردم.", "note": "اگر Gestern اول بیاید، haben باز هم جایگاه دوم است: Gestern habe ich …" },
+    { "de": "Das war super!", "fa": "عالی بود!", "note": "برای sein و haben در گذشته معمولاً war و hatte می‌گویند، نه Perfekt." },
+    { "de": "Ich hatte keine Zeit.", "fa": "وقت نداشتم." }
+  ],
+  "grammar": {
+    "title": "Perfekt: Ich habe gelernt",
+    "fa": "Partizip II (قسمت سوم فعل) برای فعل‌های منظم: ge + ریشه + t (lernen ← gelernt، kaufen ← gekauft). فعل‌های بی‌قاعده با en تمام می‌شوند و گاهی حرف صدادارشان عوض می‌شود (essen ← gegessen، trinken ← getrunken) — درست مثل eat/eaten و drink/drunk در انگلیسی! haben جایگاه دوم، Partizip آخر جمله.",
+    "table": [
+      ["lernen", "gelernt", "Ich habe Deutsch gelernt."],
+      ["kaufen", "gekauft", "Ich habe Brot gekauft."],
+      ["essen", "gegessen", "Ich habe Pizza gegessen."],
+      ["trinken", "getrunken", "Ich habe Tee getrunken."],
+      ["sehen", "gesehen", "Ich habe einen Film gesehen."]
+    ],
+    "tableHead": ["Infinitiv", "Partizip II", "Satz"],
+    "examples": [
+      { "de": "Gestern habe ich drei Stunden gelernt.", "fa": "دیروز سه ساعت درس خواندم." },
+      { "de": "Was hast du am Wochenende gemacht?", "fa": "آخر هفته چه کار کردی؟" }
+    ]
+  },
+  "dialogue": {
+    "title": "Montagmorgen im Büro",
+    "fa": "صبح دوشنبه در دفتر",
+    "lines": [
+      { "speaker": "Lena", "de": "Guten Morgen, Pouya! Was hast du am Wochenende gemacht?", "fa": "صبح بخیر، پویا! آخر هفته چه کار کردی؟" },
+      { "speaker": "Pouya", "de": "Am Samstag habe ich viel Deutsch gelernt.", "fa": "شنبه خیلی آلمانی خواندم." },
+      { "speaker": "Lena", "de": "Fleißig! Und am Sonntag?", "fa": "چه پرتلاش! و یکشنبه؟" },
+      { "speaker": "Pouya", "de": "Ich habe mit Jonas Fußball gespielt. Dann haben wir Pizza gegessen.", "fa": "با یوناس فوتبال بازی کردم. بعد پیتزا خوردیم." },
+      { "speaker": "Lena", "de": "Toll! Ich habe einen Film gesehen. Er war super.", "fa": "عالی! من یک فیلم دیدم. خیلی خوب بود." },
+      { "speaker": "Pouya", "de": "Welchen Film?", "fa": "کدام فیلم؟" },
+      { "speaker": "Lena", "de": "Einen deutschen Krimi. Mit Untertiteln!", "fa": "یک فیلم جنایی آلمانی. با زیرنویس!" },
+      { "speaker": "Pouya", "de": "Gute Idee. Das mache ich auch!", "fa": "ایدهٔ خوبی است. من هم این کار را می‌کنم!" }
+    ]
+  },
+  "exercises": [
+    { "type": "gap", "de": "Ich habe Deutsch ___.", "answer": "gelernt", "fa": "آلمانی یاد گرفتم." },
+    { "type": "gap", "de": "Was ___ du gestern gemacht?", "answer": "hast", "fa": "دیروز چه کار کردی؟" },
+    { "type": "gap", "de": "Ich habe Pizza ___.", "answer": "gegessen", "fa": "پیتزا خوردم." },
+    { "type": "gap", "de": "Das ___ super!", "answer": "war", "fa": "عالی بود!" },
+    { "type": "order", "words": ["habe", "Gestern", "gelernt", "ich", "Deutsch"], "answer": "Gestern habe ich Deutsch gelernt", "fa": "دیروز آلمانی خواندم." },
+    { "type": "order", "words": ["gemacht", "du", "Was", "hast"], "answer": "Was hast du gemacht", "fa": "چه کار کردی؟" },
+    { "type": "translate", "fa": "دیروز چه کار کردی؟", "answer": "Was hast du gestern gemacht?", "accept": [] },
+    { "type": "translate", "fa": "وقت نداشتم.", "answer": "Ich hatte keine Zeit.", "accept": [] }
+  ],
+  "speaking": {
+    "fa": "آخر هفتهٔ گذشته‌ات را در سه جمله تعریف کن.",
+    "model": "Am Samstag habe ich Deutsch gelernt. Am Sonntag habe ich einen Film gesehen. Das war super!"
+  }
+}

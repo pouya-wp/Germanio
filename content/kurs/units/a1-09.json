@@ -1,0 +1,73 @@
+{
+  "id": "a1-09",
+  "intro": {
+    "fa": "در آلمان بدون Termin (قرار قبلی) تقریباً هیچ کاری انجام نمی‌شود: دکتر، اداره، بانک، حتی آرایشگاه. این درس فعل‌های کمکی (können، müssen، wollen) را یاد می‌دهد — و با آن‌ها، دومین قانون طلایی جمله: فعل اصلی به آخر جمله می‌رود.",
+    "de": "Am Ende kannst du sagen: Ich möchte einen Termin machen. Kann ich am Montag kommen?"
+  },
+  "words": [
+    { "de": "Termin", "article": "der", "plural": "Termine", "fa": "قرار ملاقات، وقت قبلی", "en": "appointment", "example": { "de": "Ich habe einen Termin beim Arzt.", "fa": "پیش دکتر وقت دارم." } },
+    { "de": "können", "fa": "توانستن", "en": "can, to be able to", "example": { "de": "Ich kann am Montag kommen.", "fa": "می‌توانم دوشنبه بیایم." } },
+    { "de": "müssen", "fa": "مجبور بودن، باید", "en": "must, to have to", "example": { "de": "Ich muss heute arbeiten.", "fa": "امروز باید کار کنم." } },
+    { "de": "wollen", "fa": "خواستن (قصد داشتن)", "en": "to want", "example": { "de": "Wir wollen ins Kino gehen.", "fa": "می‌خواهیم برویم سینما." } },
+    { "de": "Zeit", "article": "die", "plural": "Zeiten", "fa": "وقت، زمان", "en": "time", "example": { "de": "Hast du Zeit?", "fa": "وقت داری؟" } },
+    { "de": "Montag", "article": "der", "plural": "Montage", "fa": "دوشنبه", "en": "Monday", "example": { "de": "am Montag", "fa": "دوشنبه" } },
+    { "de": "Dienstag", "article": "der", "plural": "Dienstage", "fa": "سه‌شنبه", "en": "Tuesday", "example": { "de": "am Dienstag um zehn", "fa": "سه‌شنبه ساعت ده" } },
+    { "de": "Mittwoch", "article": "der", "plural": "Mittwoche", "fa": "چهارشنبه", "en": "Wednesday", "example": { "de": "Am Mittwoch habe ich Zeit.", "fa": "چهارشنبه وقت دارم." } },
+    { "de": "Wochenende", "article": "das", "plural": "Wochenenden", "fa": "آخر هفته", "en": "weekend", "example": { "de": "Am Wochenende schlafe ich lange.", "fa": "آخر هفته تا دیر می‌خوابم." } },
+    { "de": "heute", "fa": "امروز", "en": "today", "example": { "de": "Heute habe ich keine Zeit.", "fa": "امروز وقت ندارم." } },
+    { "de": "morgen", "fa": "فردا", "en": "tomorrow", "example": { "de": "Kannst du morgen kommen?", "fa": "می‌توانی فردا بیایی؟" } },
+    { "de": "leider", "fa": "متأسفانه", "en": "unfortunately", "example": { "de": "Leider kann ich nicht.", "fa": "متأسفانه نمی‌توانم." } },
+    { "de": "absagen", "fa": "لغو کردن (قرار)", "en": "to cancel", "example": { "de": "Ich muss den Termin absagen.", "fa": "باید قرار را لغو کنم." } },
+    { "de": "passen", "fa": "مناسب بودن (برای کسی)", "en": "to suit, to work for", "example": { "de": "Passt Ihnen Dienstag?", "fa": "سه‌شنبه برایتان مناسب است؟" } }
+  ],
+  "phrases": [
+    { "de": "Ich möchte einen Termin machen.", "fa": "می‌خواهم وقت بگیرم.", "note": "آلمانی‌ها وقت را «درست می‌کنند»: einen Termin machen (نه «گرفتن»)." },
+    { "de": "Kann ich am … kommen?", "fa": "می‌توانم … بیایم؟", "note": "فعل کمکی جایگاه دوم (یا اول در سؤال)، فعل اصلی آخر: Kann ich am Montag kommen? روزهای هفته با am می‌آیند." },
+    { "de": "Ich muss … absagen.", "fa": "باید … را لغو کنم." },
+    { "de": "Leider habe ich keine Zeit.", "fa": "متأسفانه وقت ندارم.", "note": "«وقت ندارم» = keine Zeit haben؛ برای منفی کردن اسم، kein (نه nicht)." },
+    { "de": "Passt Ihnen …?", "fa": "… برایتان مناسب است؟", "note": "کلمه‌به‌کلمه: «… به شما می‌خورد؟» — جواب: Ja, das passt gut." }
+  ],
+  "grammar": {
+    "title": "Modalverben: können, müssen, wollen",
+    "fa": "فعل‌های کمکی دو قانون دارند: ۱) فعل کمکی جایگاه دوم و صرف می‌شود. ۲) فعل اصلی به شکل مصدر به آخر جمله می‌رود. نکتهٔ جالب: ich و er/sie در این فعل‌ها یکسان‌اند و پسوند نمی‌گیرند: ich kann، er kann.",
+    "table": [
+      ["ich", "kann", "muss", "will"],
+      ["du", "kannst", "musst", "willst"],
+      ["er / sie", "kann", "muss", "will"],
+      ["wir / Sie", "können", "müssen", "wollen"]
+    ],
+    "tableHead": ["", "können", "müssen", "wollen"],
+    "examples": [
+      { "de": "Ich kann heute nicht kommen.", "fa": "امروز نمی‌توانم بیایم. (kommen آخر جمله)" },
+      { "de": "Am Montag muss ich arbeiten.", "fa": "دوشنبه باید کار کنم." }
+    ]
+  },
+  "dialogue": {
+    "title": "Am Telefon mit der Arztpraxis",
+    "fa": "تلفن با مطب دکتر",
+    "lines": [
+      { "speaker": "Frau Weber", "de": "Praxis Dr. Klein, guten Tag!", "fa": "مطب دکتر کلاین، روز بخیر!" },
+      { "speaker": "Pouya", "de": "Guten Tag, hier ist Pouya Ahmadi. Ich möchte einen Termin machen.", "fa": "روز بخیر، پویا احمدی هستم. می‌خواهم وقت بگیرم." },
+      { "speaker": "Frau Weber", "de": "Gern. Können Sie am Dienstag um zehn Uhr?", "fa": "حتماً. سه‌شنبه ساعت ده می‌توانید؟" },
+      { "speaker": "Pouya", "de": "Leider nicht. Am Dienstag muss ich arbeiten.", "fa": "متأسفانه نه. سه‌شنبه باید کار کنم." },
+      { "speaker": "Frau Weber", "de": "Passt Ihnen Mittwoch um vier?", "fa": "چهارشنبه ساعت چهار برایتان مناسب است؟" },
+      { "speaker": "Pouya", "de": "Ja, das passt gut. Vielen Dank!", "fa": "بله، خوب است. خیلی ممنون!" },
+      { "speaker": "Frau Weber", "de": "Bitte bringen Sie Ihre Versicherungskarte mit.", "fa": "لطفاً کارت بیمه‌تان را همراه بیاورید." },
+      { "speaker": "Pouya", "de": "Mache ich. Auf Wiederhören!", "fa": "حتماً. خداحافظ! (پشت تلفن)" }
+    ]
+  },
+  "exercises": [
+    { "type": "gap", "de": "Ich ___ heute arbeiten.", "answer": "muss", "fa": "امروز باید کار کنم." },
+    { "type": "gap", "de": "___ du morgen kommen?", "answer": "Kannst", "fa": "می‌توانی فردا بیایی؟" },
+    { "type": "gap", "de": "Ich kann am Montag ___.", "answer": "kommen", "fa": "می‌توانم دوشنبه بیایم." },
+    { "type": "gap", "de": "Leider habe ich ___ Zeit.", "answer": "keine", "fa": "متأسفانه وقت ندارم." },
+    { "type": "order", "words": ["am", "kommen", "Kann", "ich", "Montag"], "answer": "Kann ich am Montag kommen", "fa": "می‌توانم دوشنبه بیایم؟" },
+    { "type": "order", "words": ["muss", "Ich", "absagen", "den", "Termin"], "answer": "Ich muss den Termin absagen", "fa": "باید قرار را لغو کنم." },
+    { "type": "translate", "fa": "می‌خواهم وقت بگیرم.", "answer": "Ich möchte einen Termin machen.", "accept": [] },
+    { "type": "translate", "fa": "متأسفانه وقت ندارم.", "answer": "Leider habe ich keine Zeit.", "accept": ["Ich habe leider keine Zeit."] }
+  ],
+  "speaking": {
+    "fa": "نقش بازی کن: زنگ بزن، وقت بگیر، روز پیشنهادی اول را رد کن و روز دیگری را قبول کن.",
+    "model": "Ich möchte einen Termin machen. Am Montag kann ich leider nicht. Passt Ihnen Mittwoch?"
+  }
+}

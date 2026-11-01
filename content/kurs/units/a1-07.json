@@ -1,0 +1,74 @@
+{
+  "id": "a1-07",
+  "intro": {
+    "fa": "خرید از سوپرمارکت اولین کار مستقلی است که در آلمان انجام می‌دهی. نکتهٔ این درس: جمع اسم‌ها در آلمانی قانون ثابت ندارد (Apfel ← Äpfel، Tomate ← Tomaten) — پس هر اسم را با جمعش یاد بگیر. خبر خوب: حرف تعریف جمع همیشه die است.",
+    "de": "Am Ende kannst du sagen: Ich brauche drei Äpfel und ein Kilo Tomaten."
+  },
+  "words": [
+    { "de": "Supermarkt", "article": "der", "plural": "Supermärkte", "fa": "سوپرمارکت", "en": "supermarket", "example": { "de": "Der Supermarkt ist um die Ecke.", "fa": "سوپرمارکت سر کوچه است." } },
+    { "de": "kaufen", "fa": "خریدن", "en": "to buy", "example": { "de": "Ich kaufe Brot.", "fa": "نان می‌خرم." } },
+    { "de": "brauchen", "fa": "لازم داشتن", "en": "to need", "example": { "de": "Ich brauche Milch.", "fa": "شیر لازم دارم." } },
+    { "de": "Brot", "article": "das", "plural": "Brote", "fa": "نان", "en": "bread", "example": { "de": "Das Brot ist frisch.", "fa": "نان تازه است." } },
+    { "de": "Milch", "article": "die", "fa": "شیر", "en": "milk", "example": { "de": "Die Milch ist im Kühlschrank.", "fa": "شیر در یخچال است." } },
+    { "de": "Apfel", "article": "der", "plural": "Äpfel", "fa": "سیب", "en": "apple", "example": { "de": "Ich esse jeden Tag einen Apfel.", "fa": "هر روز یک سیب می‌خورم." } },
+    { "de": "Tomate", "article": "die", "plural": "Tomaten", "fa": "گوجه‌فرنگی", "en": "tomato", "example": { "de": "Die Tomaten sind rot.", "fa": "گوجه‌ها قرمزند." } },
+    { "de": "Ei", "article": "das", "plural": "Eier", "fa": "تخم‌مرغ", "en": "egg", "example": { "de": "Ich brauche sechs Eier.", "fa": "شش تا تخم‌مرغ لازم دارم." } },
+    { "de": "Reis", "article": "der", "fa": "برنج", "en": "rice", "example": { "de": "Reis mit Hähnchen ist lecker.", "fa": "برنج با مرغ خوشمزه است." } },
+    { "de": "Kilo", "article": "das", "plural": "Kilo", "fa": "کیلو", "en": "kilo", "example": { "de": "ein Kilo Reis", "fa": "یک کیلو برنج" } },
+    { "de": "Flasche", "article": "die", "plural": "Flaschen", "fa": "بطری", "en": "bottle", "example": { "de": "eine Flasche Wasser", "fa": "یک بطری آب" } },
+    { "de": "teuer", "fa": "گران", "en": "expensive", "example": { "de": "Das ist zu teuer.", "fa": "این خیلی گران است." } },
+    { "de": "billig", "fa": "ارزان", "en": "cheap", "example": { "de": "Die Äpfel sind heute billig.", "fa": "سیب‌ها امروز ارزان‌اند." } },
+    { "de": "Kasse", "article": "die", "plural": "Kassen", "fa": "صندوق (پرداخت)", "en": "checkout", "example": { "de": "Ich bezahle an der Kasse.", "fa": "پای صندوق پرداخت می‌کنم." } }
+  ],
+  "phrases": [
+    { "de": "Ich brauche …", "fa": "… لازم دارم.", "note": "brauchen مفعول می‌خواهد (Akkusativ): Ich brauche einen Apfel. — مثل درس کافه: ein ← einen برای اسم مذکر." },
+    { "de": "Ich kaufe …", "fa": "… می‌خرم." },
+    { "de": "ein Kilo … · eine Flasche …", "fa": "یک کیلو … · یک بطری …", "note": "بعد از مقدار، «از» نمی‌آید: ein Kilo Reis (نه «یک کیلو از برنج»)." },
+    { "de": "Das ist zu teuer.", "fa": "این خیلی گران است.", "note": "zu یعنی «بیش از حد». «خیلی» معمولی می‌شود sehr: Das ist sehr gut." },
+    { "de": "Wo finde ich …?", "fa": "… را کجا پیدا کنم؟ / … کجاست؟", "note": "مؤدبانه‌ترین راه پرسیدن در فروشگاه. کلمه‌به‌کلمه: «کجا پیدا می‌کنم …؟»" }
+  ],
+  "grammar": {
+    "title": "Plural: die Äpfel, die Tomaten, die Eier",
+    "fa": "جمع آلمانی چند الگوی اصلی دارد. حدس‌زدنی است ولی ۱۰۰٪ قانون ندارد؛ برای همین همیشه جمع را همراه اسم یاد بگیر. قانون طلایی: در جمع، حرف تعریف همیشه die است — مهم نیست اسم مفرد der بوده یا das.",
+    "table": [
+      ["-e", "der Tisch", "die Tische"],
+      ["-(e)n", "die Tomate", "die Tomaten"],
+      ["-er + Umlaut", "das Buch", "die Bücher"],
+      ["Umlaut", "der Apfel", "die Äpfel"],
+      ["-s", "das Handy", "die Handys"]
+    ],
+    "tableHead": ["Muster", "Singular", "Plural"],
+    "examples": [
+      { "de": "Ich brauche zwei Äpfel und drei Tomaten.", "fa": "دو سیب و سه گوجه لازم دارم." },
+      { "de": "Die Eier sind frisch.", "fa": "تخم‌مرغ‌ها تازه‌اند." }
+    ]
+  },
+  "dialogue": {
+    "title": "Im Supermarkt",
+    "fa": "در سوپرمارکت",
+    "lines": [
+      { "speaker": "Pouya", "de": "Entschuldigung, wo finde ich Reis?", "fa": "ببخشید، برنج را کجا پیدا کنم؟" },
+      { "speaker": "Verkäufer", "de": "Reis ist da hinten, neben dem Brot.", "fa": "برنج آن عقب است، کنار نان." },
+      { "speaker": "Pouya", "de": "Danke! Und haben Sie Eier?", "fa": "ممنون! تخم‌مرغ هم دارید؟" },
+      { "speaker": "Verkäufer", "de": "Ja, die Eier sind bei der Milch.", "fa": "بله، تخم‌مرغ‌ها کنار شیر هستند." },
+      { "speaker": "Pouya", "de": "Super. Was kosten die Äpfel?", "fa": "عالی. سیب‌ها چند است؟" },
+      { "speaker": "Verkäufer", "de": "Ein Kilo kostet zwei Euro.", "fa": "یک کیلو دو یورو است." },
+      { "speaker": "Pouya", "de": "Das ist billig! Ich kaufe zwei Kilo.", "fa": "ارزان است! دو کیلو می‌خرم." },
+      { "speaker": "Verkäufer", "de": "Die Kasse ist vorne. Schönen Tag noch!", "fa": "صندوق جلوست. روز خوبی داشته باشید!" }
+    ]
+  },
+  "exercises": [
+    { "type": "gap", "de": "Ich ___ Milch und Brot.", "answer": "brauche", "accept": ["kaufe"], "fa": "شیر و نان لازم دارم." },
+    { "type": "gap", "de": "der Apfel → die ___", "answer": "Äpfel", "accept": ["Aepfel"], "fa": "سیب ← سیب‌ها" },
+    { "type": "gap", "de": "Ich brauche ___ Apfel.", "answer": "einen", "fa": "یک سیب لازم دارم." },
+    { "type": "gap", "de": "Das ist zu ___!", "answer": "teuer", "fa": "این خیلی گران است!" },
+    { "type": "order", "words": ["finde", "Wo", "Reis", "ich"], "answer": "Wo finde ich Reis", "fa": "برنج را کجا پیدا کنم؟" },
+    { "type": "order", "words": ["Flasche", "kaufe", "eine", "Ich", "Wasser"], "answer": "Ich kaufe eine Flasche Wasser", "fa": "یک بطری آب می‌خرم." },
+    { "type": "translate", "fa": "این خیلی گران است.", "answer": "Das ist zu teuer.", "accept": ["Das ist sehr teuer."] },
+    { "type": "translate", "fa": "شیر را کجا پیدا کنم؟", "answer": "Wo finde ich Milch?", "accept": ["Wo finde ich die Milch?"] }
+  ],
+  "speaking": {
+    "fa": "فهرست خرید این هفته‌ات را بگو: حداقل سه چیز، با عدد و مقدار.",
+    "model": "Ich brauche ein Kilo Reis, sechs Eier und eine Flasche Milch."
+  }
+}

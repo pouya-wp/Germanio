@@ -1,0 +1,74 @@
+{
+  "id": "a1-08",
+  "intro": {
+    "fa": "اولین چالش واقعی در آلمان: پیدا کردن خانه. این درس یادت می‌دهد اتاق‌ها و وسایل خانه را نام ببری و خانه‌ات را توصیف کنی — همان چیزی که در آگهی WG و بازدید خانه لازم داری.",
+    "de": "Am Ende kannst du sagen: Meine Wohnung hat zwei Zimmer. Das Zimmer ist klein, aber hell."
+  },
+  "words": [
+    { "de": "Wohnung", "article": "die", "plural": "Wohnungen", "fa": "آپارتمان", "en": "apartment, flat", "example": { "de": "Meine Wohnung ist klein.", "fa": "آپارتمانم کوچک است." } },
+    { "de": "Zimmer", "article": "das", "plural": "Zimmer", "fa": "اتاق", "en": "room", "example": { "de": "Die Wohnung hat drei Zimmer.", "fa": "آپارتمان سه اتاق دارد." } },
+    { "de": "Küche", "article": "die", "plural": "Küchen", "fa": "آشپزخانه", "en": "kitchen", "example": { "de": "Die Küche ist neu.", "fa": "آشپزخانه نو است." } },
+    { "de": "Bad", "article": "das", "plural": "Bäder", "fa": "حمام", "en": "bathroom", "example": { "de": "Das Bad ist klein.", "fa": "حمام کوچک است." } },
+    { "de": "Bett", "article": "das", "plural": "Betten", "fa": "تخت", "en": "bed", "example": { "de": "Das Bett ist bequem.", "fa": "تخت راحت است." } },
+    { "de": "Schrank", "article": "der", "plural": "Schränke", "fa": "کمد", "en": "wardrobe, cupboard", "example": { "de": "Der Schrank ist groß.", "fa": "کمد بزرگ است." } },
+    { "de": "Fenster", "article": "das", "plural": "Fenster", "fa": "پنجره", "en": "window", "example": { "de": "Das Fenster ist offen.", "fa": "پنجره باز است." } },
+    { "de": "Miete", "article": "die", "plural": "Mieten", "fa": "اجاره", "en": "rent", "example": { "de": "Die Miete ist 450 Euro.", "fa": "اجاره ۴۵۰ یورو است." } },
+    { "de": "groß", "fa": "بزرگ", "en": "big", "example": { "de": "Das Zimmer ist groß.", "fa": "اتاق بزرگ است." } },
+    { "de": "klein", "fa": "کوچک", "en": "small", "example": { "de": "Die Küche ist klein.", "fa": "آشپزخانه کوچک است." } },
+    { "de": "hell", "fa": "روشن، پرنور", "en": "bright", "example": { "de": "Das Zimmer ist sehr hell.", "fa": "اتاق خیلی روشن است." } },
+    { "de": "ruhig", "fa": "آرام، ساکت", "en": "quiet", "example": { "de": "Die Straße ist ruhig.", "fa": "خیابان آرام است." } },
+    { "de": "mein · dein", "fa": "مال من · مال تو", "en": "my · your", "example": { "de": "Das ist mein Zimmer. Wo ist dein Zimmer?", "fa": "این اتاق من است. اتاق تو کجاست؟" } },
+    { "de": "aber", "fa": "اما، ولی", "en": "but", "example": { "de": "Klein, aber schön.", "fa": "کوچک ولی زیبا." } }
+  ],
+  "phrases": [
+    { "de": "Meine Wohnung hat … Zimmer.", "fa": "آپارتمانم … اتاق دارد.", "note": "Wohnung مؤنث است، پس «مال من» می‌شود meine (نه mein)." },
+    { "de": "Das ist mein … · Das ist meine …", "fa": "این … من است.", "note": "mein مثل ein صرف می‌شود: mein Zimmer (das)، meine Küche (die)، mein Schrank (der)." },
+    { "de": "Das Zimmer ist klein, aber hell.", "fa": "اتاق کوچک است ولی روشن.", "note": "صفت بعد از ist هیچ پسوندی نمی‌گیرد — کار ساده است!" },
+    { "de": "Wie hoch ist die Miete?", "fa": "اجاره چقدر است؟", "note": "کلمه‌به‌کلمه: «اجاره چقدر بلند است؟» — برای قیمت اجاره همین را می‌پرسند." },
+    { "de": "Es gibt …", "fa": "… هست / … وجود دارد.", "note": "es gibt = «وجود دارد»؛ بعدش Akkusativ می‌آید: Es gibt einen Balkon." }
+  ],
+  "grammar": {
+    "title": "mein, dein, sein, ihr …",
+    "fa": "ضمیرهای ملکی (مال من، مال تو…) دقیقاً مثل ein پسوند می‌گیرند: برای مؤنث و جمع یک e اضافه می‌شود. «sein» یعنی «مال او (مرد)» و «ihr» یعنی «مال او (زن)» — دقت کن، فارسی این تفاوت را ندارد!",
+    "table": [
+      ["ich", "mein Zimmer", "meine Küche"],
+      ["du", "dein Zimmer", "deine Küche"],
+      ["er", "sein Zimmer", "seine Küche"],
+      ["sie", "ihr Zimmer", "ihre Küche"],
+      ["Sie", "Ihr Zimmer", "Ihre Küche"]
+    ],
+    "tableHead": ["", "der / das", "die / Plural"],
+    "examples": [
+      { "de": "Jonas wohnt hier. Sein Zimmer ist groß.", "fa": "یوناس اینجا زندگی می‌کند. اتاقش بزرگ است." },
+      { "de": "Lena hat eine Wohnung. Ihre Küche ist neu.", "fa": "لنا یک آپارتمان دارد. آشپزخانه‌اش نو است." }
+    ]
+  },
+  "dialogue": {
+    "title": "Die WG-Besichtigung",
+    "fa": "بازدید از خانهٔ اشتراکی",
+    "lines": [
+      { "speaker": "Jonas", "de": "Hallo! Komm rein. Das ist unsere WG.", "fa": "سلام! بیا تو. این خانهٔ اشتراکی ماست." },
+      { "speaker": "Pouya", "de": "Schön! Wie viele Zimmer hat die Wohnung?", "fa": "قشنگ است! آپارتمان چند اتاق دارد؟" },
+      { "speaker": "Jonas", "de": "Drei Zimmer, eine Küche und ein Bad.", "fa": "سه اتاق، یک آشپزخانه و یک حمام." },
+      { "speaker": "Pouya", "de": "Und das ist mein Zimmer?", "fa": "و این اتاق من است؟" },
+      { "speaker": "Jonas", "de": "Ja. Es ist klein, aber sehr hell.", "fa": "بله. کوچک است ولی خیلی روشن." },
+      { "speaker": "Pouya", "de": "Es gibt ein Bett und einen Schrank. Perfekt! Wie hoch ist die Miete?", "fa": "یک تخت و یک کمد هست. عالی! اجاره چقدر است؟" },
+      { "speaker": "Jonas", "de": "Vierhundert Euro im Monat.", "fa": "ماهی چهارصد یورو." },
+      { "speaker": "Pouya", "de": "Das ist okay. Die Straße ist auch ruhig.", "fa": "مناسب است. خیابان هم آرام است." }
+    ]
+  },
+  "exercises": [
+    { "type": "gap", "de": "Das ist ___ Küche.", "answer": "meine", "fa": "این آشپزخانهٔ من است." },
+    { "type": "gap", "de": "Das ist ___ Zimmer.", "answer": "mein", "fa": "این اتاق من است." },
+    { "type": "gap", "de": "Lena hat eine Wohnung. ___ Wohnung ist groß.", "answer": "Ihre", "fa": "لنا یک آپارتمان دارد. آپارتمانش بزرگ است." },
+    { "type": "gap", "de": "Klein, ___ hell.", "answer": "aber", "fa": "کوچک، ولی روشن." },
+    { "type": "order", "words": ["hat", "Meine", "Zimmer", "Wohnung", "zwei"], "answer": "Meine Wohnung hat zwei Zimmer", "fa": "آپارتمانم دو اتاق دارد." },
+    { "type": "order", "words": ["ist", "die", "hoch", "Wie", "Miete"], "answer": "Wie hoch ist die Miete", "fa": "اجاره چقدر است؟" },
+    { "type": "translate", "fa": "آپارتمانم سه اتاق دارد.", "answer": "Meine Wohnung hat drei Zimmer.", "accept": [] },
+    { "type": "translate", "fa": "اجاره چقدر است؟", "answer": "Wie hoch ist die Miete?", "accept": ["Wie viel kostet die Miete?"] }
+  ],
+  "speaking": {
+    "fa": "خانه یا اتاق فعلی‌ات را در سه جمله توصیف کن.",
+    "model": "Meine Wohnung hat zwei Zimmer. Mein Zimmer ist klein, aber hell. Es gibt ein Bett und einen Schrank."
+  }
+}

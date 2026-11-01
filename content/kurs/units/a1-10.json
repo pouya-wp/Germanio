@@ -1,0 +1,72 @@
+{
+  "id": "a1-10",
+  "intro": {
+    "fa": "روز اول در شهر جدید: باید بپرسی بانک، ایستگاه یا شرکت کجاست — و جواب را بفهمی. این درس آدرس پرسیدن و فهمیدن را یاد می‌دهد، و دو ابزار مهم: امری (Gehen Sie geradeaus!) و حرف‌های اضافه‌ای که Dativ می‌خواهند (mit dem Bus).",
+    "de": "Am Ende kannst du sagen: Entschuldigung, wie komme ich zum Bahnhof?"
+  },
+  "words": [
+    { "de": "Bahnhof", "article": "der", "plural": "Bahnhöfe", "fa": "ایستگاه قطار", "en": "train station", "example": { "de": "Der Bahnhof ist nicht weit.", "fa": "ایستگاه قطار دور نیست." } },
+    { "de": "Haltestelle", "article": "die", "plural": "Haltestellen", "fa": "ایستگاه (اتوبوس، تراموا)", "en": "stop (bus, tram)", "example": { "de": "Die Haltestelle ist dort.", "fa": "ایستگاه آنجاست." } },
+    { "de": "Bus", "article": "der", "plural": "Busse", "fa": "اتوبوس", "en": "bus", "example": { "de": "Ich fahre mit dem Bus.", "fa": "با اتوبوس می‌روم." } },
+    { "de": "Straße", "article": "die", "plural": "Straßen", "fa": "خیابان", "en": "street", "example": { "de": "Die Straße ist lang.", "fa": "خیابان طولانی است." } },
+    { "de": "Bank", "article": "die", "plural": "Banken", "fa": "بانک", "en": "bank", "example": { "de": "Die Bank ist neben der Post.", "fa": "بانک کنار پست است." } },
+    { "de": "fahren", "fa": "(با وسیله) رفتن، رانندگی کردن", "en": "to go (by vehicle), to drive", "example": { "de": "Wir fahren nach Köln.", "fa": "ما به کلن می‌رویم." } },
+    { "de": "geradeaus", "fa": "مستقیم", "en": "straight ahead", "example": { "de": "Gehen Sie geradeaus.", "fa": "مستقیم بروید." } },
+    { "de": "links", "fa": "چپ", "en": "left", "example": { "de": "Dann links.", "fa": "بعد به چپ." } },
+    { "de": "rechts", "fa": "راست", "en": "right", "example": { "de": "Die Bank ist rechts.", "fa": "بانک سمت راست است." } },
+    { "de": "weit", "fa": "دور", "en": "far", "example": { "de": "Ist es weit?", "fa": "دور است؟" } },
+    { "de": "nah", "fa": "نزدیک", "en": "near", "example": { "de": "Der Supermarkt ist ganz nah.", "fa": "سوپرمارکت خیلی نزدیک است." } },
+    { "de": "zu Fuß", "fa": "پیاده", "en": "on foot", "example": { "de": "Ich gehe zu Fuß.", "fa": "پیاده می‌روم." } },
+    { "de": "Minute", "article": "die", "plural": "Minuten", "fa": "دقیقه", "en": "minute", "example": { "de": "Das sind fünf Minuten.", "fa": "پنج دقیقه راه است." } },
+    { "de": "Entschuldigung", "fa": "ببخشید", "en": "excuse me", "example": { "de": "Entschuldigung, wo ist die Bank?", "fa": "ببخشید، بانک کجاست؟" } }
+  ],
+  "phrases": [
+    { "de": "Entschuldigung, wie komme ich zum …?", "fa": "ببخشید، چطور به … بروم؟", "note": "آلمانی‌ها نمی‌پرسند «… کجاست» بلکه «چطور به … برسم؟». zum = zu dem (برای der/das)، zur = zu der (برای die): zum Bahnhof، zur Bank." },
+    { "de": "Gehen Sie geradeaus.", "fa": "مستقیم بروید.", "note": "امری رسمی: فعل + Sie. اینجا Sie بعد از فعل می‌آید و یعنی «شما … بروید»." },
+    { "de": "Dann links · Dann rechts", "fa": "بعد به چپ · بعد به راست" },
+    { "de": "Ich fahre mit dem Bus.", "fa": "با اتوبوس می‌روم.", "note": "mit همیشه Dativ می‌خواهد: der Bus ← mit dem Bus، die Bahn ← mit der Bahn. برای «پیاده» می‌گویند zu Fuß." },
+    { "de": "Ist es weit?", "fa": "دور است؟" }
+  ],
+  "grammar": {
+    "title": "Imperativ und Präpositionen mit Dativ",
+    "fa": "۱) امری رسمی ساده است: فعل اول، بعد Sie: Gehen Sie! Fahren Sie! برای du: ریشهٔ فعل بدون پسوند: Geh! Komm! ۲) بعضی حرف‌های اضافه همیشه Dativ می‌خواهند — مهم‌ترین‌ها: mit، zu، bei، nach، von، aus. در Dativ: der ← dem، die ← der، das ← dem.",
+    "table": [
+      ["der Bus", "mit dem Bus", "zum Bahnhof"],
+      ["die Bahn", "mit der Bahn", "zur Bank"],
+      ["das Auto", "mit dem Auto", "zum Büro"]
+    ],
+    "tableHead": ["Nominativ", "mit + Dativ", "zu + Dativ"],
+    "examples": [
+      { "de": "Fahren Sie mit der Linie 5 zum Bahnhof.", "fa": "با خط ۵ به ایستگاه قطار بروید." },
+      { "de": "Geh geradeaus und dann links!", "fa": "مستقیم برو و بعد به چپ! (به دوست)" }
+    ]
+  },
+  "dialogue": {
+    "title": "Der Weg zur Firma",
+    "fa": "راه رسیدن به شرکت",
+    "lines": [
+      { "speaker": "Pouya", "de": "Entschuldigung, wie komme ich zum Bahnhof?", "fa": "ببخشید، چطور به ایستگاه قطار بروم؟" },
+      { "speaker": "Anna", "de": "Zu Fuß oder mit dem Bus?", "fa": "پیاده یا با اتوبوس؟" },
+      { "speaker": "Pouya", "de": "Zu Fuß. Ist es weit?", "fa": "پیاده. دور است؟" },
+      { "speaker": "Anna", "de": "Nein, nur zehn Minuten. Gehen Sie hier geradeaus.", "fa": "نه، فقط ده دقیقه. از اینجا مستقیم بروید." },
+      { "speaker": "Anna", "de": "Dann an der Bank links und die zweite Straße rechts.", "fa": "بعد کنار بانک به چپ و خیابان دوم به راست." },
+      { "speaker": "Pouya", "de": "Geradeaus, dann links, dann rechts. Danke!", "fa": "مستقیم، بعد چپ، بعد راست. ممنون!" },
+      { "speaker": "Anna", "de": "Gern! Oder fahren Sie mit der Linie 5. Die Haltestelle ist dort.", "fa": "خواهش می‌کنم! یا با خط ۵ بروید. ایستگاه آنجاست." },
+      { "speaker": "Pouya", "de": "Ich gehe zu Fuß. Schönen Tag!", "fa": "پیاده می‌روم. روز خوبی داشته باشید!" }
+    ]
+  },
+  "exercises": [
+    { "type": "gap", "de": "Ich fahre mit ___ Bus.", "answer": "dem", "fa": "با اتوبوس می‌روم." },
+    { "type": "gap", "de": "Wie komme ich ___ Bank?", "answer": "zur", "fa": "چطور به بانک بروم؟" },
+    { "type": "gap", "de": "Wie komme ich ___ Bahnhof?", "answer": "zum", "fa": "چطور به ایستگاه قطار بروم؟" },
+    { "type": "gap", "de": "___ Sie geradeaus.", "answer": "Gehen", "fa": "مستقیم بروید." },
+    { "type": "order", "words": ["ich", "komme", "Wie", "Bahnhof", "zum"], "answer": "Wie komme ich zum Bahnhof", "fa": "چطور به ایستگاه قطار بروم؟" },
+    { "type": "order", "words": ["mit", "fahre", "Bus", "Ich", "dem"], "answer": "Ich fahre mit dem Bus", "fa": "با اتوبوس می‌روم." },
+    { "type": "translate", "fa": "ببخشید، چطور به ایستگاه قطار بروم؟", "answer": "Entschuldigung, wie komme ich zum Bahnhof?", "accept": [] },
+    { "type": "translate", "fa": "دور است؟", "answer": "Ist es weit?", "accept": ["Ist das weit?"] }
+  ],
+  "speaking": {
+    "fa": "راه خانه‌ات تا نزدیک‌ترین فروشگاه را به آلمانی توضیح بده: مستقیم، چپ، راست، چند دقیقه.",
+    "model": "Gehen Sie geradeaus, dann links. Der Supermarkt ist rechts. Das sind fünf Minuten zu Fuß."
+  }
+}
